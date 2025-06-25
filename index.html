@@ -680,6 +680,27 @@ html {
 .section {
   animation: fadeInUp 1s ease-out;
 }
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  padding: 0 1rem;
+  margin-top: 2rem;
+}
+
+.cert-grid img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 212, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert-grid img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 16px 40px rgba(0, 212, 255, 0.3);
+}
 </style>
 </head>
 <body>
@@ -782,6 +803,7 @@ html {
         <nav class="nav-container">
           <a href="#about" class="nav-tab">About</a>
           <a href="#experience" class="nav-tab">Experience</a>
+          <a href="#certificates" class="nav-tab">Certificates</a>
           <a href="#projects" class="nav-tab">Projects</a>
           <a href="#contact" class="nav-tab">Contact</a>
         </nav>
@@ -844,6 +866,16 @@ html {
     </div>
   </section>
 
+  <section id="certificates" class="section">
+  <h2>Certificates</h2>
+  <div class="cert-grid">
+    <img src="/Users/adel/Desktop/Academic_Reports/Courses/KAUST_Bioinformatics_Certificate_page-0001.jpg">
+    <img src="/Users/adel/Desktop/Academic_Reports/Courses/Machine_Learning_Certificate_page-0001.jpg">
+    <img src="/Users/adel/Desktop/Academic_Reports/Courses/python_course_page-0001.jpg">
+    <img src="/Users/adel/Desktop/Academic_Reports/Courses/KAUST_Bioinformatics_page-0001.jpg">
+  </div>
+
+</section>
   <section id="projects" class="section">
     <h2>Projects</h2>
     <div class="projects-grid">
@@ -900,6 +932,7 @@ html {
       </div>
     </div>
   </section>
+
 
   <script>
     // Smooth scrolling for navigation links
