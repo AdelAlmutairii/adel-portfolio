@@ -677,8 +677,15 @@ html {
   }
 }
 
-.section {
-  animation: fadeInUp 1s ease-out;
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 .cert-grid {
   display: grid;
@@ -701,6 +708,13 @@ html {
   transform: scale(1.03);
   box-shadow: 0 16px 40px rgba(0, 212, 255, 0.3);
 }
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+
 </style>
 </head>
 <body>
@@ -811,7 +825,7 @@ html {
     </div>
   </div>
 
-  <section id="about" class="section">
+  <section id="about" class="section fade-in-up">
     <h2>About Me</h2>
     <div class="about-content">
       <div class="about-text">
@@ -839,7 +853,7 @@ html {
     </div>
   </section>
 
-  <section id="experience" class="section">
+  <section id="experience" class="section fade-in-up">
     <h2>Experience</h2>
     <div class="timeline">
       <div class="timeline-item">
@@ -866,7 +880,7 @@ html {
     </div>
   </section>
 
-  <section id="certificates" class="section">
+  <section id="certificates" class="section fade-in-up">
   <h2>Certificates</h2>
   <div class="cert-grid">
     <img src="images/KAUST_Bioinformatics_Certificate_page-0001.jpg">
@@ -876,7 +890,7 @@ html {
   </div>
 
 </section>
-  <section id="projects" class="section">
+  <section id="projects" class="section fade-in-up">
     <h2>Projects</h2>
     <div class="projects-grid">
       <div class="project-card">
@@ -1009,5 +1023,26 @@ html {
     // Start typing effect after a short delay
     setTimeout(typeWriter, 500);
   </script>
+
+<script>
+  const fadeInSections = document.querySelectorAll('.fade-in-up');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      } else {
+        entry.target.classList.remove('show'); // you can remove this line if you want the animation to happen only once
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  fadeInSections.forEach(section => {
+    observer.observe(section);
+  });
+</script>
+
 </body>
 </html>
