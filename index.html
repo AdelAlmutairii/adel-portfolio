@@ -713,10 +713,49 @@ html {
   transform: translateY(50px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+.cv-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  color: rgb(105, 198, 223);
+  padding: 12px 20px;
+  border-radius: 50px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 25px;
+  box-shadow: 0 8px 20px rgb(0, 230, 255);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 0.5s;
+}
 
+.cv-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
 
+.cv-icon {
+  font-size: 25px;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
 </style>
 </head>
+
 <body>
   <!-- Animated Background Particles -->
   <div class="particles" id="particles"></div>
@@ -743,7 +782,7 @@ html {
 
             <!-- Outer DNA helices with glow -->
             <path d="M25 10 Q60 30, 25 50 Q60 70, 25 90 Q60 110, 25 130" 
-                  stroke="red" stroke-width="6" fill="black" 
+                  stroke="#16f8d2" stroke-width="6" fill="black" 
                   filter="url(#glow)" opacity="0.6">
               <animate attributeName="d" 
                        values="M25 10 Q60 30, 25 50 Q60 70, 25 90 Q60 110, 25 130;
@@ -753,7 +792,7 @@ html {
             </path>
             
             <path d="M95 10 Q60 30, 95 50 Q60 70, 95 90 Q60 110, 95 130" 
-                  stroke="red" stroke-width="6" fill="black" 
+                  stroke="#16f8d2" stroke-width="6" fill="black" 
                   filter="url(#glow)" opacity="0.6">
               <animate attributeName="d" 
                        values="M95 10 Q60 30, 95 50 Q60 70, 95 90 Q60 110, 95 130;
@@ -764,22 +803,33 @@ html {
 
             <!-- Connecting base pairs with animation -->
             <g stroke="rgba(255,255,255,0.8)" stroke-width="3">
+              <!-- First line (original length: 60 units) -->
               <line x1="30" y1="20" x2="90" y2="20">
                 <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="0s"/>
               </line>
-              <line x1="30" y1="35" x2="90" y2="35">
+
+              <!-- Second line (shorter than first, e.g., 50 units) -->
+              <line x1="35" y1="35" x2="85" y2="35">
                 <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="0.3s"/>
               </line>
-              <line x1="30" y1="50" x2="90" y2="50">
+
+              <!-- Third line (shorter than second, e.g., 40 units) -->
+              <line x1="40" y1="50" x2="80" y2="50">
                 <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="0.6s"/>
               </line>
-              <line x1="30" y1="65" x2="90" y2="65">
+
+              <!-- Fourth line (same as third) -->
+              <line x1="40" y1="65" x2="80" y2="65">
                 <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="0.9s"/>
               </line>
+
+              <!-- Fifth line (unmodified) -->
               <line x1="30" y1="80" x2="90" y2="80">
                 <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="1.2s"/>
               </line>
-              <line x1="30" y1="95" x2="90" y2="95">
+
+              <!-- Sixth line (same length as second line) -->
+              <line x1="35" y1="95" x2="85" y2="95">
                 <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="1.5s"/>
               </line>
             </g>
@@ -799,7 +849,7 @@ html {
             </circle>
           </svg>
         </div>
-        <span class="logo-text">Portfolio</span>
+        <span class="logo-text">Portfolio </span>
       </div>
       
       <div class="header-right">
@@ -811,7 +861,7 @@ html {
         </div>
         
         <div class="header-content">
-          <h1>Adel Almutairi</h1>
+          <h1 style="font-size: 62px;">Adel Almutairi</h1>
           <p>Bioinformatician | Data Analyst | Health Data Scientist</p>
         </div>
         
@@ -1048,6 +1098,9 @@ html {
     observer.observe(section);
   });
 </script>
-
+<a href="./Adel Helal Almutairi.pdf" download class="cv-button" title="Download CV">
+  <span class="cv-icon">📄</span>
+  <span class="cv-text">Download CV</span>
+</a>
 </body>
 </html>
