@@ -254,21 +254,23 @@ body {
 }
 
 .nav-tab {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.8), rgba(91, 155, 213, 0.8));
-  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(13, 35, 64, 0.35);
+  color: #e6f7ff;
   text-decoration: none;
-  padding: 1.2rem 2.5rem;
-  border-radius: 15px;
+  padding: 0.9rem 1.4rem;
+  border-radius: 9999px;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
   position: relative;
   transform-style: preserve-3d;
-  transform: rotateX(10deg) rotateY(-10deg);
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 
-    0 15px 30px rgba(0, 212, 255, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(0, 212, 255, 0.3);
+  transform: none;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+  box-shadow: 0 6px 18px rgba(0, 212, 255, 0.18);
+  border: 1px solid rgba(0, 212, 255, 0.25);
   backdrop-filter: blur(10px);
   overflow: hidden;
 }
@@ -285,12 +287,9 @@ body {
 }
 
 .nav-tab:hover {
-  transform: rotateX(-10deg) rotateY(10deg) translateY(-15px) scale(1.08);
-  box-shadow: 
-    0 30px 60px rgba(0, 212, 255, 0.4),
-    0 0 40px rgba(0, 212, 255, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  background: linear-gradient(135deg, rgba(91, 155, 213, 0.9), rgba(30, 136, 229, 0.9));
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 212, 255, 0.28);
+  background: rgba(20, 58, 100, 0.45);
 }
 
 .nav-tab:hover::before {
@@ -298,7 +297,45 @@ body {
 }
 
 .nav-tab:active {
-  transform: rotateX(0deg) rotateY(0deg) translateY(-8px) scale(1.02);
+  transform: translateY(-2px) scale(0.98);
+}
+
+/* Icons inside nav tabs */
+.nav-tab .icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+}
+.nav-tab .icon svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Focus-visible for accessibility */
+.nav-tab:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.35), 0 8px 22px rgba(0, 212, 255, 0.25);
+}
+
+/* Subtle underline indicator on hover/active */
+.nav-tab::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 8px;
+  height: 2px;
+  background: linear-gradient(90deg, #00d4ff, #5b9bd5);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  border-radius: 2px;
+}
+.nav-tab:hover::after,
+.nav-tab.active::after {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Enhanced Sections */
@@ -334,28 +371,28 @@ body {
 
 /* Enhanced About Section */
 #about {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(91, 155, 213, 0.05));
-  backdrop-filter: blur(20px);
-  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(91, 155, 213, 0.05));
+  backdrop-filter: blur(14px);
+  border-radius: 24px;
   margin: 3rem auto;
-  max-width: 1300px;
-  box-shadow: 
-    0 20px 40px rgba(0, 212, 255, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  max-width: 1200px;
+  box-shadow: 0 12px 28px rgba(0, 212, 255, 0.14);
+  border: 1px solid rgba(0, 212, 255, 0.15);
 }
 
 .about-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: start;
+  padding: 1.5rem 1.5rem 2rem;
 }
 
 .about-text {
-  font-size: 1.2rem;
-  line-height: 1.9;
-  color: #e0e6ed;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: #d7e5ef;
+  max-width: 60ch;
 }
 
 .about-text p {
@@ -364,49 +401,37 @@ body {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
 }
 
 .skill-card {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255,255,255,0.05));
-  padding: 2rem;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
-  transition: all 0.4s ease;
-  border: 1px solid rgba(0, 212, 255, 0.2);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.06), rgba(255, 255, 255, 0.04));
+  padding: 1.2rem 1.2rem 1rem;
+  border-radius: 16px;
+  text-align: left;
+  box-shadow: 0 6px 18px rgba(0, 212, 255, 0.14);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  border: 1px solid rgba(0, 212, 255, 0.12);
+  backdrop-filter: blur(8px);
   position: relative;
-  overflow: hidden;
 }
 
-.skill-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.1), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-}
+.skill-card::before { content: none; }
 
 .skill-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 20px 50px rgba(0, 212, 255, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 212, 255, 0.22);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(91, 155, 213, 0.05));
 }
 
-.skill-card:hover::before {
-  transform: translateX(100%);
-}
+.skill-card:hover::before { content: none; }
 
 .skill-card h4 {
-  color: #00d4ff;
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
-  font-weight: 600;
+  color: #aee9ff;
+  margin-bottom: 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 700;
 }
 
 /* Enhanced Projects Section */
@@ -424,64 +449,61 @@ body {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
   justify-items: center;
   padding: 0 1rem;
 }
 
 .project-card {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255,255,255,0.05));
-  padding: 2.5rem;
-  border-radius: 25px;
-  box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(0, 212, 255, 0.2);
-  transform: perspective(800px) rotateX(5deg);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1.8rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(0, 212, 255, 0.14);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transform: none;
   position: relative;
   overflow: hidden;
   width: 100%;
   max-width: 450px;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(12px);
 }
 
 .project-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
-  transition: left 0.8s ease;
+  inset: 0;
+  opacity: 0;
 }
 
 .project-card:hover {
-  transform: perspective(800px) rotateX(-5deg) translateY(-20px) scale(1.05);
-  box-shadow: 0 30px 80px rgba(0, 212, 255, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 38px rgba(0, 212, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .project-card:hover::before {
-  left: 100%;
+  opacity: 0;
 }
 
 .project-card h3 {
-  color: #00d4ff;
-  margin-bottom: 1.5rem;
-  font-size: 1.4rem;
-  font-weight: 600;
+  color: #aee9ff;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .project-card p {
-  color: #e0e6ed;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
+  color: #d7e5ef;
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
 }
 
 .project-date {
   font-style: italic;
-  color: #5b9bd5;
-  font-size: 1rem;
+  color: #7ab7e6;
+  font-size: 0.95rem;
   font-weight: 600;
 }
 
@@ -500,47 +522,69 @@ body {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
   gap: 2rem;
-  justify-items: center;
+  justify-items: stretch;
   padding: 0 1rem;
 }
 
 .contact-item {
-  text-align: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 255, 255, 0.05));
-  border-radius: 20px;
-  transition: all 0.4s ease;
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  padding: 1.6rem 1.8rem;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
   width: 100%;
-  max-width: 320px;
+  box-shadow: 0 8px 22px rgba(0, 212, 255, 0.14);
 }
 
 .contact-item:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 212, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contact-item .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(0, 212, 255, 0.12);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  color: #aee9ff;
+  box-shadow: inset 0 0 12px rgba(0, 212, 255, 0.15);
+}
+.contact-item .icon svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
 }
 
 .contact-item strong {
-  color: #00d4ff;
+  color: #aee9ff;
   display: block;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 1.15rem;
+  font-weight: 700;
 }
 
 .contact-item a {
-  color: #5b9bd5;
+  color: #7ab7e6;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
 }
 
 .contact-item a:hover {
-  color: #00d4ff;
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  color: #b9ecff;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.45);
 }
 
 /* Enhanced Timeline */
@@ -697,14 +741,28 @@ html {
 }
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1.5rem;
   justify-items: center;
   padding: 0 1rem;
   margin-top: 2rem;
 }
 .cert-grid figure {
   text-align: center;
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 12px 12px 16px;
+  box-shadow: 0 8px 22px rgba(0, 212, 255, 0.14);
+  backdrop-filter: blur(10px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.cert-grid figure:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 36px rgba(0, 212, 255, 0.22);
 }
 
 .cert-grid figcaption {
@@ -714,10 +772,14 @@ html {
 }
 .cert-grid img {
   width: 100%;
-  max-width: 400px;
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0, 212, 255, 0.2);
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.18);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
 }
 
 .cert-grid img:hover {
@@ -791,14 +853,71 @@ html {
   }
 }
 .nav-tab.active {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(0, 212, 255, 0.9));
-  color: #0f0f23;
-  transform: rotateX(-10deg) rotateY(10deg) translateY(-8px) scale(1.05);
-  box-shadow: 
-    0 25px 50px rgba(0, 212, 255, 0.5),
-    0 0 30px rgba(255, 255, 255, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(20, 58, 100, 0.5);
+  color: #e6f7ff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 212, 255, 0.26);
+  border: 1px solid rgba(0, 212, 255, 0.35);
+}
+
+/* Lightbox styles */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 2000;
+}
+#lightbox.open { display: block; }
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+.lightbox-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(10, 20, 40, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.25);
+  padding: 16px;
+  width: min(92vw, 960px);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.lightbox-image {
+  width: 100%;
+  height: auto;
+  max-height: 72vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.lightbox-caption {
+  color: #cfefff;
+  text-align: center;
+  font-weight: 600;
+}
+.lightbox-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #e6f7ff;
+  border: none;
+  border-radius: 9999px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+}
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 </style>
 </head>
@@ -812,89 +931,30 @@ html {
     <div class="header-top">
       <div class="logo">
         <div class="logo-icon">
-          <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="dnaGradient" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="50%" stop-color="#00d4ff"/>
-                <stop offset="100%" stop-color="#5b9bd5"/>
-              </linearGradient>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                <feMerge> 
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
+          <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DNA Helix Logo">
+            <!-- Clear, minimal double helix (no background badge) -->
+            <!-- Left strand -->
+            <path d="M40 10
+                     C 30 25, 30 35, 40 50
+                     C 50 65, 50 75, 40 90
+                     C 30 105, 32 112, 40 110" 
+                  fill="none" stroke="#00d4ff" stroke-width="4" stroke-linecap="round"/>
+            <!-- Right strand -->
+            <path d="M80 10
+                     C 90 25, 90 35, 80 50
+                     C 70 65, 70 75, 80 90
+                     C 90 105, 88 112, 80 110" 
+                  fill="none" stroke="#5b9bd5" stroke-width="4" stroke-linecap="round"/>
 
-            <!-- Outer DNA helices with glow -->
-            <path d="M25 10 Q60 30, 25 50 Q60 70, 25 90 Q60 110, 25 130" 
-                  stroke="#16f8d2" stroke-width="6" fill="black" 
-                  filter="url(#glow)" opacity="0.6">
-              <animate attributeName="d" 
-                       values="M25 10 Q60 30, 25 50 Q60 70, 25 90 Q60 110, 25 130;
-                               M20 10 Q65 30, 20 50 Q65 70, 20 90 Q65 110, 20 130;
-                               M25 10 Q60 30, 25 50 Q60 70, 25 90 Q60 110, 25 130"
-                       dur="4s" repeatCount="indefinite"/>
-            </path>
-            
-            <path d="M95 10 Q60 30, 95 50 Q60 70, 95 90 Q60 110, 95 130" 
-                  stroke="#16f8d2" stroke-width="6" fill="black" 
-                  filter="url(#glow)" opacity="0.6">
-              <animate attributeName="d" 
-                       values="M95 10 Q60 30, 95 50 Q60 70, 95 90 Q60 110, 95 130;
-                               M100 10 Q55 30, 100 50 Q55 70, 100 90 Q55 110, 100 130;
-                               M95 10 Q60 30, 95 50 Q60 70, 95 90 Q60 110, 95 130"
-                       dur="4s" repeatCount="indefinite"/>
-            </path>
-
-            <!-- Connecting base pairs with animation -->
-            <g stroke="rgba(255,255,255,0.8)" stroke-width="3">
-              <!-- First line (original length: 60 units) -->
-              <line x1="30" y1="20" x2="90" y2="20">
-                <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="0s"/>
-              </line>
-
-              <!-- Second line (shorter than first, e.g., 50 units) -->
-              <line x1="35" y1="35" x2="85" y2="35">
-                <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="0.3s"/>
-              </line>
-
-              <!-- Third line (shorter than second, e.g., 40 units) -->
-              <line x1="40" y1="50" x2="80" y2="50">
-                <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="0.6s"/>
-              </line>
-
-              <!-- Fourth line (same as third) -->
-              <line x1="40" y1="65" x2="80" y2="65">
-                <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="0.9s"/>
-              </line>
-
-              <!-- Fifth line (unmodified) -->
-              <line x1="30" y1="80" x2="90" y2="80">
-                <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="1.2s"/>
-              </line>
-
-              <!-- Sixth line (same length as second line) -->
-              <line x1="35" y1="95" x2="85" y2="95">
-                <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="1.5s"/>
-              </line>
+            <!-- Base pairs: alternating lengths to suggest twist -->
+            <g stroke="#e8fbff" stroke-width="3" stroke-linecap="round">
+              <line x1="46" y1="20" x2="74" y2="20"/>
+              <line x1="48" y1="35" x2="72" y2="35"/>
+              <line x1="44" y1="50" x2="76" y2="50"/>
+              <line x1="46" y1="65" x2="74" y2="65"/>
+              <line x1="48" y1="80" x2="72" y2="80"/>
+              <line x1="44" y1="95" x2="76" y2="95"/>
             </g>
-
-            <!-- Central data flow visualization -->
-            <circle cx="60" cy="60" r="15" fill="none" stroke="url(#dnaGradient)" stroke-width="2" opacity="0.6">
-              <animate attributeName="r" values="10;20;10" dur="3s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3s" repeatCount="indefinite"/>
-            </circle>
-            
-            <!-- Data points -->
-            <circle cx="60" cy="30" r="3" fill="#00d4ff">
-              <animateTransform attributeName="transform" type="rotate" values="0 60 60;360 60 60" dur="8s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="60" cy="90" r="3" fill="#5b9bd5">
-              <animateTransform attributeName="transform" type="rotate" values="0 60 60;-360 60 60" dur="8s" repeatCount="indefinite"/>
-            </circle>
           </svg>
         </div>
         <span class="logo-text">Portfolio </span>
@@ -914,11 +974,36 @@ html {
         </div>
         
         <nav class="nav-container">
-          <a href="#about" class="nav-tab">About</a>
-          <a href="#experience" class="nav-tab">Experience</a>
-          <a href="#certificates" class="nav-tab">Certificates</a>
-          <a href="#projects" class="nav-tab">Projects</a>
-          <a href="#contact" class="nav-tab">Contact</a>
+          <a href="#about" class="nav-tab">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-4.333 0-7 2.333-7 5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1c0-2.667-2.667-5-7-5z"/></svg>
+            </span>
+            <span>About</span>
+          </a>
+          <a href="#experience" class="nav-tab">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9 3a1 1 0 0 0-1 1v2H6a2 2 0 0 0-2 2v9a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a2 2 0 0 0-2-2h-2V4a1 1 0 0 0-1-1zm1 3V5h4v1zm-4 4h12v7a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/></svg>
+            </span>
+            <span>Experience</span>
+          </a>
+          <a href="#certificates" class="nav-tab">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.6L12 15l-4.9 2.3.9-5.6-4-3.9 5.5-.8z"/></svg>
+            </span>
+            <span>Certificates</span>
+          </a>
+          <a href="#projects" class="nav-tab">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v1h7a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-1H5a2 2 0 0 1-2-2zm7 9h9v-7h-9zm-2-3V7H5v6z"/></svg>
+            </span>
+            <span>Projects</span>
+          </a>
+          <a href="#contact" class="nav-tab">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 .8 1.6l-7.6 9.5a2 2 0 0 1-3.2 0L3.2 6.6A1 1 0 0 1 4 5zm16 14H4a1 1 0 0 1-1-1V8.4l6.4 8a4 4 0 0 0 6.2 0L21 8.4V18a1 1 0 0 1-1 1z"/></svg>
+            </span>
+            <span>Contact</span>
+          </a>
         </nav>
       </div>
     </div>
@@ -928,8 +1013,8 @@ html {
     <h2>About Me</h2>
     <div class="about-content">
       <div class="about-text">
-        <p>As a passionate bioinformatician with expertise in genomics and data analysis, I specialize in utilizing computational pipelines for biological data interpretation. My work focuses on NGS, metagenomics, phylogenetic analysis, and outbreak investigation using cutting-edge bioinformatics tools.</p>
-        <p>With a strong foundation in both biology and computer science, I can bridge the gap between complex biological questions and computational solutions, to deliver answers that drive scientific exploration and public health initiatives.</p>
+        <p>Adel Almutairi is a dedicated bioinformatician who brings together expertise in genomics, computational analysis, and biological sciences. With an MSc in Bioinformatics and a BSc in Microbiology, he merges deep biological understanding with sophisticated computational methods to decode complex datasets. His specialized skills include next-generation sequencing, metagenomics, phylogenetic studies, and outbreak analysis, where he employs state-of-the-art tools to extract valuable biological knowledge.</p>
+        <p>Adel has practical experience in building and refining bioinformatics workflows, contributing to extensive genomic initiatives that encompass whole-exome and whole-genome sequencing projects. His approach connects biological research with data science, utilizing statistical frameworks and machine learning algorithms to improve analytical precision and insight generation. He is proficient in Linux systems, high-performance computing platforms, and programming languages including Python, R, and Bash, which facilitate robust data handling and reproducible scientific workflows.</p>
       </div>
       <div class="skills-grid">
         <div class="skill-card">
@@ -990,31 +1075,31 @@ html {
   <h2>Certificates</h2>
   <div class="cert-grid">
     <figure>
-      <img src="images/MSc_Certificate_page-0001.jpg" alt="MSc Certificate" width="400" loading="lazy">
+      <img src="images/MSc_Certificate_page-0001.jpg" alt="MSc Certificate" width="400" height="300" loading="lazy" sizes="(max-width: 480px) 90vw, (max-width: 768px) 60vw, 400px">
       <figcaption>MSc Certificate</figcaption>
     </figure>
     <figure>
-      <img src="images/BSC_certificate.png" alt="BSc Certificate" width="400" loading="lazy">
+      <img src="images/BSC_certificate.png" alt="BSc Certificate" width="400" height="300" loading="lazy" sizes="(max-width: 480px) 90vw, (max-width: 768px) 60vw, 400px">
       <figcaption>BSc Certificate</figcaption>
     </figure>
     <figure>
-      <img src="images/KAUST_Bioinformatics_Certificate_page-0001.jpg" alt="KAUST Bioinformatics Certificate" width="400" loading="lazy">
+      <img src="images/KAUST_Bioinformatics_Certificate_page-0001.jpg" alt="KAUST Bioinformatics Certificate" width="400" height="300" loading="lazy" sizes="(max-width: 480px) 90vw, (max-width: 768px) 60vw, 400px">
       <figcaption>KAUST Bioinformatics</figcaption>
     </figure>
     <figure>
-      <img src="images/Machine_Learning_Certificate_page-0001.jpg" alt="Supervised Machine Learning Certificate" width="400" loading="lazy">
+      <img src="images/Machine_Learning_Certificate_page-0001.jpg" alt="Supervised Machine Learning Certificate" width="400" height="300" loading="lazy" sizes="(max-width: 480px) 90vw, (max-width: 768px) 60vw, 400px">
       <figcaption>Supervised Machine Learning</figcaption>
     </figure>
     <figure>
-      <img src="images/python_course_page-0001.jpg" alt="Python Course Certificate" width="400" loading="lazy">
+      <img src="images/python_course_page-0001.jpg" alt="Python Course Certificate" width="400" height="300" loading="lazy" sizes="(max-width: 480px) 90vw, (max-width: 768px) 60vw, 400px">
       <figcaption>Python Course</figcaption>
     </figure>
     <figure>
-      <img src="images/KAUST_Bioinformatics_page-0001.jpg" alt="KAUST Introductory Course Certificate" width="400" loading="lazy">
+      <img src="images/KAUST_Bioinformatics_page-0001.jpg" alt="KAUST Introductory Course Certificate" width="400" height="300" loading="lazy" sizes="(max-width: 480px) 90vw, (max-width: 768px) 60vw, 400px">
       <figcaption>KAUST Introductory Course</figcaption>
     </figure>
     <figure>
-      <img src="images/IOT_Cert.png" alt="IoT Certificate" width="400" loading="lazy">
+      <img src="images/IOT_Cert.png" alt="IoT Certificate" width="400" height="300" loading="lazy" sizes="(max-width: 480px) 90vw, (max-width: 768px) 60vw, 400px">
       <figcaption>IoT Certificate</figcaption>
     </figure>
   </div>
@@ -1056,24 +1141,42 @@ html {
     <h2>Contact Me</h2>
     <div class="contact-grid">
       <div class="contact-item">
-        <strong>Location</strong>
-        <p>Saudi Arabia, Riyadh</p>
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z"/></svg>
+        </span>
+        <div>
+          <strong>Location</strong>
+          <p>Saudi Arabia, Riyadh</p>
+        </div>
       </div>
       <div class="contact-item">
-        <strong>Email</strong>
-        <p>adil.bioinfo@gmail.com</p>
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 6h16a1 1 0 0 1 .8 1.6l-8 10.4a1.5 1.5 0 0 1-2.4 0L3.2 7.6A1 1 0 0 1 4 6zm16 12H4a1 1 0 0 1-1-1V8.4l7.2 9.4a3.5 3.5 0 0 0 5.6 0L21 8.4V17a1 1 0 0 1-1 1z"/></svg>
+        </span>
+        <div>
+          <strong>Email</strong>
+          <p>adil.bioinfo@gmail.com</p>
+        </div>
       </div>
       <div class="contact-item">
-        <strong>Phone</strong>
-        <p><a href="tel:+966550466070">My Phone Number</a></p>
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6.6 3.2 8.9 2a1 1 0 0 1 1.3.6l1.2 3.1a1 1 0 0 1-.3 1.1l-1.5 1.4a14.5 14.5 0 0 0 6.5 6.5l1.4-1.5a1 1 0 0 1 1.1-.3l3.1 1.2a1 1 0 0 1 .6 1.3l-1.2 2.3a2 2 0 0 1-2 1.1c-9.1-.8-16.5-8.2-17.3-17.3a2 2 0 0 1 1.1-2z"/></svg>
+        </span>
+        <div>
+          <strong>Phone</strong>
+          <p><a href="tel:+966550466070">My Phone Number</a></p>
+        </div>
       </div>
       <div class="contact-item">
-        <strong>LinkedIn</strong>
-        <p>
-          <a href="https://www.linkedin.com/in/adel-almutairi-msc/" target="_blank" rel="noopener noreferrer">
-               My LinkedIn
-          </a>
-        </p>
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6 6a2 2 0 1 1-2 2 2 2 0 0 1 2-2zM5 10h2v8H5zm5 0h2v1.2h.1a2.5 2.5 0 0 1 2.2-1.2c2.3 0 2.7 1.5 2.7 3.4V18h-2v-3.1c0-.8 0-1.9-1.2-1.9s-1.3.9-1.3 1.8V18h-2z"/></svg>
+        </span>
+        <div>
+          <strong>LinkedIn</strong>
+          <p>
+            <a href="https://www.linkedin.com/in/adel-almutairi-msc/" target="_blank" rel="noopener noreferrer">My LinkedIn</a>
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -1180,6 +1283,50 @@ html {
 
   window.addEventListener('scroll', updateActiveNav);
   setTimeout(updateActiveNav, 100);
+  
+  // Certificates lightbox
+  const lightbox = document.createElement('div');
+  lightbox.id = 'lightbox';
+  lightbox.setAttribute('aria-hidden', 'true');
+  lightbox.innerHTML = `
+    <div class="lightbox-backdrop" data-close></div>
+    <div class="lightbox-content" role="dialog" aria-modal="true" aria-label="Certificate preview">
+      <button class="lightbox-close" aria-label="Close" data-close>&times;</button>
+      <img class="lightbox-image" alt="Certificate preview">
+      <div class="lightbox-caption"></div>
+    </div>`;
+  document.body.appendChild(lightbox);
+
+  const lightboxImg = lightbox.querySelector('.lightbox-image');
+  const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+
+  document.querySelectorAll('.cert-grid figure').forEach(fig => {
+    const img = fig.querySelector('img');
+    const caption = fig.querySelector('figcaption');
+    if (!img) return;
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || 'Certificate';
+      lightboxCaption.textContent = caption ? caption.textContent : '';
+      document.body.style.overflow = 'hidden';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target.hasAttribute('data-close')) closeLightbox();
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
 </script>
 <a href="./Adel Helal Almutairi.pdf" download class="cv-button" title="Download CV" aria-label="Download CV">
   <span class="cv-icon">
