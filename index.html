@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Adel Almutairi — Bioinformatician and Data Scientist specializing in genomics, phylogenetics, metagenomics, and health data analysis.">
+<meta property="og:title" content="Adel Almutairi | Bioinformatician">
+<meta property="og:description" content="Genomics, phylogenetics, metagenomics, and data analysis.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/white_blank.jpg">
+<meta property="og:url" content="https://your-domain.example">
 <title>Adel Almutairi | Bioinformatician</title>
 <style>
 * {
@@ -96,7 +102,7 @@ body {
   box-shadow: 
     0 20px 40px rgba(0, 212, 255, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transform: perspective(600px) rotateX(15deg) rotateY(-10deg);
+  transform: perspective(600px) rotateX(0deg) rotateY(0deg);
   transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
   position: relative;
   overflow: hidden;
@@ -725,23 +731,23 @@ html {
 }
 .cv-button {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  bottom: 24px;
+  right: 24px;
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(255, 255, 255, 0.15);
-  color: rgb(105, 198, 223);
-  padding: 12px 20px;
-  border-radius: 50px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, rgba(0, 37, 58, 0.9), rgba(0, 102, 153, 0.9));
+  color: #e6f7ff;
+  padding: 10px 14px;
+  border-radius: 9999px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 212, 255, 0.25);
   text-decoration: none;
   font-weight: 600;
-  font-size: 25px;
-  box-shadow: 0 8px 20px rgb(164, 246, 255);
-  transition: all 0.3s ease;
+  font-size: 14px;
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.25);
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
   z-index: 1000;
   opacity: 0;
   animation: fadeIn 1s ease forwards;
@@ -749,13 +755,34 @@ html {
 }
 
 .cv-button:hover {
-  background: rgba(0, 155, 251, 0.501);
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, rgba(0, 82, 122, 0.95), rgba(0, 140, 200, 0.95));
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 36px rgba(0, 212, 255, 0.3);
 }
 
 .cv-icon {
-  font-size: 25px;
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+}
+
+.cv-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.cv-text {
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .cv-text {
+    display: none;
+  }
+  .cv-button {
+    padding: 10px;
+  }
 }
 
 @keyframes fadeIn {
@@ -876,7 +903,7 @@ html {
       <div class="header-right">
         <div class="profile-picture-container">
           <div class="profile-picture">
-            <img src="images/white_blank.jpg">
+            <img src="images/white_blank.jpg" alt="Profile photo of Adel Almutairi" width="140" height="140" loading="lazy">
             
           </div>
         </div>
@@ -963,35 +990,35 @@ html {
   <h2>Certificates</h2>
   <div class="cert-grid">
     <figure>
-      <img src="images/MSc_Certificate_page-0001.jpg">
+      <img src="images/MSc_Certificate_page-0001.jpg" alt="MSc Certificate" width="400" loading="lazy">
       <figcaption>MSc Certificate</figcaption>
     </figure>
     <figure>
-      <img src="images/BSC_certificate.png">
+      <img src="images/BSC_certificate.png" alt="BSc Certificate" width="400" loading="lazy">
       <figcaption>BSc Certificate</figcaption>
     </figure>
     <figure>
-      <img src="images/KAUST_Bioinformatics_Certificate_page-0001.jpg">
+      <img src="images/KAUST_Bioinformatics_Certificate_page-0001.jpg" alt="KAUST Bioinformatics Certificate" width="400" loading="lazy">
       <figcaption>KAUST Bioinformatics</figcaption>
     </figure>
     <figure>
-      <img src="images/Machine_Learning_Certificate_page-0001.jpg">
+      <img src="images/Machine_Learning_Certificate_page-0001.jpg" alt="Supervised Machine Learning Certificate" width="400" loading="lazy">
       <figcaption>Supervised Machine Learning</figcaption>
     </figure>
     <figure>
-      <img src="images/python_course_page-0001.jpg">
+      <img src="images/python_course_page-0001.jpg" alt="Python Course Certificate" width="400" loading="lazy">
       <figcaption>Python Course</figcaption>
     </figure>
     <figure>
-      <img src="images/KAUST_Bioinformatics_page-0001.jpg">
+      <img src="images/KAUST_Bioinformatics_page-0001.jpg" alt="KAUST Introductory Course Certificate" width="400" loading="lazy">
       <figcaption>KAUST Introductory Course</figcaption>
     </figure>
     <figure>
-      <img src="images/IOT_Cert.png">
+      <img src="images/IOT_Cert.png" alt="IoT Certificate" width="400" loading="lazy">
       <figcaption>IoT Certificate</figcaption>
     </figure>
   </div>
-</section>
+ 
 
 </section>
   <section id="projects" class="section fade-in-up">
@@ -1004,7 +1031,7 @@ html {
       </div>
       <div class="project-card">
         <h3>Phylogenetic Comparison in Salmonella</h3>
-        <p>Compared SNP-matrix phylogeny and core genome MSA methods on *Salmonella enterica* isolates to evaluate accuracy in epidemiological analysis.</p>
+        <p>Compared SNP-matrix phylogeny and core genome MSA methods on <em>Salmonella enterica</em> isolates to evaluate accuracy in epidemiological analysis.</p>
         <p class="project-date">January 2025 (SFDA)</p>
       </div>
       <div class="project-card">
@@ -1038,12 +1065,12 @@ html {
       </div>
       <div class="contact-item">
         <strong>Phone</strong>
-        <p>+966-550466070</p>
+        <p><a href="tel:+966550466070">My Phone Number</a></p>
       </div>
       <div class="contact-item">
         <strong>LinkedIn</strong>
         <p>
-          <a href="https://www.linkedin.com/in/adel-almutairi-msc/" target="_blank">
+          <a href="https://www.linkedin.com/in/adel-almutairi-msc/" target="_blank" rel="noopener noreferrer">
                My LinkedIn
           </a>
         </p>
@@ -1154,8 +1181,12 @@ html {
   window.addEventListener('scroll', updateActiveNav);
   setTimeout(updateActiveNav, 100);
 </script>
-<a href="./Adel Helal Almutairi.pdf" download class="cv-button" title="Download CV">
-  <span class="cv-icon"></span>
+<a href="./Adel Helal Almutairi.pdf" download class="cv-button" title="Download CV" aria-label="Download CV">
+  <span class="cv-icon">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 3a1 1 0 0 1 1 1v8.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4A1 1 0 0 1 8.707 10.293L11 12.586V4a1 1 0 0 1 1-1zm-7 14a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2H5z"/>
+    </svg>
+  </span>
   <span class="cv-text">Download CV</span>
 </a>
 </body>
