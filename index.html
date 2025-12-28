@@ -1,596 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Adel Almutairi — Bioinformatician and Data Scientist specializing in genomics, phylogenetics, metagenomics, and health data analysis.">
-<meta property="og:title" content="Adel Almutairi | Bioinformatician">
-<meta property="og:description" content="Genomics, phylogenetics, metagenomics, and data analysis.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="images/white_blank.jpg">
-<meta property="og:url" content="https://your-domain.example">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adel Almutairi | Bioinformatician</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --apple-bg: #fbfbfd;
+  --apple-text: #1d1d1f;
+  --apple-secondary: #6e6e73;
+  --apple-blue: #a5a5a5;
+  --apple-blue-hover: #b8b8b8;
+  --apple-card: #ffffff;
+  --apple-border: #d2d2d7;
+  --apple-light-bg: #f5f5f7;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0e4b99 100%);
-  min-height: 100vh;
-  color: #e0e6ed;
-  position: relative;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  background: var(--apple-bg);
+  color: var(--apple-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-/* Animated Background Particles */
-.particles {
+/* Navigation */
+nav {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
-}
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: linear-gradient(45deg, #00d4ff, #5b9bd5);
-  border-radius: 50%;
-  animation: float-particles 20s infinite linear;
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-}
-
-@keyframes float-particles {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-10vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-/* Header with enhanced logo */
-.header-container {
-  background: linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(26, 26, 46, 0.9));
-  padding: 2rem;
-  position: relative;
-  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
-}
-
-.header-top {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10rem; /* or 6rem for more space */
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logo-icon {
-  width: 180px;
-  height: 180px;
-  background: linear-gradient(45deg, #0b5f70, #02315e, #b3bec9);
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 
-    0 20px 40px rgba(0, 212, 255, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transform: perspective(600px) rotateX(0deg) rotateY(0deg);
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.logo-icon::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-  transform: rotate(45deg);
-  animation: shine 3s infinite;
-}
-
-@keyframes shine {
-  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-  50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-  100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-}
-
-.logo-icon:hover {
-  transform: perspective(600px) rotateX(-5deg) rotateY(5deg) scale(1.05);
-  box-shadow: 
-    0 30px 60px rgba(0, 212, 255, 0.4),
-    0 0 30px rgba(0, 212, 255, 0.2);
-}
-
-.logo-icon svg {
-  width: 120px;
-  height: 120px;
-  z-index: 2;
-  position: relative;
-}
-
-.logo-text {
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: #00d4ff;
-  text-shadow: 
-    0 0 10px rgba(0, 212, 255, 0.5),
-    0 0 20px rgba(0, 212, 255, 0.3),
-    0 0 30px rgba(0, 212, 255, 0.1);
-  background: linear-gradient(45deg, #00d4ff, #ffffff, #5b9bd5);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: glow-text 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow-text {
-  from {
-    text-shadow: 
-      0 0 10px rgba(0, 212, 255, 0.5),
-      0 0 20px rgba(0, 212, 255, 0.3);
-  }
-  to {
-    text-shadow: 
-      0 0 20px rgba(0, 212, 255, 0.8),
-      0 0 30px rgba(0, 212, 255, 0.5);
-  }
-}
-
-.profile-picture-container {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #00d4ff, #5b9bd5);
-  padding: 4px;
-  box-shadow: 
-    0 20px 40px rgba(0, 212, 255, 0.3),
-    0 0 30px rgba(0, 212, 255, 0.2);
-  transform: perspective(400px) rotateX(10deg);
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.profile-picture-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
   right: 0;
-  bottom: 0;
-  background: conic-gradient(from 0deg, #00d4ff, #5b9bd5, #1e88e5, #00d4ff);
-  border-radius: 50%;
-  animation: rotate-border 4s linear infinite;
-  z-index: -1;
+  background: rgba(251, 251, 253, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-@keyframes rotate-border {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.profile-picture-container:hover {
-  transform: perspective(400px) rotateX(5deg) scale(1.1);
-}
-
-.profile-picture {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: linear-gradient(45deg, rgba(15, 15, 35, 0.9), rgba(26, 26, 46, 0.8));
+.nav-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 22px;
+  height: 48px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: #00d4ff;
-  font-size: 0.9rem;
-  text-align: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: 26px;
   font-weight: 600;
-  position: relative;
-  z-index: 2;
+  color: var(--apple-text);
+  text-decoration: none;
+  letter-spacing: -0.5px;
 }
 
-.header-content {
+.nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--apple-text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+  opacity: 0.6;
+}
+
+/* Hero Section */
+.hero {
+  padding: 120px 22px 80px;
+  max-width: 1000px;
+  margin: 0 auto;
   text-align: center;
-  color: #e0e6ed;
 }
 
-.header-content h1 {
-  font-size: 3.5rem;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-  background: linear-gradient(45deg, #ffffff, #00d4ff, #5b9bd5);
+.hero h1 {
+  font-size: clamp(48px, 8vw, 80px);
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #1d1d1f 0%, #424245 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 700;
 }
 
-.header-content p {
-  font-size: 1.3rem;
-  opacity: 0.9;
-  margin-bottom: 2rem;
-  color: #b0c4de;
+.hero .subtitle {
+  font-size: clamp(21px, 3vw, 28px);
+  color: var(--apple-secondary);
+  margin-bottom: 30px;
+  font-weight: 400;
+  line-height: 1.4;
 }
 
-/* Enhanced 3D Navigation Tabs */
-.nav-container {
-  perspective: 1200px;
+.hero .cta-group {
   display: flex;
-  justify-content: flex-end;
-  gap: 1.5rem;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 980px;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: linear-gradient(
+    145deg,
+    #e6e6e6,
+    #cfcfcf,
+    #f5f5f5
+  );
+  color: #1d1d1f;
+  border: 1px solid #bdbdbd;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 6px 14px rgba(0, 0, 0, 0.15);
+  animation: pulse-silver 2s ease-in-out infinite;
+}
+
+/* Subtle metallic pulse */
+@keyframes pulse-silver {
+  0%, 100% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      0 0 0 0 rgba(180, 180, 180, 0.4);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      0 0 0 10px rgba(180, 180, 180, 0);
+  }
+}
+
+.btn-primary:hover {
+  background: linear-gradient(
+    145deg,
+    #f5f5f5,
+    #d9d9d9
+  );
+  transform: scale(1.02);
+}
+
+.btn-primary:hover {
+  background: var(--apple-blue-hover);
+  transform: scale(1.02);
+}
+
+.btn-secondary {
+  background: linear-gradient(145deg, #e8e8ed, #f5f5f7);
+  color: var(--apple-text);
+  border: 1px solid var(--apple-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(145deg, #f5f5f7, #ffffff);
+  color: var(--apple-text);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
-.nav-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(13, 35, 64, 0.35);
-  color: #e6f7ff;
-  text-decoration: none;
-  padding: 0.9rem 1.4rem;
-  border-radius: 9999px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.2px;
-  position: relative;
-  transform-style: preserve-3d;
-  transform: none;
-  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
-  box-shadow: 0 6px 18px rgba(0, 212, 255, 0.18);
-  border: 1px solid rgba(0, 212, 255, 0.25);
-  backdrop-filter: blur(10px);
-  overflow: hidden;
-}
-
-.nav-tab::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.6s ease;
-}
-
-.nav-tab:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 212, 255, 0.28);
-  background: rgba(20, 58, 100, 0.45);
-}
-
-.nav-tab:hover::before {
-  left: 100%;
-}
-
-.nav-tab:active {
-  transform: translateY(-2px) scale(0.98);
-}
-
-/* Icons inside nav tabs */
-.nav-tab .icon {
-  display: inline-flex;
-  width: 18px;
-  height: 18px;
-}
-.nav-tab .icon svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
-
-/* Focus-visible for accessibility */
-.nav-tab:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.35), 0 8px 22px rgba(0, 212, 255, 0.25);
-}
-
-/* Subtle underline indicator on hover/active */
-.nav-tab::after {
-  content: '';
-  position: absolute;
-  left: 16px;
-  right: 16px;
-  bottom: 8px;
-  height: 2px;
-  background: linear-gradient(90deg, #00d4ff, #5b9bd5);
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  border-radius: 2px;
-}
-.nav-tab:hover::after,
-.nav-tab.active::after {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Enhanced Sections */
-.section {
-  padding: 5rem 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.section h2 {
-  font-size: 3rem;
-  text-align: center;
-  margin-bottom: 4rem;
-  color: #00d4ff;
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
-  position: relative;
-  font-weight: 700;
-}
-
-.section h2::after {
-  content: '';
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, #00d4ff, #5b9bd5);
-  border-radius: 2px;
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-}
-
-/* Enhanced About Section */
-#about {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(91, 155, 213, 0.05));
-  backdrop-filter: blur(14px);
-  border-radius: 24px;
-  margin: 3rem auto;
-  max-width: 1200px;
-  box-shadow: 0 12px 28px rgba(0, 212, 255, 0.14);
-  border: 1px solid rgba(0, 212, 255, 0.15);
-}
-
-.about-content {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 2.5rem;
-  align-items: start;
-  padding: 1.5rem 1.5rem 2rem;
-}
-
-.about-text {
-  font-size: 1.05rem;
-  line-height: 1.85;
-  color: #d7e5ef;
-  max-width: 60ch;
-}
-
-.about-text p {
-  margin-bottom: 1.5rem;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1rem;
-}
-
-.skill-card {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.06), rgba(255, 255, 255, 0.04));
-  padding: 1.2rem 1.2rem 1rem;
+.tag {
+  background: var(--apple-light-bg);
+  color: var(--apple-text);
+  padding: 8px 16px;
   border-radius: 16px;
-  text-align: left;
-  box-shadow: 0 6px 18px rgba(0, 212, 255, 0.14);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-  border: 1px solid rgba(0, 212, 255, 0.12);
-  backdrop-filter: blur(8px);
-  position: relative;
-}
-
-.skill-card::before { content: none; }
-
-.skill-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(0, 212, 255, 0.22);
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(91, 155, 213, 0.05));
-}
-
-.skill-card:hover::before { content: none; }
-
-.skill-card h4 {
-  color: #aee9ff;
-  margin-bottom: 0.4rem;
-  font-size: 1.05rem;
-  font-weight: 700;
-}
-
-/* Enhanced Projects Section */
-#projects {
-  background: linear-gradient(135deg, rgba(91, 155, 213, 0.1), rgba(0, 212, 255, 0.05));
-  backdrop-filter: blur(20px);
-  border-radius: 30px;
-  margin: 3rem auto;
-  max-width: 1300px;
-  box-shadow: 
-    0 20px 40px rgba(91, 155, 213, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(91, 155, 213, 0.2);
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 2rem;
-  justify-items: center;
-  padding: 0 1rem;
-}
-
-.project-card {
-  background: rgba(255, 255, 255, 0.06);
-  padding: 1.8rem;
-  border-radius: 18px;
-  box-shadow: 0 8px 22px rgba(0, 212, 255, 0.14);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transform: none;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  max-width: 450px;
-  backdrop-filter: blur(12px);
-}
-
-.project-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 38px rgba(0, 212, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.project-card:hover::before {
-  opacity: 0;
-}
-
-.project-card h3 {
-  color: #aee9ff;
-  margin-bottom: 0.75rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-.project-card p {
-  color: #d7e5ef;
-  line-height: 1.75;
-  margin-bottom: 0.75rem;
-}
-
-.project-date {
-  font-style: italic;
-  color: #7ab7e6;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-/* Enhanced Contact and Experience sections */
-#contact, #experience {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(91, 155, 213, 0.04));
-  backdrop-filter: blur(20px);
-  border-radius: 30px;
-  margin: 3rem auto;
-  max-width: 1300px;
-  box-shadow: 
-    0 20px 40px rgba(0, 212, 255, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.15);
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(320px, 1fr));
-  gap: 2rem;
-  justify-items: stretch;
-  padding: 0 1rem;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  text-align: left;
-  padding: 1.6rem 1.8rem;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  width: 100%;
-  box-shadow: 0 8px 22px rgba(0, 212, 255, 0.14);
-}
-
-.contact-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(0, 212, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.contact-item .icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: rgba(0, 212, 255, 0.12);
-  border: 1px solid rgba(0, 212, 255, 0.25);
-  color: #aee9ff;
-  box-shadow: inset 0 0 12px rgba(0, 212, 255, 0.15);
-}
-.contact-item .icon svg {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
-}
-
-.contact-item strong {
-  color: #aee9ff;
-  display: block;
-  margin-bottom: 0.25rem;
-  font-size: 1.15rem;
-  font-weight: 700;
-}
-
-.contact-item a {
-  color: #7ab7e6;
-  text-decoration: none;
+  font-size: 14px;
   font-weight: 500;
-  transition: all 0.3s ease;
 }
 
-.contact-item a:hover {
-  color: #b9ecff;
-  text-shadow: 0 0 8px rgba(0, 212, 255, 0.45);
+/* Section */
+section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 22px;
 }
 
-/* Enhanced Timeline */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-size: clamp(40px, 6vw, 56px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  margin-bottom: 16px;
+}
+
+.section-header p {
+  font-size: 21px;
+  color: var(--apple-secondary);
+  font-weight: 400;
+}
+
+/* About Grid */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.about-card {
+  background: var(--apple-card);
+  border-radius: 18px;
+  padding: 40px 32px;
+  border: 1px solid var(--apple-border);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.about-card h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.about-card p {
+  color: var(--apple-secondary);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* Experience Timeline */
 .timeline {
   position: relative;
-  padding-left: 3rem;
+  padding-left: 40px;
+  margin-top: 40px;
 }
 
 .timeline::before {
@@ -599,742 +272,435 @@ body {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 4px;
-  background: linear-gradient(180deg, #00d4ff, #5b9bd5);
-  border-radius: 2px;
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  width: 2px;
+  background: var(--apple-border);
 }
 
 .timeline-item {
   position: relative;
-  margin-bottom: 3rem;
-  padding-left: 3rem;
+  margin-bottom: 48px;
+  padding-left: 32px;
 }
 
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -2rem;
-  top: 1rem;
-  width: 16px;
-  height: 16px;
-  background: #00d4ff;
+  left: -46px;
+  top: 8px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  box-shadow: 
-    0 0 0 6px rgba(0, 212, 255, 0.3),
-    0 0 20px rgba(0, 212, 255, 0.5);
+  background: var(--apple-blue);
+  border: 3px solid var(--apple-bg);
 }
 
-.timeline-content {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255,255,255,0.05));
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
-  border: 1px solid rgba(0, 212, 255, 0.2);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.timeline-content:hover {
-  transform: translateX(10px);
-  box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
-}
-
-.timeline-content h4 {
-  color: #00d4ff;
-  margin-bottom: 0.5rem;
-  font-size: 1.3rem;
+.timeline-item h3 {
+  font-size: 24px;
   font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
 }
 
-.timeline-content .date {
-  color: #5b9bd5;
-  font-size: 1rem;
+.timeline-item .date {
+  color: var(--apple-blue);
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.timeline-item p {
+  color: var(--apple-secondary);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.project-card {
+  background: var(--apple-card);
+  border-radius: 18px;
+  padding: 32px;
+  border: 1px solid var(--apple-border);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.project-card h3 {
+  font-size: 21px;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .header-top {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-  
-  .logo {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .logo-icon {
-    width: 150px;
-    height: 150px;
-  }
-  
-  .logo-text {
-    font-size: 2.5rem;
-  }
-  
-  .nav-container {
-    justify-content: center;
-  }
-  
-  .profile-picture-container {
-    width: 120px;
-    height: 120px;
-  }
-  
-  .header-content h1 {
-    font-size: 2.5rem;
-  }
-  
-  .nav-tab {
-    padding: 1rem 2rem;
-    font-size: 0.9rem;
-  }
-  
-  .about-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .section h2 {
-    font-size: 2.5rem;
-  }
+.project-card p {
+  color: var(--apple-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 16px;
 }
 
-/* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
+.project-card .date {
+  color: var(--apple-blue);
+  font-size: 14px;
+  font-weight: 500;
 }
 
-/* Loading Animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
+/* Certificates */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.cert-card {
+  background: var(--apple-card);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--apple-border);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.cert-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.cert-card figcaption {
+  padding: 20px;
+  font-weight: 500;
+  font-size: 17px;
+  text-align: center;
+}
+
+/* Contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.contact-card {
+  background: var(--apple-card);
+  border-radius: 18px;
+  padding: 32px 24px;
+  text-align: center;
+  border: 1px solid var(--apple-border);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.contact-card strong {
+  display: block;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.contact-card a,
+.contact-card p {
+  color: var(--apple-blue);
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.contact-card p {
+  color: var(--apple-secondary);
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  background: var(--apple-light-bg);
+  padding: 40px 22px;
+  text-align: center;
+  border-top: 1px solid var(--apple-border);
+}
+
+footer p {
+  color: var(--apple-secondary);
+  font-size: 14px;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
+.fade-in:nth-child(1) { animation-delay: 0.1s; }
+.fade-in:nth-child(2) { animation-delay: 0.2s; }
+.fade-in:nth-child(3) { animation-delay: 0.3s; }
+.fade-in:nth-child(4) { animation-delay: 0.4s; }
 
-.fade-in-up.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-.cert-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 1.5rem;
-  justify-items: center;
-  padding: 0 1rem;
-  margin-top: 2rem;
-}
-.cert-grid figure {
-  text-align: center;
-  width: 100%;
-  max-width: 500px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 12px 12px 16px;
-  box-shadow: 0 8px 22px rgba(0, 212, 255, 0.14);
-  backdrop-filter: blur(10px);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-}
-.cert-grid figure:hover {
-  transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 16px 36px rgba(0, 212, 255, 0.22);
-}
-
-.cert-grid figcaption {
-  margin-top: 8px;
-  font-size: 1.2rem;
-  color: #04f9f9;
-}
-.cert-grid img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.18);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: block;
-}
-
-.cert-grid img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 16px 40px rgba(0, 212, 255, 0.3);
-}
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.cv-button {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, rgba(0, 37, 58, 0.9), rgba(0, 102, 153, 0.9));
-  color: #e6f7ff;
-  padding: 10px 14px;
-  border-radius: 9999px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 212, 255, 0.25);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.25);
-  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
-  z-index: 1000;
-  opacity: 0;
-  animation: fadeIn 1s ease forwards;
-  animation-delay: 0.5s;
-}
-
-.cv-button:hover {
-  background: linear-gradient(135deg, rgba(0, 82, 122, 0.95), rgba(0, 140, 200, 0.95));
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 14px 36px rgba(0, 212, 255, 0.3);
-}
-
-.cv-icon {
-  display: inline-flex;
-  width: 18px;
-  height: 18px;
-}
-
-.cv-icon svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
-
-.cv-text {
-  font-size: 14px;
-}
-
-@media (max-width: 480px) {
-  .cv-text {
-    display: none;
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 20px;
   }
-  .cv-button {
-    padding: 10px;
+  
+  .nav-links a {
+    font-size: 12px;
   }
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
+  
+  .hero {
+    padding: 100px 22px 60px;
   }
-}
-.nav-tab.active {
-  background: rgba(20, 58, 100, 0.5);
-  color: #e6f7ff;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0, 212, 255, 0.26);
-  border: 1px solid rgba(0, 212, 255, 0.35);
-}
-
-/* Lightbox styles */
-#lightbox {
-  position: fixed;
-  inset: 0;
-  display: none;
-  z-index: 2000;
-}
-#lightbox.open { display: block; }
-.lightbox-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-}
-.lightbox-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(10, 20, 40, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.25);
-  padding: 16px;
-  width: min(92vw, 960px);
-  max-height: 88vh;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.lightbox-image {
-  width: 100%;
-  height: auto;
-  max-height: 72vh;
-  object-fit: contain;
-  border-radius: 10px;
-}
-.lightbox-caption {
-  color: #cfefff;
-  text-align: center;
-  font-weight: 600;
-}
-.lightbox-close {
-  position: absolute;
-  top: 8px;
-  right: 10px;
-  background: rgba(255, 255, 255, 0.15);
-  color: #e6f7ff;
-  border: none;
-  border-radius: 9999px;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-  font-size: 20px;
-  line-height: 1;
-}
-.lightbox-close:hover {
-  background: rgba(255, 255, 255, 0.25);
+  
+  section {
+    padding: 60px 22px;
+  }
+  
+  .timeline {
+    padding-left: 24px;
+  }
+  
+  .timeline-item {
+    padding-left: 20px;
+  }
+  
+  .timeline-item::before {
+    left: -30px;
+  }
 }
 </style>
 </head>
-
 <body>
-  
-  <!-- Animated Background Particles -->
-  <div class="particles" id="particles"></div>
-
-  <div class="header-container">
-    <div class="header-top">
-      <div class="logo">
-        <div class="logo-icon">
-          <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DNA Helix Logo">
-            <!-- Clear, minimal double helix (no background badge) -->
-            <!-- Left strand -->
-            <path d="M40 10
-                     C 30 25, 30 35, 40 50
-                     C 50 65, 50 75, 40 90
-                     C 30 105, 32 112, 40 110" 
-                  fill="none" stroke="#00d4ff" stroke-width="4" stroke-linecap="round"/>
-            <!-- Right strand -->
-            <path d="M80 10
-                     C 90 25, 90 35, 80 50
-                     C 70 65, 70 75, 80 90
-                     C 90 105, 88 112, 80 110" 
-                  fill="none" stroke="#5b9bd5" stroke-width="4" stroke-linecap="round"/>
-
-            <!-- Base pairs: alternating lengths to suggest twist -->
-            <g stroke="#e8fbff" stroke-width="3" stroke-linecap="round">
-              <line x1="46" y1="20" x2="74" y2="20"/>
-              <line x1="48" y1="35" x2="72" y2="35"/>
-              <line x1="44" y1="50" x2="76" y2="50"/>
-              <line x1="46" y1="65" x2="74" y2="65"/>
-              <line x1="48" y1="80" x2="72" y2="80"/>
-              <line x1="44" y1="95" x2="76" y2="95"/>
-            </g>
-          </svg>
-        </div>
-        <span class="logo-text">Portfolio </span>
+  <nav>
+    <div class="nav-content">
+      <a href="#" class="nav-logo">Adel Almutairi</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
       </div>
-      
-      <div class="header-right">
-        <div class="profile-picture-container">
-          <div class="profile-picture">
-            <img src="images/white_blank.jpg" alt="Profile photo of Adel Almutairi" width="140" height="140" loading="lazy">
-            
-          </div>
-        </div>
-        
-        <div class="header-content">
-          <h1 style="font-size: 62px;">Adel Almutairi</h1>
-          <p>Bioinformatician | Data Analyst | Health Data Scientist</p>
-        </div>
-        
-        <nav class="nav-container">
-          <a href="#about" class="nav-tab">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-4.333 0-7 2.333-7 5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1c0-2.667-2.667-5-7-5z"/></svg>
-            </span>
-            <span>About</span>
-          </a>
-          <a href="#experience" class="nav-tab">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M9 3a1 1 0 0 0-1 1v2H6a2 2 0 0 0-2 2v9a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a2 2 0 0 0-2-2h-2V4a1 1 0 0 0-1-1zm1 3V5h4v1zm-4 4h12v7a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/></svg>
-            </span>
-            <span>Experience</span>
-          </a>
-          <a href="#certificates" class="nav-tab">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.6L12 15l-4.9 2.3.9-5.6-4-3.9 5.5-.8z"/></svg>
-            </span>
-            <span>Certificates</span>
-          </a>
-          <a href="#projects" class="nav-tab">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v1h7a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-1H5a2 2 0 0 1-2-2zm7 9h9v-7h-9zm-2-3V7H5v6z"/></svg>
-            </span>
-            <span>Projects</span>
-          </a>
-          <a href="#contact" class="nav-tab">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 .8 1.6l-7.6 9.5a2 2 0 0 1-3.2 0L3.2 6.6A1 1 0 0 1 4 5zm16 14H4a1 1 0 0 1-1-1V8.4l6.4 8a4 4 0 0 0 6.2 0L21 8.4V18a1 1 0 0 1-1 1z"/></svg>
-            </span>
-            <span>Contact</span>
-          </a>
-        </nav>
-      </div>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1 class="fade-in">Decoding genomes.<br>Advancing health.</h1>
+    <p class="subtitle fade-in">Bioinformatician specializing in genomics, phylogenetics, and data-driven insights for research and clinical applications.</p>
+    <div class="cta-group fade-in">
+      <a href="#projects" class="btn btn-secondary">View Projects</a>
+      <a href="./Adel Helal Almutairi.pdf" class="btn btn-primary" download>Download CV</a>
+    </div>
+    <div class="tags fade-in">
+      <span class="tag">Genomics</span>
+      <span class="tag">Phylogenetics</span>
+      <span class="tag">Metagenomics</span>
+      <span class="tag">Machine Learning</span>
     </div>
   </div>
 
-  <section id="about" class="section fade-in-up">
-    <h2>About Me</h2>
-    <div class="about-content">
-      <div class="about-text">
-        <p>Adel Almutairi is a dedicated bioinformatician who brings together expertise in genomics, computational analysis, and biological sciences. With an MSc in Bioinformatics and a BSc in Microbiology, he merges deep biological understanding with sophisticated computational methods to decode complex datasets. His specialized skills include next-generation sequencing, metagenomics, phylogenetic studies, and outbreak analysis, where he employs state-of-the-art tools to extract valuable biological knowledge.</p>
-        <p>Adel has practical experience in building and refining bioinformatics workflows, contributing to extensive genomic initiatives that encompass whole-exome and whole-genome sequencing projects. His approach connects biological research with data science, utilizing statistical frameworks and machine learning algorithms to improve analytical precision and insight generation. He is proficient in Linux systems, high-performance computing platforms, and programming languages including Python, R, and Bash, which facilitate robust data handling and reproducible scientific workflows.</p>
+  <section id="about">
+    <div class="section-header">
+      <h2>Expertise</h2>
+      <p>Bridging biology and computational science</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card fade-in">
+        <h3>Genomics</h3>
+        <p>Assembly, alignment, annotation, variant calling, and population genetics for whole-exome and whole-genome sequencing projects.</p>
       </div>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h4>Genomics</h4>
-          <p>Assembly, Sequence Alignment, Genome Annotation, Variant Calling, Population Genetics</p>
-        </div>
-        <div class="skill-card">
-          <h4>Phylogenetics</h4>
-          <p>Tree Construction, SNP Analysis, Evolution, Comparative Analysis </p>
-        </div>
-        <div class="skill-card">
-          <h4>Metagenomics</h4>
-          <p>Community Analysis, Functional Profiling, Taxonomical Classification</p>
-        </div>
-        <div class="skill-card">
-          <h4>Data Analysis</h4>
-          <p>Trends Detection, Visualization, R/Python, Data Story Telling, Supervised Machine Learning and Neural Networks</p>
-        </div>
+      <div class="about-card fade-in">
+        <h3>Phylogenetics</h3>
+        <p>SNP analysis, tree construction, and comparative evolutionary studies to trace pathogen origins and relationships.</p>
+      </div>
+      <div class="about-card fade-in">
+        <h3>Metagenomics</h3>
+        <p>Community profiling, functional analysis, and taxonomic classification for environmental and clinical samples.</p>
+      </div>
+      <div class="about-card fade-in">
+        <h3>Data Science</h3>
+        <p>Statistical modeling, machine learning, visualization, and narrative reporting using Python, R, and HPC systems.</p>
       </div>
     </div>
   </section>
 
-  <section id="experience" class="section fade-in-up">
-  <h2>Experience</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-content">
-        <h4>Bioinformatics Specialist, Genalive</h4>
-        <div class="date">2025 - Present</div>
-        <p>Analyse patients' samples from Whole Genome Sequences and Whole Exome Sequences. Maintain data transfer between sequencers and HPC.</p>
+  <section id="experience">
+    <div class="section-header">
+      <h2>Experience</h2>
+      <p>Professional journey in bioinformatics</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item fade-in">
+        <h3>Bioinformatics Specialist</h3>
+        <span class="date">2024 - July 2025 • Saudi FDA</span>
+        <p>Leading genomic analysis for food safety and public health initiatives. Conducting outbreak investigations, pathogen characterization, and surveillance monitoring using advanced bioinformatics workflows.</p>
+      </div>
+      <div class="timeline-item fade-in">
+        <h3>Research Collaborator</h3>
+        <span class="date">2024 • KSU, KFSHRC, IAU</span>
+        <p>Provided bioinformatics support for MSc theses, focusing on bacterial genome analyses and antimicrobial resistance gene detection.</p>
+      </div>
+      <div class="timeline-item fade-in">
+        <h3>MSc in Bioinformatics</h3>
+        <span class="date">Completed</span>
+        <p>Developed a computational workflow to predict and trace evolutionary relationships of transmembrane proteins in NCLDVs, utilizing AlphaFold to reduce experimental costs and accelerate research.</p>
       </div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-content">
-        <h4>Bioinformatics Specialist, Saudi FDA</h4>
-        <div class="date">2024 - July-2025</div>
-        <p>Contributing in genomic analysis projects for food safety and public health applications. Specializing in outbreak investigation and pathogen characterization using comparative genomics. Experienced data organizer, including object storage and real-time monitoring.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-content">
-        <h4>Research Collaborator</h4>
-        <div class="date">2024</div>
-        <p>Providing bioinformatics support for MSc thesis projects at King Saud University, KFSHRC, and Imam Abdulrahman al Faisal University. Focusing on bacterial genome analyses, annotation, Antimicrobial genes detection.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-content">
-        <h4>MSc Bioinformatics</h4>
-        <div class="date">Completed</div>
-        <p>Designed a computational workflow that predicts, tracks evolutionary relationships, and utilize AlphaFold to predict protein structures of the transmembrane proteins in NucleoCytoPlasmic Large dsDNA Viruses (Giant Viruses). The workflow succeeds in saving time and cost of the TMP detection using traditional laboratory experiments. </p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="certificates" class="section fade-in-up">
-  <h2>Certificates</h2>
-  <div class="cert-grid">
-    <figure>
-      <img src="images/MSc_Certificate_page-0001.jpg" alt="MSc Certificate" width="400" height="300" loading="lazy" sizes="(max-width: 480px) 90vw, (max-width: 768px) 60vw, 400px">
-      <figcaption>MSc Certificate</figcaption>
-    </figure>
-    <figure>
-      <img src="images/BSC_certificate.png" alt="BSc Certificate" width="400" height="300" loading="lazy" sizes="(max-width: 480px) 90vw, (max-width: 768px) 60vw, 400px">
-      <figcaption>BSc Certificate</figcaption>
-    </figure>
-    <figure>
-      <img src="images/KAUST_Bioinformatics_Certificate_page-0001.jpg" alt="KAUST Bioinformatics Certificate" width="400" height="300" loading="lazy" sizes="(max-width: 480px) 90vw, (max-width: 768px) 60vw, 400px">
-      <figcaption>KAUST Bioinformatics</figcaption>
-    </figure>
-    <figure>
-      <img src="images/Machine_Learning_Certificate_page-0001.jpg" alt="Supervised Machine Learning Certificate" width="400" height="300" loading="lazy" sizes="(max-width: 480px) 90vw, (max-width: 768px) 60vw, 400px">
-      <figcaption>Supervised Machine Learning</figcaption>
-    </figure>
-    <figure>
-      <img src="images/python_course_page-0001.jpg" alt="Python Course Certificate" width="400" height="300" loading="lazy" sizes="(max-width: 480px) 90vw, (max-width: 768px) 60vw, 400px">
-      <figcaption>Python Course</figcaption>
-    </figure>
-    <figure>
-      <img src="images/KAUST_Bioinformatics_page-0001.jpg" alt="KAUST Introductory Course Certificate" width="400" height="300" loading="lazy" sizes="(max-width: 480px) 90vw, (max-width: 768px) 60vw, 400px">
-      <figcaption>KAUST Introductory Course</figcaption>
-    </figure>
-    <figure>
-      <img src="images/IOT_Cert.png" alt="IoT Certificate" width="400" height="300" loading="lazy" sizes="(max-width: 480px) 90vw, (max-width: 768px) 60vw, 400px">
-      <figcaption>IoT Certificate</figcaption>
-    </figure>
-  </div>
- 
-
-</section>
-  <section id="projects" class="section fade-in-up">
-    <h2>Projects</h2>
+  <section id="projects">
+    <div class="section-header">
+      <h2>Projects</h2>
+      <p>Recent work and research contributions</p>
+    </div>
     <div class="projects-grid">
-      <div class="project-card">
+      <div class="project-card fade-in">
         <h3>Metagenomics Analysis of Saudi Western Valleys</h3>
-        <p>Analyzed soil metagenomes from western Saudi Arabia to identify plastic-degrading and biofilm-forming bacteria with potential environmental applications.</p>
-        <p class="project-date">May 2025</p>
+        <p>Identified plastic-degrading and biofilm-forming bacteria in soil metagenomes for environmental applications.</p>
+        <span class="date">May 2025</span>
       </div>
-      <div class="project-card">
+      <div class="project-card fade-in">
         <h3>Phylogenetic Comparison in Salmonella</h3>
-        <p>Compared SNP-matrix phylogeny and core genome MSA methods on <em>Salmonella enterica</em> isolates to evaluate accuracy in epidemiological analysis.</p>
-        <p class="project-date">January 2025 (SFDA)</p>
+        <p>Benchmarked SNP-matrix phylogeny versus core genome MSA for Salmonella enterica isolates to improve epidemiological accuracy.</p>
+        <span class="date">January 2025</span>
       </div>
-      <div class="project-card">
+      <div class="project-card fade-in">
         <h3>Genomic Analyses for MSc Collaborations</h3>
-        <p>Performed bacterial genome assembly, annotation, and analysis for thesis students at King Saud University, KFSHRC, and Imam Abdulrahman al Faisal University.</p>
-        <p class="project-date">December 2024</p>
+        <p>Assembly, annotation, and comprehensive analysis for multiple thesis projects across leading Saudi research institutions.</p>
+        <span class="date">December 2024</span>
       </div>
-      <div class="project-card">
+      <div class="project-card fade-in">
         <h3>Clostridium Outbreak Investigation</h3>
-        <p>Used comparative genomics to trace the original food source in a Clostridium-related food poisoning outbreak.</p>
-        <p class="project-date">November 2024 (SFDA)</p>
+        <p>Applied comparative genomics to trace contamination sources in a food poisoning outbreak linked to Clostridium species.</p>
+        <span class="date">November 2024</span>
       </div>
-      <div class="project-card">
-        <h3>MSc Project: Transmembrane Proteins in Giant Viruses</h3>
-        <p>Detected transmembrane proteins in NCLDVs and performed phylogenetic analysis to explore evolutionary relationships in viral protein families.</p>
-        <p class="project-date">MSc Project</p>
+      <div class="project-card fade-in">
+        <h3>Transmembrane Proteins in Giant Viruses</h3>
+        <p>MSc research detecting transmembrane proteins in NCLDVs and exploring their evolutionary relationships using advanced computational methods.</p>
+        <span class="date">MSc Project</span>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="section">
-    <h2>Contact Me</h2>
+  <section id="certificates">
+    <div class="section-header">
+      <h2>Certificates</h2>
+      <p>Academic and professional credentials</p>
+    </div>
+    <div class="cert-grid">
+      <figure class="cert-card fade-in">
+        <img src="images/MSc_Certificate_page-0001.jpg" alt="MSc Certificate">
+        <figcaption>MSc in Bioinformatics</figcaption>
+      </figure>
+      <figure class="cert-card fade-in">
+        <img src="images/BSC_certificate.png" alt="BSc Certificate">
+        <figcaption>BSc in Microbiology</figcaption>
+      </figure>
+      <figure class="cert-card fade-in">
+        <img src="images/KAUST_Bioinformatics_Certificate_page-0001.jpg" alt="KAUST Certificate">
+        <figcaption>KAUST Bioinformatics</figcaption>
+      </figure>
+      <figure class="cert-card fade-in">
+        <img src="images/Machine_Learning_Certificate_page-0001.jpg" alt="Machine Learning Certificate">
+        <figcaption>Machine Learning</figcaption>
+      </figure>
+      <figure class="cert-card fade-in">
+        <img src="images/python_course_page-0001.jpg" alt="Python Certificate">
+        <figcaption>Python Programming</figcaption>
+      </figure>
+      <figure class="cert-card fade-in">
+        <img src="images/IOT_Cert.png" alt="IoT Certificate">
+        <figcaption>IoT Fundamentals</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-header">
+      <h2>Get in Touch</h2>
+      <p>Let's connect and collaborate</p>
+    </div>
     <div class="contact-grid">
-      <div class="contact-item">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z"/></svg>
-        </span>
-        <div>
-          <strong>Location</strong>
-          <p>Saudi Arabia, Riyadh</p>
-        </div>
+      <div class="contact-card fade-in">
+        <strong>Location</strong>
+        <p>Riyadh, Saudi Arabia</p>
       </div>
-      <div class="contact-item">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M4 6h16a1 1 0 0 1 .8 1.6l-8 10.4a1.5 1.5 0 0 1-2.4 0L3.2 7.6A1 1 0 0 1 4 6zm16 12H4a1 1 0 0 1-1-1V8.4l7.2 9.4a3.5 3.5 0 0 0 5.6 0L21 8.4V17a1 1 0 0 1-1 1z"/></svg>
-        </span>
-        <div>
-          <strong>Email</strong>
-          <p>adil.bioinfo@gmail.com</p>
-        </div>
+      <div class="contact-card fade-in">
+        <strong>Email</strong>
+        <a href="mailto:adil.bioinfo@gmail.com">adil.bioinfo@gmail.com</a>
       </div>
-      <div class="contact-item">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M6.6 3.2 8.9 2a1 1 0 0 1 1.3.6l1.2 3.1a1 1 0 0 1-.3 1.1l-1.5 1.4a14.5 14.5 0 0 0 6.5 6.5l1.4-1.5a1 1 0 0 1 1.1-.3l3.1 1.2a1 1 0 0 1 .6 1.3l-1.2 2.3a2 2 0 0 1-2 1.1c-9.1-.8-16.5-8.2-17.3-17.3a2 2 0 0 1 1.1-2z"/></svg>
-        </span>
-        <div>
-          <strong>Phone</strong>
-          <p><a href="tel:+966550466070">My Phone Number</a></p>
-        </div>
+      <div class="contact-card fade-in">
+        <strong>Phone</strong>
+        <a href="tel:+966550466070">+966 55 046 6070</a>
       </div>
-      <div class="contact-item">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M6 6a2 2 0 1 1-2 2 2 2 0 0 1 2-2zM5 10h2v8H5zm5 0h2v1.2h.1a2.5 2.5 0 0 1 2.2-1.2c2.3 0 2.7 1.5 2.7 3.4V18h-2v-3.1c0-.8 0-1.9-1.2-1.9s-1.3.9-1.3 1.8V18h-2z"/></svg>
-        </span>
-        <div>
-          <strong>LinkedIn</strong>
-          <p>
-            <a href="https://www.linkedin.com/in/adel-almutairi-msc/" target="_blank" rel="noopener noreferrer">My LinkedIn</a>
-          </p>
-        </div>
+      <div class="contact-card fade-in">
+        <strong>LinkedIn</strong>
+        <a href="https://www.linkedin.com/in/adel-almutairi-msc/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
       </div>
     </div>
   </section>
 
-<script>
-  // Smooth scrolling for navigation links
-  document.querySelectorAll('.nav-tab').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
-      if (targetSection) {
-        targetSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  });
+  <footer>
+    <p>© 2025 Adel Almutairi. All rights reserved.</p>
+  </footer>
 
-  // Unified Intersection Observer for .section and .fade-in-up
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const intersectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        entry.target.classList.add('show');
-      } else {
-        entry.target.classList.remove('show'); // remove if repeat animation not desired
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.section, .fade-in-up').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-    intersectionObserver.observe(el);
-  });
-
-  // Enhanced 3D effects for cards
-  document.querySelectorAll('.project-card, .skill-card, .contact-item').forEach(card => {
-    card.addEventListener('mousemove', function(e) {
-      const rect = this.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = (y - centerY) / 10;
-      const rotateY = (centerX - x) / 10;
-
-      this.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+  <script>
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
 
-    card.addEventListener('mouseleave', function() {
-      this.style.transform = 'perspective(500px) rotateX(0) rotateY(0) translateZ(0)';
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
     });
-  });
-
-  // Typing effect for main title
-  const title = document.querySelector('.header-content h1');
-  const titleText = title.textContent;
-  title.textContent = '';
-  let i = 0;
-
-  function typeWriter() {
-    if (i < titleText.length) {
-      title.textContent += titleText.charAt(i);
-      i++;
-      setTimeout(typeWriter, 100);
-    }
-  }
-
-  setTimeout(typeWriter, 500);
-
-  // Active nav highlighting
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-tab');
-
-  function updateActiveNav() {
-    let current = '';
-
-    sections.forEach(section => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const sectionHeight = section.offsetHeight;
-
-      if (sectionTop <= 200 && sectionTop + sectionHeight > 200) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) {
-        link.classList.add('active');
-      }
-    });
-  }
-
-  window.addEventListener('scroll', updateActiveNav);
-  setTimeout(updateActiveNav, 100);
-  
-  // Certificates lightbox
-  const lightbox = document.createElement('div');
-  lightbox.id = 'lightbox';
-  lightbox.setAttribute('aria-hidden', 'true');
-  lightbox.innerHTML = `
-    <div class="lightbox-backdrop" data-close></div>
-    <div class="lightbox-content" role="dialog" aria-modal="true" aria-label="Certificate preview">
-      <button class="lightbox-close" aria-label="Close" data-close>&times;</button>
-      <img class="lightbox-image" alt="Certificate preview">
-      <div class="lightbox-caption"></div>
-    </div>`;
-  document.body.appendChild(lightbox);
-
-  const lightboxImg = lightbox.querySelector('.lightbox-image');
-  const lightboxCaption = lightbox.querySelector('.lightbox-caption');
-
-  document.querySelectorAll('.cert-grid figure').forEach(fig => {
-    const img = fig.querySelector('img');
-    const caption = fig.querySelector('figcaption');
-    if (!img) return;
-    img.style.cursor = 'zoom-in';
-    img.addEventListener('click', () => {
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt || 'Certificate';
-      lightboxCaption.textContent = caption ? caption.textContent : '';
-      document.body.style.overflow = 'hidden';
-      lightbox.classList.add('open');
-      lightbox.setAttribute('aria-hidden', 'false');
-    });
-  });
-
-  function closeLightbox() {
-    lightbox.classList.remove('open');
-    lightbox.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  lightbox.addEventListener('click', (e) => {
-    if (e.target.hasAttribute('data-close')) closeLightbox();
-  });
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
-  });
-</script>
-<a href="./Adel Helal Almutairi.pdf" download class="cv-button" title="Download CV" aria-label="Download CV">
-  <span class="cv-icon">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 3a1 1 0 0 1 1 1v8.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4A1 1 0 0 1 8.707 10.293L11 12.586V4a1 1 0 0 1 1-1zm-7 14a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2H5z"/>
-    </svg>
-  </span>
-  <span class="cv-text">Download CV</span>
-</a>
+  </script>
 </body>
 </html>
