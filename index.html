@@ -389,12 +389,20 @@ section {
   bottom: 0;
   width: 2px;
   background: linear-gradient(180deg, var(--scai-accent) 0%, var(--scai-border) 100%);
+  z-index: 0;
 }
 
 .timeline-item {
   position: relative;
   margin-bottom: 60px;
-  padding-left: 40px;
+  padding: 32px 36px;
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 8px;
+  border: 1px solid rgba(42, 42, 42, 0.8);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  z-index: 1;
 }
 
 .timeline-item::before {
@@ -732,7 +740,6 @@ footer p {
     <div class="hero-content">
       <div class="hero-label fade-in">Portfolio Page</div>
       <h1 class="fade-in">Bioinformatician<br>Health Data Scientist.</h1>
-      <p class="subtitle fade-in">Welcome to my portfolio page.</p>
       <div class="cta-group fade-in">
         <a href="#projects" class="btn btn-secondary">View Projects</a>
         <a href="./Adel Helal Almutairi.pdf" class="btn btn-primary" download>Download CV</a>
@@ -751,7 +758,6 @@ footer p {
     <div class="section-header">
       <div class="section-label">EXPERTISE</div>
       <h2>Bridging biology and computational science</h2>
-      <p>Advanced bioinformatics solutions for genomic research and clinical applications</p>
     </div>
     <div class="about-grid">
       <div class="about-card fade-in">
@@ -777,7 +783,6 @@ footer p {
     <div class="section-header">
       <div class="section-label">EXPERIENCE</div>
       <h2>Professional journey in bioinformatics</h2>
-      <p>Leading genomic analysis and research collaborations</p>
     </div>
     <div class="timeline">
       <div class="timeline-item fade-in">
@@ -802,7 +807,6 @@ footer p {
     <div class="section-header">
       <div class="section-label">PROJECTS</div>
       <h2>Recent work and research contributions</h2>
-      <p>Innovative solutions in genomics and computational biology</p>
     </div>
     <div class="projects-grid">
       <a href="https://huggingface.co/spaces/AdelAlmutairi/TM-SP-Predictor" target="_blank" rel="noopener noreferrer" class="project-card fade-in">
@@ -842,7 +846,6 @@ footer p {
     <div class="section-header">
       <div class="section-label">CERTIFICATES</div>
       <h2>Academic and professional credentials</h2>
-      <p>Continuous learning and professional development</p>
     </div>
     <div class="cert-grid">
       <figure class="cert-card fade-in">
