@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adel Almutairi | Bioinformatician</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
 
 * {
   margin: 0;
@@ -14,23 +14,30 @@
 }
 
 :root {
-  --apple-bg: #fbfbfd;
-  --apple-text: #1d1d1f;
-  --apple-secondary: #6e6e73;
-  --apple-blue: #a5a5a5;
-  --apple-blue-hover: #b8b8b8;
-  --apple-card: #ffffff;
-  --apple-border: #d2d2d7;
-  --apple-light-bg: #f5f5f7;
+  --scai-dark: #0a0a0a;
+  --scai-darker: #000000;
+  --scai-text: #ffffff;
+  --scai-secondary: #a0a0a0;
+  --scai-accent: #00d4ff;
+  --scai-card: #1a1a1a;
+  --scai-border: #2a2a2a;
+}
+
+/* --- SCROLL SNAP & BODY SETTINGS --- */
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory; /* Forces the snap effect */
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-  background: var(--apple-bg);
-  color: var(--apple-text);
+  font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--scai-darker);
+  color: var(--scai-text);
   line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  margin: 0;
 }
 
 /* Navigation */
@@ -39,231 +46,339 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(251, 251, 253, 0.8);
-  backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   z-index: 1000;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(42, 42, 42, 0.5);
 }
 
 .nav-content {
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 22px;
-  height: 48px;
+  padding: 0 40px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .nav-logo {
-  font-size: 26px;
-  font-weight: 600;
-  color: var(--apple-text);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--scai-text);
   text-decoration: none;
   letter-spacing: -0.5px;
 }
 
 .nav-links {
   display: flex;
-  gap: 32px;
+  gap: 40px;
   align-items: center;
 }
 
 .nav-links a {
-  color: var(--apple-text);
+  color: var(--scai-secondary);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
-  transition: opacity 0.2s;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--scai-accent);
+  transition: width 0.3s;
 }
 
 .nav-links a:hover {
-  opacity: 0.6;
+  color: var(--scai-text);
 }
 
-/* Hero Section */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* --- HERO SECTION --- */
 .hero {
-  padding: 120px 22px 80px;
-  max-width: 1000px;
-  margin: 0 auto;
+  position: relative;
+  height: 100vh; /* Takes full screen height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  scroll-snap-align: start; /* Snaps to top */
+}
+
+/* Updated Video Style: Fixed + Lower Opacity */
+.hero-video {
+  position: fixed; /* Fixes video to background */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55; /* Reduced from 0.7 */
+  filter: brightness(1.2) contrast(1.1);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%);
+  pointer-events: none;
+}
+
+/* Animated DNA helix background fallback */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+  animation: dnaGlow 4s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes dnaGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
   text-align: center;
+  max-width: 1200px;
+  padding: 0 40px;
+}
+
+.hero-label {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--scai-accent);
+  margin-bottom: 20px;
+  font-weight: 500;
 }
 
 .hero h1 {
-  font-size: clamp(48px, 8vw, 80px);
-  font-weight: 700;
-  letter-spacing: -2px;
-  line-height: 1.05;
-  margin-bottom: 20px;
-  background: linear-gradient(135deg, #1d1d1f 0%, #424245 100%);
+  font-size: clamp(48px, 8vw, 88px);
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .hero .subtitle {
-  font-size: clamp(21px, 3vw, 28px);
-  color: var(--apple-secondary);
-  margin-bottom: 30px;
-  font-weight: 400;
-  line-height: 1.4;
+  font-size: clamp(18px, 2.5vw, 24px);
+  color: #00d4ff;
+  margin-bottom: 50px;
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero .cta-group {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .btn {
-  padding: 12px 24px;
-  border-radius: 980px;
-  font-size: 17px;
+  padding: 16px 36px;
+  border-radius: 4px;
+  font-size: 16px;
   font-weight: 500;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all 0.3s;
   display: inline-block;
+  border: 2px solid transparent;
 }
 
 .btn-primary {
-  background: linear-gradient(
-    145deg,
-    #e6e6e6,
-    #cfcfcf,
-    #f5f5f5
-  );
-  color: #1d1d1f;
-  border: 1px solid #bdbdbd;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    0 6px 14px rgba(0, 0, 0, 0.15);
-  animation: pulse-silver 2s ease-in-out infinite;
-}
-
-/* Subtle metallic pulse */
-@keyframes pulse-silver {
-  0%, 100% {
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.7),
-      0 0 0 0 rgba(180, 180, 180, 0.4);
-  }
-  50% {
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.7),
-      0 0 0 10px rgba(180, 180, 180, 0);
-  }
+  background: var(--scai-accent);
+  color: var(--scai-darker);
+  border-color: var(--scai-accent);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(
-    145deg,
-    #f5f5f5,
-    #d9d9d9
-  );
-  transform: scale(1.02);
-}
-
-.btn-primary:hover {
-  background: var(--apple-blue-hover);
-  transform: scale(1.02);
+  background: transparent;
+  color: var(--scai-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
 }
 
 .btn-secondary {
-  background: linear-gradient(145deg, #e8e8ed, #f5f5f7);
-  color: var(--apple-text);
-  border: 1px solid var(--apple-border);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: transparent;
+  color: var(--scai-accent);
+  border-color: var(--scai-accent);
 }
 
 .btn-secondary:hover {
-  background: linear-gradient(145deg, #f5f5f7, #ffffff);
-  color: var(--apple-text);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  background: var(--scai-accent);
+  color: var(--scai-darker);
+  transform: translateY(-2px);
 }
 
 /* Tags */
 .tags {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .tag {
-  background: var(--apple-light-bg);
-  color: var(--apple-text);
-  padding: 8px 16px;
-  border-radius: 16px;
-  font-size: 14px;
-  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--scai-text);
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 400;
+  border: 1px solid rgba(42, 42, 42, 0.8);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Section */
+/* --- GENERAL SECTIONS --- */
 section {
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 80px 22px;
+  padding: 120px 40px;
+  position: relative;
+  /* Snap settings for all sections */
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Transparent background to show video */
+  background: transparent; 
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
+}
+
+.section-label {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--scai-accent);
+  margin-bottom: 16px;
+  font-weight: 500;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 212, 255, 0.3);
 }
 
 .section-header h2 {
-  font-size: clamp(40px, 6vw, 56px);
-  font-weight: 700;
-  letter-spacing: -1.5px;
-  margin-bottom: 16px;
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  color: var(--scai-text);
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
 }
 
 .section-header p {
-  font-size: 21px;
-  color: var(--apple-secondary);
-  font-weight: 400;
+  font-size: 20px;
+  color: var(--scai-secondary);
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
 }
 
 /* About Grid */
 .about-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  margin-top: 40px;
+  gap: 30px;
+  margin-top: 60px;
 }
 
 .about-card {
-  background: var(--apple-card);
-  border-radius: 18px;
-  padding: 40px 32px;
-  border: 1px solid var(--apple-border);
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 8px;
+  padding: 50px 40px;
+  border: 1px solid rgba(42, 42, 42, 0.8);
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--scai-accent);
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+
+.about-card:hover::before {
+  transform: scaleX(1);
 }
 
 .about-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-8px);
+  border-color: var(--scai-accent);
+  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.25);
+  background: rgba(26, 26, 26, 0.75);
 }
 
 .about-card h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 12px;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
   letter-spacing: -0.5px;
+  color: var(--scai-text);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .about-card p {
-  color: var(--apple-secondary);
-  font-size: 17px;
-  line-height: 1.6;
+  color: var(--scai-secondary);
+  font-size: 16px;
+  line-height: 1.8;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* Experience Timeline */
 .timeline {
   position: relative;
-  padding-left: 40px;
-  margin-top: 40px;
+  padding-left: 60px;
+  margin-top: 60px;
 }
 
 .timeline::before {
@@ -273,185 +388,244 @@ section {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--apple-border);
+  background: linear-gradient(180deg, var(--scai-accent) 0%, var(--scai-border) 100%);
 }
 
 .timeline-item {
   position: relative;
-  margin-bottom: 48px;
-  padding-left: 32px;
+  margin-bottom: 60px;
+  padding-left: 40px;
 }
 
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -46px;
+  left: -66px;
   top: 8px;
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  background: var(--apple-blue);
-  border: 3px solid var(--apple-bg);
+  background: var(--scai-accent);
+  border: 4px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.7), 0 0 40px rgba(0, 212, 255, 0.3);
 }
 
 .timeline-item h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 8px;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
   letter-spacing: -0.5px;
+  color: var(--scai-text);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .timeline-item .date {
-  color: var(--apple-blue);
-  font-size: 15px;
+  color: var(--scai-accent);
+  font-size: 14px;
   font-weight: 500;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   display: block;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .timeline-item p {
-  color: var(--apple-secondary);
-  font-size: 17px;
-  line-height: 1.6;
+  color: var(--scai-secondary);
+  font-size: 16px;
+  line-height: 1.8;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* Projects Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
 }
 
 .project-card {
-  background: var(--apple-card);
-  border-radius: 18px;
-  padding: 32px;
-  border: 1px solid var(--apple-border);
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 8px;
+  padding: 40px;
+  border: 1px solid rgba(42, 42, 42, 0.8);
+  transition: all 0.4s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+a.project-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--scai-accent);
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+
+.project-card:hover::after {
+  transform: scaleX(1);
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-8px);
+  border-color: var(--scai-accent);
+  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.25);
+  background: rgba(26, 26, 26, 0.75);
 }
 
 .project-card h3 {
-  font-size: 21px;
-  font-weight: 600;
-  margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
   letter-spacing: -0.3px;
+  color: var(--scai-text);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .project-card p {
-  color: var(--apple-secondary);
+  color: var(--scai-secondary);
   font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 16px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .project-card .date {
-  color: var(--apple-blue);
-  font-size: 14px;
+  color: var(--scai-accent);
+  font-size: 13px;
   font-weight: 500;
+  letter-spacing: 1px;
 }
 
 /* Certificates */
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 24px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
 }
 
 .cert-card {
-  background: var(--apple-card);
-  border-radius: 18px;
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 8px;
   overflow: hidden;
-  border: 1px solid var(--apple-border);
-  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid rgba(42, 42, 42, 0.8);
+  transition: all 0.4s;
 }
 
 .cert-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-8px);
+  border-color: var(--scai-accent);
+  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.25);
+  background: rgba(26, 26, 26, 0.75);
 }
 
 .cert-card img {
   width: 100%;
-  height: 200px;
+  height: 240px;
   object-fit: cover;
+  filter: grayscale(100%) brightness(0.8);
+  transition: filter 0.4s;
+}
+
+.cert-card:hover img {
+  filter: grayscale(0%) brightness(1);
 }
 
 .cert-card figcaption {
-  padding: 20px;
+  padding: 24px;
   font-weight: 500;
-  font-size: 17px;
+  font-size: 16px;
   text-align: center;
+  color: var(--scai-text);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Contact */
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
 }
 
 .contact-card {
-  background: var(--apple-card);
-  border-radius: 18px;
-  padding: 32px 24px;
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 8px;
+  padding: 40px 30px;
   text-align: center;
-  border: 1px solid var(--apple-border);
-  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid rgba(42, 42, 42, 0.8);
+  transition: all 0.4s;
 }
 
 .contact-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-8px);
+  border-color: var(--scai-accent);
+  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.25);
+  background: rgba(26, 26, 26, 0.75);
 }
 
 .contact-card strong {
   display: block;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  color: var(--scai-text);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .contact-card a,
 .contact-card p {
-  color: var(--apple-blue);
+  color: var(--scai-secondary);
   text-decoration: none;
   font-size: 15px;
-}
-
-.contact-card p {
-  color: var(--apple-secondary);
+  transition: color 0.3s;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .contact-card a:hover {
-  text-decoration: underline;
+  color: var(--scai-accent);
 }
 
 /* Footer */
 footer {
-  background: var(--apple-light-bg);
-  padding: 40px 22px;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 60px 40px;
   text-align: center;
-  border-top: 1px solid var(--apple-border);
+  border-top: 1px solid rgba(42, 42, 42, 0.5);
+  scroll-snap-align: end; /* Last snap point */
 }
 
 footer p {
-  color: var(--apple-secondary);
+  color: var(--scai-secondary);
   font-size: 14px;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* Animations */
 .fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  animation: fadeIn 0.8s ease forwards;
+  transform: translateY(40px);
+  animation: fadeIn 1s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -465,35 +639,74 @@ footer p {
 .fade-in:nth-child(2) { animation-delay: 0.2s; }
 .fade-in:nth-child(3) { animation-delay: 0.3s; }
 .fade-in:nth-child(4) { animation-delay: 0.4s; }
+.fade-in:nth-child(5) { animation-delay: 0.5s; }
+.fade-in:nth-child(6) { animation-delay: 0.6s; }
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.scroll-indicator::after {
+  content: '';
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(180deg, var(--scai-accent) 0%, transparent 100%);
+  display: block;
+  margin: 10px auto 0;
+  animation: scroll 2s infinite;
+}
+
+@keyframes scroll {
+  0%, 100% { opacity: 0; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(10px); }
+}
 
 /* Responsive */
 @media (max-width: 768px) {
+  .nav-content {
+    padding: 0 20px;
+  }
+  
   .nav-links {
     gap: 20px;
   }
   
   .nav-links a {
-    font-size: 12px;
+    font-size: 13px;
   }
   
   .hero {
-    padding: 100px 22px 60px;
+    min-height: 600px;
+  }
+  
+  .hero-content {
+    padding: 0 20px;
   }
   
   section {
-    padding: 60px 22px;
+    padding: 80px 20px;
   }
   
   .timeline {
-    padding-left: 24px;
+    padding-left: 40px;
   }
   
   .timeline-item {
-    padding-left: 20px;
+    padding-left: 24px;
   }
   
   .timeline-item::before {
-    left: -30px;
+    left: -48px;
+  }
+  
+  .projects-grid,
+  .cert-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
@@ -512,24 +725,33 @@ footer p {
   </nav>
 
   <div class="hero">
-    <h1 class="fade-in">Decoding genomes.<br>Advancing health.</h1>
-    <p class="subtitle fade-in">Bioinformatician specializing in genomics, phylogenetics, and data-driven insights for research and clinical applications.</p>
-    <div class="cta-group fade-in">
-      <a href="#projects" class="btn btn-secondary">View Projects</a>
-      <a href="./Adel Helal Almutairi.pdf" class="btn btn-primary" download>Download CV</a>
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="images/9837848-hd_1920_1080_30fps.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-label fade-in">Portfolio Page</div>
+      <h1 class="fade-in">Bioinformatician<br>Health Data Scientist.</h1>
+      <p class="subtitle fade-in">Welcome to my portfolio page.</p>
+      <div class="cta-group fade-in">
+        <a href="#projects" class="btn btn-secondary">View Projects</a>
+        <a href="./Adel Helal Almutairi.pdf" class="btn btn-primary" download>Download CV</a>
+      </div>
+      <div class="tags fade-in">
+        <span class="tag">Genomics</span>
+        <span class="tag">Phylogenetics</span>
+        <span class="tag">Metagenomics</span>
+        <span class="tag">Artificial Intelligence</span>
+      </div>
     </div>
-    <div class="tags fade-in">
-      <span class="tag">Genomics</span>
-      <span class="tag">Phylogenetics</span>
-      <span class="tag">Metagenomics</span>
-      <span class="tag">Machine Learning</span>
-    </div>
+    <div class="scroll-indicator"></div>
   </div>
 
   <section id="about">
     <div class="section-header">
-      <h2>Expertise</h2>
-      <p>Bridging biology and computational science</p>
+      <div class="section-label">EXPERTISE</div>
+      <h2>Bridging biology and computational science</h2>
+      <p>Advanced bioinformatics solutions for genomic research and clinical applications</p>
     </div>
     <div class="about-grid">
       <div class="about-card fade-in">
@@ -553,13 +775,14 @@ footer p {
 
   <section id="experience">
     <div class="section-header">
-      <h2>Experience</h2>
-      <p>Professional journey in bioinformatics</p>
+      <div class="section-label">EXPERIENCE</div>
+      <h2>Professional journey in bioinformatics</h2>
+      <p>Leading genomic analysis and research collaborations</p>
     </div>
     <div class="timeline">
       <div class="timeline-item fade-in">
         <h3>Bioinformatics Specialist</h3>
-        <span class="date">2024 - July 2025 • Saudi FDA</span>
+        <span class="date">2024 - JULY 2025 • SAUDI FDA</span>
         <p>Leading genomic analysis for food safety and public health initiatives. Conducting outbreak investigations, pathogen characterization, and surveillance monitoring using advanced bioinformatics workflows.</p>
       </div>
       <div class="timeline-item fade-in">
@@ -569,7 +792,7 @@ footer p {
       </div>
       <div class="timeline-item fade-in">
         <h3>MSc in Bioinformatics</h3>
-        <span class="date">Completed</span>
+        <span class="date">COMPLETED</span>
         <p>Developed a computational workflow to predict and trace evolutionary relationships of transmembrane proteins in NCLDVs, utilizing AlphaFold to reduce experimental costs and accelerate research.</p>
       </div>
     </div>
@@ -577,42 +800,49 @@ footer p {
 
   <section id="projects">
     <div class="section-header">
-      <h2>Projects</h2>
-      <p>Recent work and research contributions</p>
+      <div class="section-label">PROJECTS</div>
+      <h2>Recent work and research contributions</h2>
+      <p>Innovative solutions in genomics and computational biology</p>
     </div>
     <div class="projects-grid">
+      <a href="https://huggingface.co/spaces/AdelAlmutairi/TM-SP-Predictor" target="_blank" rel="noopener noreferrer" class="project-card fade-in">
+        <h3>Multi-task Deep Learning Model for TM-SP Prediction</h3>
+        <p>Developed a multi-task deep learning model for predicting Transmembrane proteins and Signal Peptide, combining advanced neural architectures for protein structure prediction.</p>
+        <span class="date">Cick here to view the demo</span>
+      </a>
       <div class="project-card fade-in">
         <h3>Metagenomics Analysis of Saudi Western Valleys</h3>
         <p>Identified plastic-degrading and biofilm-forming bacteria in soil metagenomes for environmental applications.</p>
-        <span class="date">May 2025</span>
+        <span class="date">MAY 2025</span>
       </div>
       <div class="project-card fade-in">
         <h3>Phylogenetic Comparison in Salmonella</h3>
         <p>Benchmarked SNP-matrix phylogeny versus core genome MSA for Salmonella enterica isolates to improve epidemiological accuracy.</p>
-        <span class="date">January 2025</span>
+        <span class="date">JANUARY 2025</span>
       </div>
       <div class="project-card fade-in">
         <h3>Genomic Analyses for MSc Collaborations</h3>
         <p>Assembly, annotation, and comprehensive analysis for multiple thesis projects across leading Saudi research institutions.</p>
-        <span class="date">December 2024</span>
+        <span class="date">DECEMBER 2024</span>
       </div>
       <div class="project-card fade-in">
         <h3>Clostridium Outbreak Investigation</h3>
         <p>Applied comparative genomics to trace contamination sources in a food poisoning outbreak linked to Clostridium species.</p>
-        <span class="date">November 2024</span>
+        <span class="date">NOVEMBER 2024</span>
       </div>
       <div class="project-card fade-in">
         <h3>Transmembrane Proteins in Giant Viruses</h3>
         <p>MSc research detecting transmembrane proteins in NCLDVs and exploring their evolutionary relationships using advanced computational methods.</p>
-        <span class="date">MSc Project</span>
+        <span class="date">MSC PROJECT</span>
       </div>
     </div>
   </section>
 
   <section id="certificates">
     <div class="section-header">
-      <h2>Certificates</h2>
-      <p>Academic and professional credentials</p>
+      <div class="section-label">CERTIFICATES</div>
+      <h2>Academic and professional credentials</h2>
+      <p>Continuous learning and professional development</p>
     </div>
     <div class="cert-grid">
       <figure class="cert-card fade-in">
@@ -644,8 +874,9 @@ footer p {
 
   <section id="contact">
     <div class="section-header">
-      <h2>Get in Touch</h2>
-      <p>Let's connect and collaborate</p>
+      <div class="section-label">GET IN TOUCH</div>
+      <h2>Let's connect and collaborate</h2>
+      <p>Available for opportunities in bioinformatics and genomic research</p>
     </div>
     <div class="contact-grid">
       <div class="contact-card fade-in">
@@ -672,7 +903,7 @@ footer p {
   </footer>
 
   <script>
-    // Smooth scrolling for navigation
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -683,10 +914,10 @@ footer p {
       });
     });
 
-    // Intersection Observer for fade-in animations
+    // Intersection Observer
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      rootMargin: '0px 0px -100px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -700,6 +931,16 @@ footer p {
 
     document.querySelectorAll('.fade-in').forEach(el => {
       observer.observe(el);
+    });
+
+    // Nav background on scroll - keep transparent to show video
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        nav.style.background = 'rgba(10, 10, 10, 0.85)';
+      } else {
+        nav.style.background = 'rgba(10, 10, 10, 0.7)';
+      }
     });
   </script>
 </body>
