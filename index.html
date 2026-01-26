@@ -57,18 +57,30 @@ nav {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 40px;
-  height: 70px;
+  height: 58px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.nav-logo {
-  font-size: 48px;
+/* Name under top bar */
+.name-below-bar {
+  position: fixed;
+  top: 58px;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  pointer-events: none;
+}
+
+.name-below-bar .name-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 8px 40px 0;
+  font-size: 56px;
   font-weight: 700;
   color: var(--scai-text);
-  text-decoration: none;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
 }
 
 .nav-links {
@@ -677,16 +689,19 @@ footer p {
 /* Responsive */
 @media (max-width: 768px) {
   .nav-content {
-    padding: 0 20px;
-    gap: 12px;
-  }
-  
-  .nav-logo {
-    font-size: 26px;
-    letter-spacing: -0.2px;
-    white-space: nowrap;
+    padding: 0 18px;
+    height: 52px;
   }
 
+  .name-below-bar {
+    top: 52px;
+  }
+
+  .name-below-bar .name-inner {
+    padding: 6px 18px 0;
+    font-size: 46px;
+  }
+  
   .nav-links {
     gap: 14px;
   }
@@ -725,14 +740,19 @@ footer p {
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 480px) {
   .nav-content {
-    padding: 0 16px;
-    gap: 10px;
+    padding: 0 14px;
+    height: 48px;
   }
 
-  .nav-logo {
-    font-size: 22px;
+  .name-below-bar {
+    top: 48px;
+  }
+
+  .name-below-bar .name-inner {
+    padding: 6px 14px 0;
+    font-size: 44px;
   }
 
   .nav-links {
@@ -748,7 +768,6 @@ footer p {
 <body>
   <nav>
     <div class="nav-content">
-      <a href="#" class="nav-logo">Adel Almutairi</a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
@@ -757,6 +776,9 @@ footer p {
       </div>
     </div>
   </nav>
+  <div class="name-below-bar">
+    <div class="name-inner">Adel Almutairi</div>
+  </div>
 
   <div class="hero">
     <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
