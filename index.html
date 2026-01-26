@@ -678,14 +678,21 @@ footer p {
 @media (max-width: 768px) {
   .nav-content {
     padding: 0 20px;
+    gap: 12px;
   }
   
+  .nav-logo {
+    font-size: 26px;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+  }
+
   .nav-links {
-    gap: 20px;
+    gap: 14px;
   }
   
   .nav-links a {
-    font-size: 13px;
+    font-size: 12px;
   }
   
   .hero {
@@ -715,6 +722,25 @@ footer p {
   .projects-grid,
   .cert-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .nav-content {
+    padding: 0 16px;
+    gap: 10px;
+  }
+
+  .nav-logo {
+    font-size: 22px;
+  }
+
+  .nav-links {
+    gap: 10px;
+  }
+
+  .nav-links a {
+    font-size: 11px;
   }
 }
 </style>
