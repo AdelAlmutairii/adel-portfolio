@@ -661,18 +661,16 @@ footer p {
 @media (max-width: 480px) {
   html { scroll-snap-type: none; }
 
-  /* Hide hero video on small screens — costs too much data */
-  .hero-video { display: none; }
-  .hero {
-    background:
-      linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%),
-      url('images/hero-poster.webp') center/cover no-repeat;
-    background-attachment: fixed;
+  /* iOS Safari is unreliable with position:fixed videos —
+     scope the video to the hero section instead. */
+  .hero-video {
+    position: absolute;
+    height: 100%;
   }
 
   nav { background: rgba(10, 10, 10, 0.85); }
 
-  .hero { height: auto; min-height: 100vh; padding: 110px 0 40px; }
+  .hero { height: auto; min-height: 100vh; padding: 110px 0 40px; overflow: hidden; }
   .hero-content { padding: 0 16px; }
   .hero h1 { font-size: clamp(30px, 10vw, 46px); letter-spacing: -1px; margin-bottom: 18px; }
   .hero .subtitle { font-size: 15px; margin-bottom: 22px; }
