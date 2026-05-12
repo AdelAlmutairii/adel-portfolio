@@ -3,15 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adel Almutairi | Bioinformatician</title>
+<title>Adel Almutairi | Bioinformatician &amp; Health Data Scientist</title>
+<meta name="description" content="Portfolio of Adel Almutairi — Senior Bioinformatics Specialist working in genomics, phylogenetics, metagenomics, and machine learning for health data.">
+<meta name="author" content="Adel Almutairi">
+<meta name="theme-color" content="#0a0a0a">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Adel Almutairi | Bioinformatician &amp; Health Data Scientist">
+<meta property="og:description" content="Genomics, phylogenetics, metagenomics, and ML for health data.">
+<meta property="og:image" content="images/hero-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Adel Almutairi | Bioinformatician">
+<meta name="twitter:description" content="Genomics, phylogenetics, metagenomics, and ML for health data.">
+<meta name="twitter:image" content="images/hero-poster.jpg">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0a0a'/%3E%3Ctext x='50%25' y='54%25' font-family='-apple-system,sans-serif' font-size='38' font-weight='800' fill='%2300d4ff' text-anchor='middle' dominant-baseline='middle'%3EA%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="images/hero-poster.webp" type="image/webp">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Adel Almutairi",
+  "jobTitle": "Senior Bioinformatics Specialist",
+  "email": "mailto:adil.bioinfo@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Riyadh", "addressCountry": "SA" },
+  "sameAs": ["https://www.linkedin.com/in/adel-almutairi-msc/"],
+  "knowsAbout": ["Genomics","Phylogenetics","Metagenomics","Machine Learning","Bioinformatics"]
+}
+</script>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
   --scai-dark: #0a0a0a;
@@ -21,14 +49,22 @@
   --scai-accent: #00d4ff;
   --scai-card: #1a1a1a;
   --scai-border: #2a2a2a;
+  --glass-bg: rgba(26, 26, 26, 0.6);
+  --glass-bg-hover: rgba(26, 26, 26, 0.75);
+  --glass-border: rgba(42, 42, 42, 0.8);
+  --shadow-glow: 0 20px 60px rgba(0, 212, 255, 0.25);
+  --text-shadow-soft: 0 1px 5px rgba(0, 0, 0, 0.5);
+  --text-shadow-strong: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* --- SCROLL SNAP & BODY SETTINGS --- */
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory; /* Forces the snap effect */
-  height: 100vh;
-  overflow-y: scroll;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-snap-type: y proximity;
+  }
 }
 
 body {
@@ -37,8 +73,21 @@ body {
   color: var(--scai-text);
   line-height: 1.6;
   overflow-x: hidden;
-  margin: 0;
 }
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--scai-accent);
+  color: var(--scai-darker);
+  padding: 10px 18px;
+  z-index: 9999;
+  font-weight: 600;
+  border-radius: 0 0 6px 0;
+}
+.skip-link:focus { left: 0; }
 
 /* Navigation */
 nav {
@@ -51,7 +100,9 @@ nav {
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   z-index: 1000;
   border-bottom: 1px solid rgba(42, 42, 42, 0.5);
+  transition: background 0.25s ease;
 }
+nav.scrolled { background: rgba(10, 10, 10, 0.85); }
 
 .nav-content {
   max-width: 1400px;
@@ -64,7 +115,7 @@ nav {
 }
 
 .nav-logo {
-  font-size: 48px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--scai-text);
   text-decoration: none;
@@ -97,34 +148,28 @@ nav {
   transition: width 0.3s;
 }
 
-.nav-links a:hover {
-  color: var(--scai-text);
-}
+.nav-links a:hover { color: var(--scai-text); }
+.nav-links a:hover::after { width: 100%; }
 
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-/* --- HERO SECTION --- */
+/* --- HERO --- */
 .hero {
   position: relative;
-  height: 100vh; /* Takes full screen height */
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  scroll-snap-align: start; /* Snaps to top */
+  scroll-snap-align: start;
 }
 
-/* Updated Video Style: Fixed + Lower Opacity */
 .hero-video {
-  position: fixed; /* Fixes video to background */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.55; /* Reduced from 0.7 */
+  opacity: 0.55;
   filter: brightness(1.2) contrast(1.1);
   z-index: -1;
   pointer-events: none;
@@ -132,28 +177,24 @@ nav {
 
 .hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%);
   pointer-events: none;
 }
 
-/* Animated DNA helix background fallback */
 .hero::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
+  inset: 0;
+  background:
     radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
-  animation: dnaGlow 4s ease-in-out infinite;
   z-index: 0;
   pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero::before { animation: dnaGlow 4s ease-in-out infinite; }
 }
 
 @keyframes dnaGlow {
@@ -192,13 +233,11 @@ nav {
 
 .hero .subtitle {
   font-size: clamp(18px, 2.5vw, 24px);
-  color: #00d4ff;
-  margin-bottom: 50px;
+  color: var(--scai-accent);
+  margin: 0 auto 50px;
   font-weight: 300;
   line-height: 1.6;
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .hero .cta-group {
@@ -262,24 +301,21 @@ nav {
   border-radius: 4px;
   font-size: 13px;
   font-weight: 400;
-  border: 1px solid rgba(42, 42, 42, 0.8);
+  border: 1px solid var(--glass-border);
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* --- GENERAL SECTIONS --- */
+/* --- SECTIONS --- */
 section {
   max-width: 1400px;
   margin: 0 auto;
   padding: 120px 40px;
   position: relative;
-  /* Snap settings for all sections */
   min-height: 100vh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* Transparent background to show video */
-  background: transparent; 
 }
 
 .section-header {
@@ -315,47 +351,50 @@ section {
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* About Grid */
+/* --- SHARED GLASS CARD --- */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s, background 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.glass-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--scai-accent);
+  box-shadow: var(--shadow-glow);
+  background: var(--glass-bg-hover);
+}
+
+/* Grids */
 .about-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
   margin-top: 60px;
 }
-
-.about-card {
-  background: rgba(26, 26, 26, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 8px;
-  padding: 50px 40px;
-  border: 1px solid rgba(42, 42, 42, 0.8);
-  transition: all 0.4s;
-  position: relative;
-  overflow: hidden;
-}
-
+.about-card { padding: 50px 40px; }
 .about-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 3px;
   background: var(--scai-accent);
   transform: scaleX(0);
   transition: transform 0.4s;
 }
+.about-card:hover::before { transform: scaleX(1); }
 
-.about-card:hover::before {
-  transform: scaleX(1);
-}
-
-.about-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--scai-accent);
-  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.25);
-  background: rgba(26, 26, 26, 0.75);
+.about-card h3,
+.timeline-item h3,
+.project-card h3,
+.contact-card strong {
+  color: var(--scai-text);
+  text-shadow: var(--text-shadow-strong);
 }
 
 .about-card h3 {
@@ -363,20 +402,19 @@ section {
   font-weight: 700;
   margin-bottom: 16px;
   letter-spacing: -0.5px;
-  color: var(--scai-text);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-.about-card p {
+.about-card p,
+.timeline-item p,
+.project-card p {
   color: var(--scai-secondary);
   font-size: 16px;
   line-height: 1.8;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: var(--text-shadow-soft);
 }
 
-/* Experience Timeline */
+/* Timeline */
 .timeline {
-  position: relative;
   margin-top: 60px;
   display: flex;
   flex-direction: column;
@@ -384,84 +422,54 @@ section {
 }
 
 .timeline-item {
-  position: relative;
-  margin-bottom: 30px;
   padding: 40px;
-  background: rgba(26, 26, 26, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 8px;
-  border: 1px solid rgba(42, 42, 42, 0.8);
-  transition: all 0.4s;
-  overflow: hidden;
+  margin-bottom: 0;
 }
-
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 0; top: 0;
   width: 4px;
   height: 100%;
   background: var(--scai-accent);
   transform: scaleY(0);
   transition: transform 0.4s;
 }
-
-.timeline-item:hover::before {
-  transform: scaleY(1);
-}
-
+.timeline-item:hover::before { transform: scaleY(1); }
 .timeline-item::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 0; left: 0;
   width: 100%;
   height: 3px;
   background: var(--scai-accent);
   transform: scaleX(0);
   transition: transform 0.4s;
 }
-
-.timeline-item:hover::after {
-  transform: scaleX(1);
-}
-
-.timeline-item:hover {
-  transform: translateY(-8px);
-  border-color: var(--scai-accent);
-  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.25);
-  background: rgba(26, 26, 26, 0.75);
-}
+.timeline-item:hover::after { transform: scaleX(1); }
 
 .timeline-item h3 {
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 12px;
   letter-spacing: -0.5px;
-  color: var(--scai-text);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.timeline-item .date,
+.project-card .date {
+  color: var(--scai-accent);
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-shadow: var(--text-shadow-soft);
 }
 
 .timeline-item .date {
-  color: var(--scai-accent);
   font-size: 14px;
-  font-weight: 500;
   margin-bottom: 16px;
   display: block;
-  letter-spacing: 1px;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
-.timeline-item p {
-  color: var(--scai-secondary);
-  font-size: 16px;
-  line-height: 1.8;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
-}
-
-/* Projects Grid */
+/* Projects */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -470,70 +478,35 @@ section {
 }
 
 .project-card {
-  background: rgba(26, 26, 26, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 8px;
   padding: 40px;
-  border: 1px solid rgba(42, 42, 42, 0.8);
-  transition: all 0.4s;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
 }
-
 a.project-card {
   text-decoration: none;
   color: inherit;
   display: block;
+  cursor: pointer;
 }
-
 .project-card::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 0; left: 0;
   width: 100%;
   height: 3px;
   background: var(--scai-accent);
   transform: scaleX(0);
   transition: transform 0.4s;
 }
-
-.project-card:hover::after {
-  transform: scaleX(1);
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--scai-accent);
-  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.25);
-  background: rgba(26, 26, 26, 0.75);
-}
+.project-card:hover::after { transform: scaleX(1); }
 
 .project-card h3 {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 16px;
   letter-spacing: -0.3px;
-  color: var(--scai-text);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-.project-card p {
-  color: var(--scai-secondary);
-  font-size: 15px;
-  line-height: 1.8;
-  margin-bottom: 20px;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
-}
-
-.project-card .date {
-  color: var(--scai-accent);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 1px;
-}
+.project-card p { margin-bottom: 20px; font-size: 15px; }
+.project-card .date { font-size: 13px; }
 
 /* Certificates */
 .cert-grid {
@@ -543,34 +516,17 @@ a.project-card {
   margin-top: 60px;
 }
 
-.cert-card {
-  background: rgba(26, 26, 26, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid rgba(42, 42, 42, 0.8);
-  transition: all 0.4s;
-}
-
-.cert-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--scai-accent);
-  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.25);
-  background: rgba(26, 26, 26, 0.75);
-}
+.cert-card { padding: 0; }
 
 .cert-card img {
   width: 100%;
   height: 240px;
   object-fit: cover;
+  display: block;
   filter: grayscale(100%) brightness(0.8);
   transition: filter 0.4s;
 }
-
-.cert-card:hover img {
-  filter: grayscale(0%) brightness(1);
-}
+.cert-card:hover img { filter: grayscale(0%) brightness(1); }
 
 .cert-card figcaption {
   padding: 24px;
@@ -578,7 +534,7 @@ a.project-card {
   font-size: 16px;
   text-align: center;
   color: var(--scai-text);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  text-shadow: var(--text-shadow-strong);
 }
 
 /* Contact */
@@ -590,21 +546,8 @@ a.project-card {
 }
 
 .contact-card {
-  background: rgba(26, 26, 26, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 8px;
   padding: 40px 30px;
   text-align: center;
-  border: 1px solid rgba(42, 42, 42, 0.8);
-  transition: all 0.4s;
-}
-
-.contact-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--scai-accent);
-  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.25);
-  background: rgba(26, 26, 26, 0.75);
 }
 
 .contact-card strong {
@@ -612,8 +555,6 @@ a.project-card {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 12px;
-  color: var(--scai-text);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .contact-card a,
@@ -622,12 +563,10 @@ a.project-card {
   text-decoration: none;
   font-size: 15px;
   transition: color 0.3s;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: var(--text-shadow-soft);
 }
 
-.contact-card a:hover {
-  color: var(--scai-accent);
-}
+.contact-card a:hover { color: var(--scai-accent); }
 
 /* Footer */
 footer {
@@ -637,35 +576,35 @@ footer {
   padding: 60px 40px;
   text-align: center;
   border-top: 1px solid rgba(42, 42, 42, 0.5);
-  scroll-snap-align: end; /* Last snap point */
+  scroll-snap-align: end;
 }
 
 footer p {
   color: var(--scai-secondary);
   font-size: 14px;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: var(--text-shadow-soft);
 }
 
-/* Animations */
+/* Reveal animation — driven by JS, not auto-play */
 .fade-in {
   opacity: 0;
   transform: translateY(40px);
-  animation: fadeIn 1s ease forwards;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
-
-.fade-in:nth-child(1) { animation-delay: 0.1s; }
-.fade-in:nth-child(2) { animation-delay: 0.2s; }
-.fade-in:nth-child(3) { animation-delay: 0.3s; }
-.fade-in:nth-child(4) { animation-delay: 0.4s; }
-.fade-in:nth-child(5) { animation-delay: 0.5s; }
-.fade-in:nth-child(6) { animation-delay: 0.6s; }
 
 /* Scroll indicator */
 .scroll-indicator {
@@ -683,7 +622,10 @@ footer p {
   background: linear-gradient(180deg, var(--scai-accent) 0%, transparent 100%);
   display: block;
   margin: 10px auto 0;
-  animation: scroll 2s infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-indicator::after { animation: scroll 2s infinite; }
 }
 
 @keyframes scroll {
@@ -699,134 +641,57 @@ footer p {
     flex-direction: column;
     gap: 10px;
   }
-  
-  .nav-logo {
-    font-size: 28px;
-    line-height: 1.1;
-  }
+  .nav-logo { font-size: 22px; line-height: 1.1; }
+  .nav-links { gap: 14px 18px; flex-wrap: wrap; justify-content: center; }
+  .nav-links a { font-size: 13px; }
 
-  .nav-content {
-    padding: 12px 20px;
-  }
-  
-  .nav-links {
-    gap: 14px 18px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .nav-links a {
-    font-size: 13px;
-  }
-  
-  .hero {
-    min-height: 600px;
-  }
-  
-  .hero-content {
-    padding: 0 20px;
-  }
+  .hero { min-height: 600px; }
+  .hero-content { padding: 0 20px; }
+  .hero h1 { font-size: clamp(34px, 10vw, 54px); letter-spacing: -1.5px; }
+  .hero .subtitle { font-size: 16px; margin-bottom: 28px; }
 
-  .hero h1 {
-    font-size: clamp(34px, 10vw, 54px);
-    letter-spacing: -1.5px;
-  }
-  
-  .hero .subtitle {
-    font-size: 16px;
-    margin-bottom: 28px;
-  }
-  
-  .btn {
-    padding: 12px 18px;
-    font-size: 15px;
-  }
-  
-  .tags {
-    gap: 10px;
-  }
-  
-  section {
-    padding: 80px 20px;
-    min-height: auto;
-  }
-  
-  .timeline-item {
-    padding: 24px;
-  }
-  
-  .projects-grid,
-  .cert-grid {
-    grid-template-columns: 1fr;
-  }
+  .btn { padding: 12px 18px; font-size: 15px; }
+  .tags { gap: 10px; }
+
+  section { padding: 80px 20px; min-height: auto; }
+  .timeline-item { padding: 24px; }
+  .projects-grid, .cert-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
-  html {
-    scroll-snap-type: none;
-    height: auto;
-    overflow-y: auto;
-  }
+  html { scroll-snap-type: none; }
 
-  nav {
-    background: rgba(10, 10, 10, 0.55);
-  }
-
+  /* Hide hero video on small screens — costs too much data */
+  .hero-video { display: none; }
   .hero {
-    height: auto;
-    min-height: 100vh;
-    padding-top: 110px;
-    padding-bottom: 40px;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%),
+      url('images/hero-poster.webp') center/cover no-repeat;
+    background-attachment: fixed;
   }
 
-  .hero-content {
-    padding: 0 16px;
-  }
+  nav { background: rgba(10, 10, 10, 0.85); }
 
-  .hero h1 {
-    font-size: clamp(30px, 10vw, 46px);
-    letter-spacing: -1px;
-    margin-bottom: 18px;
-  }
+  .hero { height: auto; min-height: 100vh; padding: 110px 0 40px; }
+  .hero-content { padding: 0 16px; }
+  .hero h1 { font-size: clamp(30px, 10vw, 46px); letter-spacing: -1px; margin-bottom: 18px; }
+  .hero .subtitle { font-size: 15px; margin-bottom: 22px; }
 
-  .hero .subtitle {
-    font-size: 15px;
-    margin-bottom: 22px;
-  }
+  section { padding: 70px 16px; }
+  .about-card, .project-card, .contact-card, .timeline-item { padding: 22px; }
+  .projects-grid { grid-template-columns: 1fr; gap: 18px; }
+  .about-grid, .cert-grid, .contact-grid { gap: 18px; }
 
-  section {
-    padding: 70px 16px;
-  }
-
-  .about-card,
-  .project-card,
-  .cert-card,
-  .contact-card,
-  .timeline-item {
-    padding: 22px;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .about-grid,
-  .cert-grid,
-  .contact-grid {
-    gap: 18px;
-  }
-
-  .scroll-indicator {
-    bottom: 18px;
-  }
+  .scroll-indicator { bottom: 18px; }
 }
 </style>
 </head>
-<body>
+<body id="top">
+  <a class="skip-link" href="#about">Skip to content</a>
+
   <nav>
     <div class="nav-content">
-      <a href="#" class="nav-logo">Adel Almutairi</a>
+      <a href="#top" class="nav-logo" aria-label="Home">Adel Almutairi</a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
@@ -836,9 +701,10 @@ footer p {
     </div>
   </nav>
 
-  <div class="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto">
-      <source src="images/9837848-hd_1920_1080_30fps.mp4" type="video/mp4">
+  <header class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata"
+           poster="images/hero-poster.webp" aria-hidden="true" tabindex="-1">
+      <source src="images/hero.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -847,7 +713,7 @@ footer p {
       <p class="subtitle fade-in">Welcome to my portfolio page.</p>
       <div class="cta-group fade-in">
         <a href="#projects" class="btn btn-secondary">View Projects</a>
-        <a href="./Adel Helal Almutairi.pdf" class="btn btn-primary" download>Download CV</a>
+        <a href="Adel%20Helal%20Almutairi.pdf" class="btn btn-primary" download>Download CV</a>
       </div>
       <div class="tags fade-in">
         <span class="tag">Genomics</span>
@@ -856,9 +722,10 @@ footer p {
         <span class="tag">Artificial Intelligence</span>
       </div>
     </div>
-    <div class="scroll-indicator"></div>
-  </div>
+    <div class="scroll-indicator" aria-hidden="true"></div>
+  </header>
 
+  <main>
   <section id="about">
     <div class="section-header">
       <div class="section-label">EXPERTISE</div>
@@ -866,19 +733,19 @@ footer p {
       <p>Advanced bioinformatics solutions for genomic research and clinical applications</p>
     </div>
     <div class="about-grid">
-      <div class="about-card fade-in">
+      <div class="about-card glass-card fade-in">
         <h3>Genomics</h3>
         <p>Assembly, alignment, annotation, variant calling, and population genetics for whole-exome and whole-genome sequencing projects.</p>
       </div>
-      <div class="about-card fade-in">
+      <div class="about-card glass-card fade-in">
         <h3>Phylogenetics</h3>
         <p>SNP analysis, tree construction, and comparative evolutionary studies to trace pathogen origins and relationships.</p>
       </div>
-      <div class="about-card fade-in">
+      <div class="about-card glass-card fade-in">
         <h3>Metagenomics</h3>
         <p>Community profiling, functional analysis, and taxonomic classification for environmental and clinical samples.</p>
       </div>
-      <div class="about-card fade-in">
+      <div class="about-card glass-card fade-in">
         <h3>Data Science</h3>
         <p>Statistical modeling, machine learning, visualization, and narrative reporting using Python, R, and HPC systems.</p>
       </div>
@@ -892,22 +759,22 @@ footer p {
       <p>Leading genomic analysis and research collaborations</p>
     </div>
     <div class="timeline">
-      <div class="timeline-item fade-in">
+      <div class="timeline-item glass-card fade-in">
         <h3>Senior Bioinformatics Specialist</h3>
         <span class="date">FEB 2026 - PRESENT • KAIMRC</span>
         <p>Designing and maintaining computational pipelines to process and analyze biological data.</p>
       </div>
-      <div class="timeline-item fade-in">
+      <div class="timeline-item glass-card fade-in">
         <h3>Bioinformatics Specialist</h3>
         <span class="date">2024 - JULY 2025 • SAUDI FDA</span>
         <p>Leading genomic analysis for food safety and public health initiatives. Conducting outbreak investigations, pathogen characterization, and surveillance monitoring using advanced bioinformatics workflows.</p>
       </div>
-      <div class="timeline-item fade-in">
+      <div class="timeline-item glass-card fade-in">
         <h3>Research Collaborator</h3>
         <span class="date">2024 • KSU, KFSHRC, IAU</span>
         <p>Provided bioinformatics support for MSc theses, focusing on bacterial genome analyses and antimicrobial resistance gene detection.</p>
       </div>
-      <div class="timeline-item fade-in">
+      <div class="timeline-item glass-card fade-in">
         <h3>MSc in Bioinformatics</h3>
         <span class="date">COMPLETED</span>
         <p>Developed a computational workflow to predict and trace evolutionary relationships of transmembrane proteins in NCLDVs, utilizing AlphaFold to reduce experimental costs and accelerate research.</p>
@@ -922,32 +789,32 @@ footer p {
       <p>Innovative solutions in genomics and computational biology</p>
     </div>
     <div class="projects-grid">
-      <a href="https://huggingface.co/spaces/AdelAlmutairi/TM-SP-Predictor" target="_blank" rel="noopener noreferrer" class="project-card fade-in">
+      <a href="https://huggingface.co/spaces/AdelAlmutairi/TM-SP-Predictor" target="_blank" rel="noopener noreferrer" class="project-card glass-card fade-in">
         <h3>Multi-task Deep Learning Model for TM-SP Prediction</h3>
         <p>Developed a multi-task deep learning model for predicting Transmembrane proteins and Signal Peptide, combining advanced neural architectures for protein structure prediction.</p>
-        <span class="date">Cick here to view the demo</span>
+        <span class="date">Click here to view the demo</span>
       </a>
-      <div class="project-card fade-in">
+      <div class="project-card glass-card fade-in">
         <h3>Metagenomics Analysis of Saudi Western Valleys</h3>
         <p>Identified plastic-degrading and biofilm-forming bacteria in soil metagenomes for environmental applications.</p>
         <span class="date">MAY 2025</span>
       </div>
-      <div class="project-card fade-in">
+      <div class="project-card glass-card fade-in">
         <h3>Phylogenetic Comparison in Salmonella</h3>
         <p>Benchmarked SNP-matrix phylogeny versus core genome MSA for Salmonella enterica isolates to improve epidemiological accuracy.</p>
         <span class="date">JANUARY 2025</span>
       </div>
-      <div class="project-card fade-in">
+      <div class="project-card glass-card fade-in">
         <h3>Genomic Analyses for MSc Collaborations</h3>
         <p>Assembly, annotation, and comprehensive analysis for multiple thesis projects across leading Saudi research institutions.</p>
         <span class="date">DECEMBER 2024</span>
       </div>
-      <div class="project-card fade-in">
+      <div class="project-card glass-card fade-in">
         <h3>Clostridium Outbreak Investigation</h3>
         <p>Applied comparative genomics to trace contamination sources in a food poisoning outbreak linked to Clostridium species.</p>
         <span class="date">NOVEMBER 2024</span>
       </div>
-      <div class="project-card fade-in">
+      <div class="project-card glass-card fade-in">
         <h3>Transmembrane Proteins in Giant Viruses</h3>
         <p>MSc research detecting transmembrane proteins in NCLDVs and exploring their evolutionary relationships using advanced computational methods.</p>
         <span class="date">MSC PROJECT</span>
@@ -962,28 +829,34 @@ footer p {
       <p>Continuous learning and professional development</p>
     </div>
     <div class="cert-grid">
-      <figure class="cert-card fade-in">
-        <img src="images/MSc_Certificate_page-0001.jpg" alt="MSc Certificate">
+      <figure class="cert-card glass-card fade-in">
+        <img src="images/MSc_Certificate.webp" alt="MSc in Bioinformatics certificate"
+             width="1200" height="861" loading="lazy" decoding="async">
         <figcaption>MSc in Bioinformatics</figcaption>
       </figure>
-      <figure class="cert-card fade-in">
-        <img src="images/BSC_certificate.png" alt="BSc Certificate">
+      <figure class="cert-card glass-card fade-in">
+        <img src="images/BSC_certificate.webp" alt="BSc in Microbiology certificate"
+             width="1200" height="833" loading="lazy" decoding="async">
         <figcaption>BSc in Microbiology</figcaption>
       </figure>
-      <figure class="cert-card fade-in">
-        <img src="images/KAUST_Bioinformatics_Certificate_page-0001.jpg" alt="KAUST Certificate">
+      <figure class="cert-card glass-card fade-in">
+        <img src="images/KAUST_Bioinformatics_Certificate.webp" alt="KAUST Bioinformatics certificate"
+             width="1200" height="927" loading="lazy" decoding="async">
         <figcaption>KAUST Bioinformatics</figcaption>
       </figure>
-      <figure class="cert-card fade-in">
-        <img src="images/Machine_Learning_Certificate_page-0001.jpg" alt="Machine Learning Certificate">
+      <figure class="cert-card glass-card fade-in">
+        <img src="images/Machine_Learning_Certificate.webp" alt="Machine Learning certificate"
+             width="1200" height="927" loading="lazy" decoding="async">
         <figcaption>Machine Learning</figcaption>
       </figure>
-      <figure class="cert-card fade-in">
-        <img src="images/python_course_page-0001.jpg" alt="Python Certificate">
+      <figure class="cert-card glass-card fade-in">
+        <img src="images/python_course.webp" alt="Python Programming certificate"
+             width="1200" height="927" loading="lazy" decoding="async">
         <figcaption>Python Programming</figcaption>
       </figure>
-      <figure class="cert-card fade-in">
-        <img src="images/IOT_Cert.png" alt="IoT Certificate">
+      <figure class="cert-card glass-card fade-in">
+        <img src="images/IOT_Cert.webp" alt="IoT Fundamentals certificate"
+             width="1200" height="848" loading="lazy" decoding="async">
         <figcaption>IoT Fundamentals</figcaption>
       </figure>
     </div>
@@ -996,69 +869,78 @@ footer p {
       <p>Available for opportunities in bioinformatics and genomic research</p>
     </div>
     <div class="contact-grid">
-      <div class="contact-card fade-in">
+      <div class="contact-card glass-card fade-in">
         <strong>Location</strong>
         <p>Riyadh, Saudi Arabia</p>
       </div>
-      <div class="contact-card fade-in">
+      <div class="contact-card glass-card fade-in">
         <strong>Email</strong>
         <a href="mailto:adil.bioinfo@gmail.com">adil.bioinfo@gmail.com</a>
       </div>
-      <div class="contact-card fade-in">
+      <div class="contact-card glass-card fade-in">
         <strong>Phone</strong>
         <a href="tel:+966550466070">Call me</a>
       </div>
-      <div class="contact-card fade-in">
+      <div class="contact-card glass-card fade-in">
         <strong>LinkedIn</strong>
         <a href="https://www.linkedin.com/in/adel-almutairi-msc/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
       </div>
     </div>
   </section>
+  </main>
 
   <footer>
     <p>© 2025 Adel Almutairi. All rights reserved.</p>
   </footer>
 
   <script>
-    // Smooth scrolling
+    // Smooth in-page anchors
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
         if (target) {
+          e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
 
-    // Intersection Observer
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
+    // Reveal on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
         }
       });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
 
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
-    });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Nav background on scroll - keep transparent to show video
+    // Nav background on scroll (rAF-throttled)
     const nav = document.querySelector('nav');
+    let ticking = false;
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        nav.style.background = 'rgba(10, 10, 10, 0.85)';
-      } else {
-        nav.style.background = 'rgba(10, 10, 10, 0.7)';
-      }
-    });
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 100);
+        ticking = false;
+      });
+    }, { passive: true });
+
+    // Pause hero video when off-screen — saves CPU/battery
+    const heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+      const heroEl = document.querySelector('.hero');
+      const heroObs = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) heroVideo.play().catch(() => {});
+        else heroVideo.pause();
+      }, { threshold: 0 });
+      heroObs.observe(heroEl);
+    }
   </script>
 </body>
 </html>
