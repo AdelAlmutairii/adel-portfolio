@@ -929,16 +929,6 @@ footer p {
       });
     }, { passive: true });
 
-    // Pause hero video when off-screen — saves CPU/battery
-    const heroVideo = document.querySelector('.hero-video');
-    if (heroVideo) {
-      const heroEl = document.querySelector('.hero');
-      const heroObs = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) heroVideo.play().catch(() => {});
-        else heroVideo.pause();
-      }, { threshold: 0 });
-      heroObs.observe(heroEl);
-    }
   </script>
 </body>
 </html>
