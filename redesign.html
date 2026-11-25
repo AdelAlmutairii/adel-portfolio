@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Adel Almutairi | Bioinformatician</title>
+<meta name="description" content="Adel Almutairi, Senior Bioinformatics Specialist at KAIMRC in Riyadh. Genomics, phylogenetics, metagenomics and machine learning for health.">
+<meta name="author" content="Adel Almutairi">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Adel Almutairi | Bioinformatician">
+<meta property="og:description" content="Genomics, phylogenetics, metagenomics and machine learning for health.">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20fill='%23000'/%3E%3Cg%20transform='translate(4%2016)'%20fill='%23fff'%3E%3Cpath%20fill-rule='evenodd'%20d='M0%200H28V32H0Z%20M7%2026L11.2%206H16.8L21%2026H17.2L16.28%2021.6H11.72L10.8%2026Z%20M12.52%2017.8H15.48L14%2010.7Z'/%3E%3Crect%20x='29.5'%20y='1.5'%20width='25'%20height='29'%20fill='none'%20stroke='%23fff'%20stroke-width='3'/%3E%3Cpath%20fill-rule='evenodd'%20d='M35%2026L39.2%206H44.8L49%2026H45.2L44.28%2021.6H39.72L38.8%2026Z%20M40.52%2017.8H43.48L42%2010.7Z'/%3E%3C/g%3E%3C/svg%3E">
+
+<!-- Fonts: Martian Mono (display, data, UI) + Source Serif 4 (reading). Loaded without blocking render. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75..100,400..800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75..100,400..800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75..100,400..800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap"></noscript>
+
+<script>document.documentElement.classList.add('js');</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Adel Almutairi",
+  "jobTitle": "Senior Bioinformatics Specialist",
+  "worksFor": { "@type": "Organization", "name": "King Abdullah International Medical Research Center" },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "University of Exeter" },
+    { "@type": "CollegeOrUniversity", "name": "King Saud University" }
+  ],
+  "email": "mailto:adil.bioinfo@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Riyadh", "addressCountry": "SA" },
+  "sameAs": ["https://www.linkedin.com/in/adel-almutairi-msc/"],
+  "knowsAbout": ["Genomics", "Phylogenetics", "Metagenomics", "Machine Learning", "Bioinformatics"]
+}
+</script>
+
+<style>
+/* ==========================================================================
+   Tokens
+   ========================================================================== */
+:root {
+  /* Palette: two absolutes and two greys. Each grey is secondary text on one
+     ground and the hairline on the other. */
+  --black: #000000;
+  --white: #ffffff;
+  --grey-dk: #5c5c5c;  /* text on white 6.7:1 · hairline on black */
+  --grey-lt: #a6a6a6;  /* text on black 8.6:1 · hairline on white */
+
+  --font-mono: 'Martian Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-serif: 'Source Serif 4', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+
+  /* Type scale, 360px → 1320px */
+  --fs-label: 0.8125rem;                                  /* 13 mono metadata */
+  --fs-ui: 0.875rem;                                      /* 14 mono controls */
+  --fs-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);      /* 16 → 18 */
+  --fs-lead: clamp(1.25rem, 1.1rem + 0.65vw, 1.625rem);   /* 20 → 26 */
+  --fs-title: clamp(1.1875rem, 1.1rem + 0.45vw, 1.5rem);  /* 19 → 24 */
+  --fs-display: clamp(2.75rem, 0.95rem + 8.4vw, 8.5rem);  /* 44 → 136 */
+  --fs-menu: clamp(2.25rem, 1.5rem + 4vw, 3.25rem);
+
+  /* Space */
+  --s-1: 0.5rem;
+  --s-2: 1rem;
+  --s-3: 1.5rem;
+  --s-4: 2.5rem;
+  --s-5: clamp(3rem, 2.2rem + 3.5vw, 5.5rem);
+  --s-section: clamp(4.5rem, 3rem + 6.5vw, 9rem);
+  --gutter: clamp(1rem, 0.45rem + 2.4vw, 2.5rem);
+  --maxw: 82.5rem;
+  --measure: 68ch;
+  --header-h: 4rem;
+
+  /* Motion: one easing, three durations */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-quick: 200ms;
+  --t: 300ms;
+  --t-slow: 400ms;
+  --stagger: 70ms;
+}
+
+/* Ground themes. Components only ever use --paper / --ink / --muted / --rule. */
+.dark {
+  --paper: var(--black);
+  --ink: var(--white);
+  --muted: var(--grey-lt);
+  --rule: var(--grey-dk);
+  color-scheme: dark;
+}
+.light {
+  --paper: var(--white);
+  --ink: var(--black);
+  --muted: var(--grey-dk);
+  --rule: var(--grey-lt);
+  color-scheme: light;
+}
+.dark, .light { background: var(--paper); color: var(--ink); }
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html {
+  background: var(--black);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+html.is-locked { overflow: hidden; }
+
+body {
+  min-height: 100vh;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+ul, ol { list-style: none; padding: 0; }
+h1, h2, h3, h4 { font-size: inherit; font-weight: inherit; line-height: 1.15; text-wrap: balance; }
+p { max-width: var(--measure); text-wrap: pretty; }
+
+:focus-visible { outline: 2px solid var(--ink, var(--white)); outline-offset: 3px; }
+::selection { background: var(--ink, var(--white)); color: var(--paper, var(--black)); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--maxw) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  line-height: 1.5;
+}
+.muted { color: var(--muted); }
+
+.skip {
+  position: fixed;
+  top: max(0.75rem, env(safe-area-inset-top));
+  left: max(0.75rem, env(safe-area-inset-left));
+  z-index: 300;
+  padding: 0.875rem 1.125rem;
+  background: var(--white);
+  color: var(--black);
+  font: 500 var(--fs-ui)/1 var(--font-mono);
+  outline: 2px solid var(--black);
+  transform: translateY(-300%);
+}
+.skip:focus { transform: none; }
+
+/* ==========================================================================
+   Highlight language
+   One inverting layer (.inv), one drawn underline (.u), one image scale.
+   The layer is white with mix-blend-mode: difference, so whatever it passes
+   over flips exactly at its leading edge. It enters from the left and leaves
+   to the right.
+   ========================================================================== */
+.inv {
+  position: relative;
+  isolation: isolate;
+  background: var(--paper);
+}
+.inv::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--white);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform var(--t) var(--ease);
+}
+.inv:focus-visible::after,
+.inv.is-lit::after,
+.inv:has(.stretch:focus-visible)::after,
+.brand:focus-visible .logo::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+.inv:active::after,
+.brand:active .logo::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition-duration: 90ms;
+}
+
+.u {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  transition: transform var(--t-quick) var(--ease);
+}
+.u > span { position: relative; }
+.u > span::after,
+.u--rest > span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.25em;
+  height: 1px;
+  background: currentColor;
+}
+.u--rest > span::before { background: var(--rule); }
+.u > span::after {
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform var(--t) var(--ease);
+}
+.u:focus-visible > span::after,
+.u[aria-current] > span::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+.u:active { transform: scale(0.97); }
+
+@media (hover: hover) and (pointer: fine) {
+  .inv:hover::after,
+  .brand:hover .logo::after,
+  .u:hover > span::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+}
+
+/* Buttons: square, hairline, inverting fill */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0 1.5rem;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font: 500 var(--fs-ui)/1 var(--font-mono);
+  white-space: nowrap;
+}
+.btn--solid { background: var(--ink); color: var(--paper); }
+
+/* ==========================================================================
+   Header: fixed and blended with difference, so it reads white on black
+   and black on white without knowing which section is underneath.
+   ========================================================================== */
+.site-header {
+  --paper: var(--black);
+  --ink: var(--white);
+  --rule: var(--grey-dk);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  color: var(--white);
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+  height: calc(var(--header-h) + env(safe-area-inset-top));
+  padding-top: env(safe-area-inset-top);
+}
+.site-header a,
+.site-header button { pointer-events: auto; }
+
+/* Logo: an AA monogram in two cells, one of them inverted.
+   Hovering or focusing it runs the same inverting layer, so the cells swap. */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  transition: transform var(--t-quick) var(--ease);
+}
+.brand:active { transform: scale(0.97); }
+.logo { display: block; }
+.logo svg { width: auto; height: clamp(1.75rem, 1.55rem + 0.5vw, 2rem); }
+
+.nav { display: none; }
+.nav a:not(.btn) {
+  padding-inline: 0.625rem;
+  font: 400 var(--fs-label)/1 var(--font-mono);
+}
+.nav .btn { min-height: 44px; margin-left: 0.75rem; padding-inline: 1.125rem; }
+
+/* Hamburger: two bars that rotate into an X */
+.menu-btn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  display: grid;
+  place-items: center;
+  transition: transform var(--t-quick) var(--ease);
+}
+.menu-btn:active { transform: scale(0.97); }
+.menu-btn-bars { position: relative; width: 24px; height: 10px; }
+.menu-btn-bars::before,
+.menu-btn-bars::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transition: transform var(--t) var(--ease);
+}
+.menu-btn-bars::before { top: 0; }
+.menu-btn-bars::after { bottom: 0; }
+.menu-btn[aria-expanded="true"] .menu-btn-bars::before { transform: translateY(4px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] .menu-btn-bars::after { transform: translateY(-4px) rotate(-45deg); }
+
+/* Full-screen menu: black overlay, links rise out of their rows */
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding:
+    calc(var(--header-h) + env(safe-area-inset-top) + var(--s-2))
+    max(var(--gutter), env(safe-area-inset-right))
+    calc(var(--s-4) + env(safe-area-inset-bottom))
+    max(var(--gutter), env(safe-area-inset-left));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--t) var(--ease), visibility 0s linear var(--t);
+}
+.menu.is-open {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity var(--t) var(--ease);
+}
+.menu-list { border-top: 1px solid var(--rule); }
+.menu-list li { overflow: hidden; border-bottom: 1px solid var(--rule); }
+.menu-list a {
+  display: flex;
+  align-items: center;
+  min-height: 4.25rem;
+  padding-inline: var(--s-2);
+  margin-inline: calc(-1 * var(--s-2));
+  font: 800 var(--fs-menu)/1 var(--font-mono);
+  font-stretch: 75%;
+  letter-spacing: -0.03em;
+  transform: translateY(101%);
+  transition: transform var(--t-slow) var(--ease);
+}
+.menu.is-open .menu-list a {
+  transform: none;
+  transition-delay: calc(80ms + var(--i) * var(--stagger));
+}
+.menu-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-3);
+  opacity: 0;
+  transition: opacity var(--t) var(--ease);
+}
+.menu.is-open .menu-foot { opacity: 1; transition-delay: calc(80ms + 5 * var(--stagger)); }
+
+/* ==========================================================================
+   Hero: the name set letter by letter in ruled cells
+   Phones use a 36-column grid so ADEL (4 × 9) spans the full width above
+   ALMUTAIRI (9 × 4). From 768px both rows share 9 columns, which leaves
+   half of the first row open for the lede.
+   ========================================================================== */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-top: calc(var(--header-h) + env(safe-area-inset-top) + var(--s-3));
+  padding-bottom: calc(var(--s-4) + env(safe-area-inset-bottom));
+}
+
+.name-stage {
+  container-type: inline-size;
+  position: relative;
+  --cell-pad: clamp(0.5rem, 0.25rem + 1.1vw, 1.25rem);
+  --letter: 13vw;
+  --letter: min(calc(100cqi / 9 * 1.45), 24svh);
+  --letter-lg: 30vw;
+  --letter-lg: min(calc(100cqi / 4 * 1.4), 26svh);
+}
+
+.name-grid {
+  display: grid;
+  grid-template-columns: repeat(36, minmax(0, 1fr));
+  touch-action: pan-y;
+}
+
+.cell {
+  --paper: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(var(--size, var(--letter)) * 1.06 + 2 * var(--cell-pad));
+  grid-column: span 4;
+  border-top: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: var(--size, var(--letter));
+  font-weight: 800;
+  font-stretch: 75%;
+  line-height: 1;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.cell.first { border-left: 1px solid var(--rule); }
+.cell.r1 { --size: var(--letter-lg); grid-row: 1; grid-column: span 9; }
+.cell.r2 { grid-row: 2; border-bottom: 1px solid var(--rule); }
+.cell::after { transition-duration: var(--t-quick); }
+.cell-l { display: block; overflow: hidden; }
+.cell-l > span { display: block; padding-top: 0.06em; }
+
+.hero-aside { margin-top: var(--s-4); }
+.hero-lede {
+  max-width: 34ch;
+  font-size: var(--fs-lead);
+  line-height: 1.4;
+}
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: var(--s-3);
+}
+.cta .btn { flex: 1 1 auto; }
+
+/* ==========================================================================
+   Sections: shared heading system
+   ========================================================================== */
+.section { padding-block: var(--s-section); }
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-4);
+  margin-bottom: var(--s-5);
+}
+.display {
+  font-family: var(--font-mono);
+  font-size: var(--fs-display);
+  font-weight: 800;
+  font-stretch: 75%;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  margin-left: -0.04em;
+}
+.section-head p {
+  max-width: 34ch;
+  color: var(--muted);
+  padding-bottom: 0.35em;
+}
+
+.subhead {
+  margin-bottom: var(--s-3);
+  font: 800 var(--fs-title)/1.2 var(--font-mono);
+  font-stretch: 75%;
+  letter-spacing: -0.01em;
+}
+.block + .block { margin-top: var(--s-5); }
+
+.lead { font-size: var(--fs-lead); line-height: 1.45; }
+.lead + p { margin-top: var(--s-3); }
+
+/* ==========================================================================
+   Summary
+   ========================================================================== */
+.summary { display: grid; gap: var(--s-4); }
+
+.facts { border-top: 1px solid var(--rule); }
+.facts > div {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: var(--s-2);
+  padding-block: 0.875rem;
+  border-bottom: 1px solid var(--rule);
+}
+.facts dt { padding-top: 0.2em; color: var(--muted); font: 400 var(--fs-label)/1.5 var(--font-mono); }
+
+.expertise { display: grid; border-top: 1px solid var(--rule); }
+.expertise > div {
+  display: grid;
+  gap: 0.375rem;
+  padding-block: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.expertise dt { font: 800 var(--fs-title)/1.2 var(--font-mono); font-stretch: 75%; }
+
+.toolkit { display: grid; gap: var(--s-4); }
+.toolkit h4 { margin-bottom: 0.75rem; color: var(--muted); font: 400 var(--fs-label)/1.5 var(--font-mono); }
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tags li {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--rule);
+  font: 400 var(--fs-label)/1.3 var(--font-mono);
+}
+
+/* ==========================================================================
+   Roles
+   ========================================================================== */
+.roles { border-top: 1px solid var(--rule); }
+.role {
+  display: grid;
+  gap: 0.5rem;
+  padding-block: var(--s-3);
+  border-bottom: 1px solid var(--rule);
+}
+.role h3 { font: 600 var(--fs-title)/1.25 var(--font-serif); }
+.role-org { margin-top: 0.25rem; color: var(--muted); }
+.role-when { color: var(--muted); }
+
+/* The current role is the one inverted row in the section */
+.role--now {
+  --paper: var(--white);
+  --ink: var(--black);
+  --muted: var(--grey-dk);
+  --rule: var(--grey-lt);
+  margin-inline: calc(-1 * var(--s-2));
+  padding-inline: var(--s-2);
+  background: var(--paper);
+  color: var(--ink);
+  border-bottom-color: var(--paper);
+}
+
+/* ==========================================================================
+   Projects: a hairline grid of cells, echoing the hero name grid
+   ========================================================================== */
+.projects {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 15rem;
+  padding: var(--s-3);
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  max-width: none;
+  color: var(--muted);
+}
+.tag { padding: 0 0.5rem; background: var(--ink); color: var(--paper); }
+.project h3 { font: 600 var(--fs-title)/1.25 var(--font-serif); }
+.project--feature h3 { font-size: clamp(1.5rem, 1.15rem + 1.6vw, 2.5rem); line-height: 1.12; }
+.project--feature > p:not(.project-meta) { font-size: var(--fs-body); }
+.stretch::before { content: ''; position: absolute; inset: 0; z-index: 1; }
+.stretch:focus-visible { outline: none; }
+.project:has(.stretch:focus-visible) { outline: 2px solid var(--ink); outline-offset: 3px; z-index: 3; }
+.project--feature { cursor: pointer; }
+
+.topo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-block: var(--s-2) var(--s-1);
+  font: 400 0.75rem/1 var(--font-mono);
+}
+.topo-track { position: relative; flex: 1; height: 6rem; }
+.topo-track::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1.5px;
+  margin-top: -0.75px;
+  background: currentColor;
+}
+.topo-sp,
+.topo-tm { position: absolute; left: var(--x); width: var(--w); top: 50%; }
+.topo-sp { height: 0.75rem; margin-top: -0.375rem; background: currentColor; }
+.topo-tm {
+  height: 2.25rem;
+  margin-top: -1.125rem;
+  border: 1.5px solid currentColor;
+  background: repeating-linear-gradient(45deg, currentColor 0 1.5px, var(--paper) 1.5px 6px);
+}
+.topo-lab { position: absolute; left: var(--x); bottom: calc(50% + 1.625rem); white-space: nowrap; }
+.topo-lab--below { bottom: auto; top: calc(50% + 1.5rem); }
+.project-cta {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: auto;
+  padding: 0 1.125rem;
+  border: 1px solid currentColor;
+  font: 500 var(--fs-ui)/1 var(--font-mono);
+}
+
+/* ==========================================================================
+   Certificates
+   ========================================================================== */
+.certs { border-top: 1px solid var(--rule); }
+.cert {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: var(--s-2);
+  align-items: start;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+.cert-frame {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--white);
+  cursor: zoom-in;
+  transition: transform var(--t-quick) var(--ease);
+}
+.cert-frame:active { transform: scale(0.97); }
+.cert-frame svg,
+.cert-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.cert-frame img {
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(1);
+  transition: transform var(--t-slow) var(--ease);
+}
+.cert-frame:focus-visible img { transform: scale(1.03); }
+@media (hover: hover) and (pointer: fine) {
+  .cert-frame:hover img { transform: scale(1.03); }
+}
+.cert h3 { font: 600 1.125rem/1.3 var(--font-serif); }
+.cert-meta { margin-top: 0.25rem; color: var(--muted); }
+.cert .u { margin-top: 0.125rem; font: 400 var(--fs-label)/1.5 var(--font-mono); }
+
+/* Lightbox */
+.lightbox {
+  width: min(68rem, calc(100vw - 2rem));
+  max-width: none;
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--grey-dk);
+}
+.lightbox::backdrop { background: rgb(0 0 0 / 0.9); }
+.lightbox[open] { animation: fade var(--t) var(--ease); }
+.lightbox img {
+  width: 100%;
+  height: auto;
+  max-height: calc(100dvh - 8rem);
+  object-fit: contain;
+  background: var(--white);
+  filter: grayscale(1);
+}
+.lightbox-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+  padding: 0.625rem 0.625rem 0.625rem var(--s-2);
+}
+.lightbox .btn { min-height: 44px; }
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+/* Rules sit on the column; the inverted fill bleeds a little past them */
+.contact { border-top: 1px solid var(--rule); }
+.contact li { border-bottom: 1px solid var(--rule); }
+.contact-row {
+  display: grid;
+  gap: 0.25rem;
+  min-height: 44px;
+  margin-inline: calc(-1 * var(--s-2));
+  padding: 1.25rem var(--s-2);
+}
+.contact-k { color: var(--muted); }
+.contact-v {
+  font-size: var(--fs-lead);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer {
+  padding-top: var(--s-4);
+  padding-bottom: calc(var(--s-3) + env(safe-area-inset-bottom));
+}
+.footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-1) var(--s-3);
+  color: var(--muted);
+}
+.footer .u { color: var(--ink); }
+
+/* ==========================================================================
+   Load sequence and scroll reveals
+   ========================================================================== */
+@keyframes rise { from { transform: translateY(105%); } }
+@keyframes wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes fade { from { opacity: 0; } }
+@keyframes lift { from { opacity: 0; transform: translateY(0.75rem); } }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+
+  /* Hero: grid rules wipe in, then letters rise out of their cells 70ms apart */
+  .js .site-header { animation: fade var(--t-slow) var(--ease) 100ms both; }
+  .js .name-grid { animation: wipe var(--t-slow) var(--ease) both; }
+  .js .cell-l > span { animation: rise var(--t-slow) var(--ease) both; animation-delay: calc(120ms + var(--i) * var(--stagger)); }
+  .js .hero-lede { animation: lift var(--t-slow) var(--ease) 380ms both; }
+  .js .cta { animation: lift var(--t-slow) var(--ease) 460ms both; }
+
+  /* Section headings wipe in; project cells rise, staggered per batch */
+  .js .wipe {
+    clip-path: inset(-0.2em 100% -0.3em 0);
+    transition: clip-path var(--t-slow) var(--ease);
+  }
+  .js .wipe.is-in { clip-path: inset(-0.2em -0.1em -0.3em 0); }
+  .js .rise-in {
+    transition: opacity var(--t-slow) var(--ease), translate var(--t-slow) var(--ease);
+    transition-delay: calc(var(--i, 0) * var(--stagger));
+  }
+  .js .rise-in:not(.is-in) { opacity: 0; translate: 0 1.5rem; }
+}
+
+/* Reduced motion: every movement becomes a short fade */
+@media (prefers-reduced-motion: reduce) {
+  .js .hero .wrap { animation: fade var(--t-quick) linear both; }
+  .js .wipe:not(.is-in),
+  .js .rise-in:not(.is-in) { opacity: 0; }
+  .js .wipe,
+  .js .rise-in { transition: opacity var(--t-quick) linear; }
+
+  .inv::after,
+  .u > span::after {
+    transform: none !important;
+    opacity: 0;
+    transition: opacity 150ms linear;
+  }
+  .inv:focus-visible::after,
+  .inv.is-lit::after,
+  .inv:active::after,
+  .inv:has(.stretch:focus-visible)::after,
+  .brand:is(:focus-visible, :active) .logo::after,
+  .u:focus-visible > span::after,
+  .u[aria-current] > span::after { opacity: 1; }
+  .u:active, .brand:active, .menu-btn:active, .cert-frame:active { transform: none; }
+  .cert-frame img { transition: none; transform: none !important; }
+  .menu-list a { transform: none; opacity: 0; transition: opacity var(--t-quick) linear; }
+  .menu.is-open .menu-list a { opacity: 1; transition-delay: 0ms; }
+  .menu.is-open .menu-foot { transition-delay: 0ms; }
+  .menu-btn-bars::before, .menu-btn-bars::after { transition: none; }
+}
+@media (prefers-reduced-motion: reduce) and (hover: hover) and (pointer: fine) {
+  .inv:hover::after,
+  .brand:hover .logo::after,
+  .u:hover > span::after { opacity: 1; }
+}
+
+/* ==========================================================================
+   ≥ 768px
+   ========================================================================== */
+@media (min-width: 768px) {
+  .nav { display: flex; align-items: center; }
+  .menu-btn, .menu { display: none; }
+
+  .name-grid { grid-template-columns: repeat(9, minmax(0, 1fr)); }
+  .cell.r1 { --size: initial; grid-column: auto; }
+  .cell.r2 { grid-column: auto; }
+  .cta .btn { flex: 0 0 auto; }
+
+  .facts > div { grid-template-columns: 8rem minmax(0, 1fr); }
+  .expertise { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s-4); }
+  .toolkit { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  .role { grid-template-columns: 10rem minmax(0, 1fr); column-gap: var(--s-4); }
+  .role > :not(.role-when) { grid-column: 2; }
+  .role-when { grid-row: 1 / span 2; padding-top: 0.2em; }
+
+  .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .project { padding: 2rem; }
+  .project--feature { grid-column: span 2; }
+  .project:last-child { grid-column: span 2; }
+
+  .certs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--s-4);
+    border-top: 0;
+  }
+  .cert {
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: var(--s-3) var(--s-4);
+    border-top: 1px solid var(--rule);
+    border-bottom: 0;
+  }
+
+  .contact-row {
+    grid-template-columns: 10rem minmax(0, 1fr);
+    align-items: baseline;
+    gap: var(--s-4);
+    padding-block: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   ≥ 1200px
+   ========================================================================== */
+@media (min-width: 1200px) {
+  .nav a:not(.btn) { padding-inline: 0.875rem; }
+
+  /* The lede moves into the open half of the first row */
+  .hero-aside {
+    position: absolute;
+    top: 0;
+    left: calc(100% * 4 / 9);
+    right: 0;
+    height: calc(var(--letter) * 1.06 + 2 * var(--cell-pad));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0 0 clamp(1rem, 2svh, 1.75rem) 2.5rem;
+  }
+  .hero-lede { max-width: 46ch; font-size: clamp(1.25rem, 0.5rem + 1.1vw, 1.625rem); }
+  .cta { margin-top: var(--s-3); }
+
+  .summary { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: var(--s-5); align-items: start; }
+  .expertise { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+  .role { grid-template-columns: 3fr 5fr 6fr; }
+  .role > :not(.role-when) { grid-column: auto; }
+  .role-when { grid-row: auto; }
+  .role-desc { padding-top: 0.15em; }
+
+  .projects { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .project--feature { grid-row: span 2; }
+  .project:last-child { grid-column: auto; }
+
+  .certs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  .contact-row { grid-template-columns: 3fr 11fr; }
+}
+
+/* Short landscape phones: let the hero size to its content */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { min-height: 0; }
+}
+</style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Shared SVG: grayscale certificate placeholder, shown until (or instead of) the scan -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="ph-cert" viewBox="0 0 400 300">
+      <rect width="400" height="300" fill="#fff"/>
+      <rect x="14" y="14" width="372" height="272" fill="none" stroke="#a6a6a6" stroke-width="2"/>
+      <rect x="22" y="22" width="356" height="256" fill="none" stroke="#a6a6a6" stroke-width="1"/>
+      <rect x="130" y="58" width="140" height="10" fill="#5c5c5c"/>
+      <rect x="92" y="96" width="216" height="5" fill="#a6a6a6"/>
+      <rect x="112" y="110" width="176" height="5" fill="#a6a6a6"/>
+      <rect x="120" y="140" width="160" height="16" fill="#000"/>
+      <rect x="100" y="176" width="200" height="5" fill="#a6a6a6"/>
+      <rect x="64" y="236" width="104" height="2" fill="#5c5c5c"/>
+      <circle cx="318" cy="226" r="24" fill="none" stroke="#5c5c5c" stroke-width="2"/>
+      <circle cx="318" cy="226" r="16" fill="none" stroke="#a6a6a6" stroke-width="1"/>
+    </symbol>
+  </svg>
+
+  <!-- ============================== Header ============================== -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Adel Almutairi, back to top">
+        <span class="logo inv" aria-hidden="true">
+          <svg viewBox="0 0 56 32" focusable="false">
+            <path fill="currentColor" fill-rule="evenodd" d="M0 0H28V32H0Z M7 26L11.2 6H16.8L21 26H17.2L16.28 21.6H11.72L10.8 26Z M12.52 17.8H15.48L14 10.7Z"/>
+            <rect x="29" y="1" width="26" height="30" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path fill="currentColor" fill-rule="evenodd" d="M35 26L39.2 6H44.8L49 26H45.2L44.28 21.6H39.72L38.8 26Z M40.52 17.8H43.48L42 10.7Z"/>
+          </svg>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a class="u" href="#summary" data-nav><span>Summary</span></a>
+        <a class="u" href="#roles" data-nav><span>Roles</span></a>
+        <a class="u" href="#projects" data-nav><span>Projects</span></a>
+        <a class="u" href="#certificates" data-nav><span>Certificates</span></a>
+        <a class="u" href="#contact" data-nav><span>Contact</span></a>
+        <a class="btn inv" href="Adel%20Helal%20Almutairi.pdf" download>CV</a>
+      </nav>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+        <span class="menu-btn-bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================== Mobile menu ============================ -->
+  <nav class="menu dark" id="menu" aria-label="Menu">
+    <ul class="menu-list">
+      <li style="--i:0"><a class="inv" href="#summary" data-nav>Summary</a></li>
+      <li style="--i:1"><a class="inv" href="#roles" data-nav>Roles</a></li>
+      <li style="--i:2"><a class="inv" href="#projects" data-nav>Projects</a></li>
+      <li style="--i:3"><a class="inv" href="#certificates" data-nav>Certificates</a></li>
+      <li style="--i:4"><a class="inv" href="#contact" data-nav>Contact</a></li>
+    </ul>
+    <div class="menu-foot">
+      <a class="btn btn--solid inv" href="Adel%20Helal%20Almutairi.pdf" download>Download CV</a>
+      <a class="u mono" href="mailto:adil.bioinfo@gmail.com"><span>adil.bioinfo@gmail.com</span></a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <!-- ============================ Hero ============================== -->
+    <!-- Signature: the name set letter by letter in ruled cells; each cell
+         inverts under the pointer, or under a finger dragged across it. -->
+    <section class="hero dark" id="top" aria-labelledby="hero-name">
+      <div class="wrap">
+        <div class="name-stage">
+          <h1 class="name-grid" id="hero-name">
+            <span class="sr-only">Adel Almutairi</span>
+            <span class="cell inv r1 first" style="--i:0" aria-hidden="true"><span class="cell-l"><span>A</span></span></span>
+            <span class="cell inv r1" style="--i:1" aria-hidden="true"><span class="cell-l"><span>D</span></span></span>
+            <span class="cell inv r1" style="--i:2" aria-hidden="true"><span class="cell-l"><span>E</span></span></span>
+            <span class="cell inv r1" style="--i:3" aria-hidden="true"><span class="cell-l"><span>L</span></span></span>
+            <span class="cell inv r2 first" style="--i:4" aria-hidden="true"><span class="cell-l"><span>A</span></span></span>
+            <span class="cell inv r2" style="--i:5" aria-hidden="true"><span class="cell-l"><span>L</span></span></span>
+            <span class="cell inv r2" style="--i:6" aria-hidden="true"><span class="cell-l"><span>M</span></span></span>
+            <span class="cell inv r2" style="--i:7" aria-hidden="true"><span class="cell-l"><span>U</span></span></span>
+            <span class="cell inv r2" style="--i:8" aria-hidden="true"><span class="cell-l"><span>T</span></span></span>
+            <span class="cell inv r2" style="--i:9" aria-hidden="true"><span class="cell-l"><span>A</span></span></span>
+            <span class="cell inv r2" style="--i:10" aria-hidden="true"><span class="cell-l"><span>I</span></span></span>
+            <span class="cell inv r2" style="--i:11" aria-hidden="true"><span class="cell-l"><span>R</span></span></span>
+            <span class="cell inv r2" style="--i:12" aria-hidden="true"><span class="cell-l"><span>I</span></span></span>
+          </h1>
+
+          <div class="hero-aside">
+            <p class="hero-lede">Senior Bioinformatics Specialist at KAIMRC in Riyadh. Genomics, phylogenetics and machine learning for health, from tracing foodborne outbreaks to deep learning on protein sequences.</p>
+            <div class="cta">
+              <a class="btn btn--solid inv" href="#projects">See projects</a>
+              <a class="btn inv" href="Adel%20Helal%20Almutairi.pdf" download>Download CV</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== Summary ============================ -->
+    <section class="section light" id="summary" aria-labelledby="summary-h">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 class="display wipe" id="summary-h">Summary</h2>
+        </header>
+
+        <div class="block summary">
+          <div>
+            <p class="lead">I apply computational tools and statistical methods to biological questions, from raw sequencing reads to results that research and public-health teams can act on.</p>
+            <p>I hold an MSc in Bioinformatics from the University of Exeter and a BSc in Microbiology from King Saud University, and have delivered collaborative work with the Saudi FDA, KFSHRC and several Saudi universities.</p>
+          </div>
+          <dl class="facts">
+            <div><dt>Now</dt><dd>Senior Bioinformatics Specialist, KAIMRC</dd></div>
+            <div><dt>Previously</dt><dd>Bioinformatics Specialist, Saudi FDA</dd></div>
+            <div><dt>Education</dt><dd>MSc Bioinformatics, University of Exeter<br>BSc Microbiology, King Saud University</dd></div>
+            <div><dt>Based in</dt><dd>Riyadh, Saudi Arabia</dd></div>
+          </dl>
+        </div>
+
+        <div class="block">
+          <h3 class="subhead">Expertise</h3>
+          <dl class="expertise">
+            <div><dt>Genomics</dt><dd>Assembly, alignment, annotation, variant calling and population genetics for whole-exome and whole-genome sequencing projects.</dd></div>
+            <div><dt>Phylogenetics</dt><dd>SNP analysis, tree construction and comparative evolutionary studies to trace pathogen origins and relationships.</dd></div>
+            <div><dt>Metagenomics</dt><dd>Community profiling, functional analysis and taxonomic classification for environmental and clinical samples.</dd></div>
+            <div><dt>Data science</dt><dd>Statistical modelling, machine learning, visualisation and narrative reporting with Python, R and HPC systems.</dd></div>
+          </dl>
+        </div>
+
+        <div class="block">
+          <h3 class="subhead">Toolkit</h3>
+          <div class="toolkit">
+            <div>
+              <h4>Languages and data</h4>
+              <ul class="tags"><li>Python</li><li>Pandas</li><li>NumPy</li><li>R</li><li>R Markdown</li><li>Linux command line</li></ul>
+            </div>
+            <div>
+              <h4>Environment</h4>
+              <ul class="tags"><li>HPC</li><li>Conda</li><li>Docker</li><li>Git and GitHub</li><li>Jupyter</li><li>Google Colab</li><li>Public database APIs</li></ul>
+            </div>
+            <div>
+              <h4>Methods</h4>
+              <ul class="tags"><li>Sequence alignment</li><li>Variant calling</li><li>Phylogenomics</li><li>Population genetics</li><li>Short- and long-read workflows</li><li>Biostatistics</li><li>Machine learning</li><li>AlphaFold</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ Roles ============================= -->
+    <section class="section dark" id="roles" aria-labelledby="roles-h">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 class="display wipe" id="roles-h">Roles</h2>
+          <p>Leading genomic analysis and research collaborations.</p>
+        </header>
+
+        <div class="block">
+          <ol class="roles">
+            <li class="role role--now">
+              <p class="role-when mono"><time datetime="2026-02">Feb 2026</time> to present</p>
+              <div>
+                <h3>Senior Bioinformatics Specialist</h3>
+                <p class="role-org mono">King Abdullah International Medical Research Center (KAIMRC)</p>
+              </div>
+              <p class="role-desc">Designing and maintaining computational pipelines to process and analyse biological data.</p>
+            </li>
+            <li class="role">
+              <p class="role-when mono"><time datetime="2024">2024</time> to <time datetime="2025-07">Jul 2025</time></p>
+              <div>
+                <h3>Bioinformatics Specialist</h3>
+                <p class="role-org mono">Saudi Food and Drug Authority (SFDA)</p>
+              </div>
+              <p class="role-desc">Led genomic analysis for food safety and public health: outbreak investigations, pathogen characterisation and surveillance monitoring with bioinformatics workflows.</p>
+            </li>
+            <li class="role">
+              <p class="role-when mono"><time datetime="2024">2024</time></p>
+              <div>
+                <h3>Research Collaborator</h3>
+                <p class="role-org mono">KSU · KFSHRC · IAU</p>
+              </div>
+              <p class="role-desc">Bioinformatics support for MSc theses, focused on bacterial genome analysis and antimicrobial resistance gene detection.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="block">
+          <h3 class="subhead">Education</h3>
+          <ol class="roles">
+            <li class="role">
+              <p class="role-when mono"><time datetime="2024">2024</time></p>
+              <div>
+                <h3>MSc in Bioinformatics</h3>
+                <p class="role-org mono">University of Exeter, United Kingdom</p>
+              </div>
+              <p class="role-desc">Built a computational workflow to predict transmembrane proteins in NCLDVs and trace their evolutionary relationships, using AlphaFold to cut experimental cost.</p>
+            </li>
+            <li class="role">
+              <p class="role-when mono"><time datetime="2022">2022</time></p>
+              <div>
+                <h3>BSc in Microbiology</h3>
+                <p class="role-org mono">King Saud University, Saudi Arabia</p>
+              </div>
+              <p class="role-desc">Second place, Graduation Project Excellence Award.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== Projects =========================== -->
+    <section class="section light" id="projects" aria-labelledby="projects-h">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 class="display wipe" id="projects-h">Projects</h2>
+          <p>Applied genomics, phylogenetics and machine learning for public health and research.</p>
+        </header>
+
+        <ul class="projects">
+          <li class="project project--feature inv rise-in" data-lit>
+            <p class="project-meta mono"><span>Deep learning</span><span class="tag">Live demo</span></p>
+            <h3><a class="stretch" href="https://huggingface.co/spaces/AdelAlmutairi/TM-SP-Predictor" target="_blank" rel="noopener noreferrer">Multi-task Deep Learning Model for TM-SP Prediction<span class="sr-only"> (opens the demo on Hugging Face in a new tab)</span></a></h3>
+            <p>Predicts transmembrane proteins and signal peptides from sequence alone, with one shared model trained on both tasks.</p>
+            <!-- Grayscale illustration of the model's per-residue output, drawn in CSS so labels stay legible at any width -->
+            <div class="topo" role="img" aria-label="Illustration: a protein chain with a signal peptide at the N-terminus and two transmembrane helices">
+              <span aria-hidden="true">N</span>
+              <span class="topo-track" aria-hidden="true">
+                <span class="topo-sp" style="--x:0%;--w:14%"></span>
+                <span class="topo-tm" style="--x:36%;--w:15%"></span>
+                <span class="topo-tm" style="--x:70%;--w:15%"></span>
+                <span class="topo-lab topo-lab--below" style="--x:0%">signal peptide</span>
+                <span class="topo-lab" style="--x:36%">TM helix</span>
+                <span class="topo-lab" style="--x:70%">TM helix</span>
+              </span>
+              <span aria-hidden="true">C</span>
+            </div>
+            <span class="project-cta" aria-hidden="true">Try it on Hugging Face</span>
+          </li>
+          <li class="project inv rise-in" data-lit>
+            <p class="project-meta mono"><span>Metagenomics</span><span>May 2025</span></p>
+            <h3>Metagenomics Analysis of Saudi Western Valleys</h3>
+            <p>Identified plastic-degrading and biofilm-forming bacteria in soil metagenomes for environmental applications.</p>
+          </li>
+          <li class="project inv rise-in" data-lit>
+            <p class="project-meta mono"><span>Phylogenetics</span><span>Jan 2025</span></p>
+            <h3>Phylogenetic Comparison in <i>Salmonella</i></h3>
+            <p>Benchmarked SNP-matrix phylogeny against core-genome MSA for <i>Salmonella enterica</i> isolates to improve epidemiological accuracy.</p>
+          </li>
+          <li class="project inv rise-in" data-lit>
+            <p class="project-meta mono"><span>Bacterial genomics</span><span>Dec 2024</span></p>
+            <h3>Genomic Analyses for MSc Collaborations</h3>
+            <p>Assembly, annotation and analysis for several thesis projects across Saudi research institutions.</p>
+          </li>
+          <li class="project inv rise-in" data-lit>
+            <p class="project-meta mono"><span>Outbreak genomics</span><span>Nov 2024</span></p>
+            <h3><i>Clostridium</i> Outbreak Investigation</h3>
+            <p>Used comparative genomics to trace the contamination source of a food-poisoning outbreak linked to <i>Clostridium</i> species.</p>
+          </li>
+          <li class="project inv rise-in" data-lit>
+            <p class="project-meta mono"><span>Protein evolution</span><span>MSc project</span></p>
+            <h3>Transmembrane Proteins in Giant Viruses</h3>
+            <p>Detected transmembrane proteins in NCLDVs and explored their evolutionary relationships with structure-aware computational methods.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========================= Certificates ========================= -->
+    <section class="section dark" id="certificates" aria-labelledby="certificates-h">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 class="display wipe" id="certificates-h">Certificates</h2>
+          <p>Degrees and professional courses. Select a certificate to view it in full.</p>
+        </header>
+
+        <ul class="certs">
+          <li class="cert">
+            <a class="cert-frame" href="images/MSc_Certificate.webp" data-caption="MSc in Bioinformatics, University of Exeter, 2024" aria-label="View certificate: MSc in Bioinformatics">
+              <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#ph-cert"/></svg>
+              <img src="images/MSc_Certificate.webp" alt="MSc in Bioinformatics certificate from the University of Exeter" width="1200" height="861" loading="lazy" decoding="async">
+            </a>
+            <div>
+              <h3>MSc in Bioinformatics</h3>
+              <p class="cert-meta mono">University of Exeter&nbsp;·&nbsp;2024</p>
+            </div>
+          </li>
+          <li class="cert">
+            <a class="cert-frame" href="images/BSC_certificate.webp" data-caption="BSc in Microbiology, King Saud University, 2022" aria-label="View certificate: BSc in Microbiology">
+              <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#ph-cert"/></svg>
+              <img src="images/BSC_certificate.webp" alt="BSc in Microbiology certificate from King Saud University" width="1200" height="833" loading="lazy" decoding="async">
+            </a>
+            <div>
+              <h3>BSc in Microbiology</h3>
+              <p class="cert-meta mono">King Saud University&nbsp;·&nbsp;2022</p>
+            </div>
+          </li>
+          <li class="cert">
+            <a class="cert-frame" href="images/KAUST_Bioinformatics_Certificate.webp" data-caption="Fundamental Skills in Bioinformatics, KAUST on Coursera, 2024" aria-label="View certificate: Fundamental Skills in Bioinformatics">
+              <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#ph-cert"/></svg>
+              <img src="images/KAUST_Bioinformatics_Certificate.webp" alt="KAUST Fundamental Skills in Bioinformatics certificate" width="1200" height="927" loading="lazy" decoding="async">
+            </a>
+            <div>
+              <h3>Fundamental Skills in Bioinformatics</h3>
+              <p class="cert-meta mono">KAUST · Coursera&nbsp;·&nbsp;2024</p>
+              <a class="u u--rest" href="https://coursera.org/verify/8BC3MIS95ZPS" target="_blank" rel="noopener noreferrer"><span>Verify on Coursera<span class="sr-only"> (opens in a new tab)</span></span></a>
+            </div>
+          </li>
+          <li class="cert">
+            <a class="cert-frame" href="images/Machine_Learning_Certificate.webp" data-caption="Supervised Machine Learning, DeepLearning.AI and Stanford, 2025" aria-label="View certificate: Supervised Machine Learning">
+              <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#ph-cert"/></svg>
+              <img src="images/Machine_Learning_Certificate.webp" alt="Supervised Machine Learning: Regression and Classification certificate" width="1200" height="927" loading="lazy" decoding="async">
+            </a>
+            <div>
+              <h3>Supervised Machine Learning</h3>
+              <p class="cert-meta mono">DeepLearning.AI · Stanford&nbsp;·&nbsp;2025</p>
+              <a class="u u--rest" href="https://coursera.org/verify/0ZNW99LWHN3Q" target="_blank" rel="noopener noreferrer"><span>Verify on Coursera<span class="sr-only"> (opens in a new tab)</span></span></a>
+            </div>
+          </li>
+          <li class="cert">
+            <a class="cert-frame" href="images/python_course.webp" data-caption="Python Programming Essentials, Rice University on Coursera, 2024" aria-label="View certificate: Python Programming Essentials">
+              <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#ph-cert"/></svg>
+              <img src="images/python_course.webp" alt="Python Programming Essentials certificate from Rice University" width="1200" height="927" loading="lazy" decoding="async">
+            </a>
+            <div>
+              <h3>Python Programming Essentials</h3>
+              <p class="cert-meta mono">Rice University · Coursera&nbsp;·&nbsp;2024</p>
+              <a class="u u--rest" href="https://coursera.org/verify/1RXWF4O6TRDN" target="_blank" rel="noopener noreferrer"><span>Verify on Coursera<span class="sr-only"> (opens in a new tab)</span></span></a>
+            </div>
+          </li>
+          <li class="cert">
+            <a class="cert-frame" href="images/IOT_Cert.webp" data-caption="Internet of Things, Doroob, 2022" aria-label="View certificate: Internet of Things">
+              <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#ph-cert"/></svg>
+              <img src="images/IOT_Cert.webp" alt="Internet of Things and Promising Opportunities certificate from Doroob" width="1200" height="848" loading="lazy" decoding="async">
+            </a>
+            <div>
+              <h3>Internet of Things</h3>
+              <p class="cert-meta mono">Doroob&nbsp;·&nbsp;2022</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================ Contact =========================== -->
+    <section class="section light" id="contact" aria-labelledby="contact-h">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 class="display wipe" id="contact-h">Contact</h2>
+          <p>Open to roles and research collaborations in bioinformatics and genomics.</p>
+        </header>
+
+        <ul class="contact">
+          <li><a class="contact-row inv" href="mailto:adil.bioinfo@gmail.com"><span class="contact-k mono">Email</span><span class="contact-v">adil.bioinfo@gmail.com</span></a></li>
+          <li><a class="contact-row inv" href="https://www.linkedin.com/in/adel-almutairi-msc/" target="_blank" rel="noopener noreferrer"><span class="contact-k mono">LinkedIn</span><span class="contact-v">adel-almutairi-msc<span class="sr-only"> (opens in a new tab)</span></span></a></li>
+          <li><a class="contact-row inv" href="tel:+966550466070"><span class="contact-k mono">Phone</span><span class="contact-v">Call me</span></a></li>
+          <li><a class="contact-row inv" href="Adel%20Helal%20Almutairi.pdf" download><span class="contact-k mono">CV</span><span class="contact-v">Download the PDF</span></a></li>
+          <li><div class="contact-row"><span class="contact-k mono">Based in</span><span class="contact-v">Riyadh, Saudi Arabia</span></div></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================= Footer ============================= -->
+  <footer class="footer dark">
+    <div class="wrap mono">
+      <a class="u" href="#top"><span>Back to top</span></a>
+    </div>
+  </footer>
+
+  <!-- Certificate viewer -->
+  <dialog class="lightbox dark" id="lightbox" aria-labelledby="lightbox-caption">
+    <img src="data:," alt="">
+    <div class="lightbox-bar">
+      <p class="mono" id="lightbox-caption"></p>
+      <form method="dialog"><button class="btn inv" type="submit">Close</button></form>
+    </div>
+  </dialog>
+
+  <script>
+  (() => {
+    const root = document.documentElement;
+    const $ = (s, c = document) => c.querySelector(s);
+    const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+    const touch = matchMedia('(hover: none), (pointer: coarse)');
+    const hasIO = 'IntersectionObserver' in window;
+
+    /* ---------- Mobile menu ---------- */
+    const menuBtn = $('.menu-btn');
+    const menu = $('#menu');
+    const outside = [$('#main'), $('.footer')];
+    const setMenu = (open) => {
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.classList.toggle('is-open', open);
+      menu.inert = !open;
+      outside.forEach((el) => { el.inert = open; });
+      root.classList.toggle('is-locked', open);
+    };
+    menu.inert = true;
+    menuBtn.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
+    menu.addEventListener('click', (e) => { if (e.target.closest('a[href^="#"]')) setMenu(false); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); }
+    });
+    matchMedia('(min-width: 768px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
+
+    /* ---------- Hero name: a dragged finger flips each letter it crosses
+       (mouse hover is handled in CSS) ---------- */
+    const nameGrid = $('.name-grid');
+    let litCell = null;
+    const light = (cell) => {
+      if (cell === litCell) return;
+      if (litCell) litCell.classList.remove('is-lit');
+      litCell = cell;
+      if (cell) cell.classList.add('is-lit');
+    };
+    const pick = (e) => {
+      if (e.pointerType === 'mouse') return;
+      const cell = document.elementFromPoint(e.clientX, e.clientY)?.closest('.cell');
+      light(cell && nameGrid.contains(cell) ? cell : null);
+    };
+    nameGrid.addEventListener('pointerdown', pick);
+    nameGrid.addEventListener('pointermove', pick);
+    ['pointerup', 'pointercancel'].forEach((type) => nameGrid.addEventListener(type, () => light(null)));
+
+    if (hasIO) {
+      /* ---------- Scroll reveals (headings + project cells) ----------
+         A clipped heading has no visible area, so its unclipped parent is observed. */
+      const reveal = new IntersectionObserver((entries) => {
+        entries.filter((en) => en.isIntersecting).forEach((en, k) => {
+          en.target.style.setProperty('--i', k);
+          [en.target, ...$$('.wipe', en.target)].forEach((el) => el.classList.add('is-in'));
+          reveal.unobserve(en.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+      new Set([...$$('.wipe').map((el) => el.parentElement), ...$$('.rise-in')]).forEach((el) => reveal.observe(el));
+
+      /* ---------- Touch: invert each card as it crosses mid-screen ---------- */
+      const lit = new IntersectionObserver((entries) => {
+        entries.forEach((en) => en.target.classList.toggle('is-lit', en.isIntersecting));
+      }, { rootMargin: '-46% 0px -46% 0px' });
+      const bindLit = () => $$('[data-lit]').forEach((el) => {
+        if (touch.matches) lit.observe(el);
+        else { lit.unobserve(el); el.classList.remove('is-lit'); }
+      });
+      bindLit();
+      touch.addEventListener('change', bindLit);
+
+      /* ---------- Current section in both navs ---------- */
+      const navLinks = $$('[data-nav]');
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          navLinks.forEach((a) => {
+            if (a.hash === '#' + en.target.id) a.setAttribute('aria-current', 'true');
+            else a.removeAttribute('aria-current');
+          });
+        });
+      }, { rootMargin: '-45% 0px -54% 0px' });
+      $$('main > section[id]').forEach((s) => spy.observe(s));
+    } else {
+      $$('.wipe, .rise-in').forEach((el) => el.classList.add('is-in'));
+    }
+
+    /* ---------- Certificates: drop missing scans, keep the placeholder ---------- */
+    $$('.cert-frame img').forEach((img) => {
+      if (img.complete && img.naturalWidth === 0 && img.currentSrc) img.remove();
+      else img.addEventListener('error', () => img.remove(), { once: true });
+    });
+
+    /* ---------- Certificate viewer ---------- */
+    const lb = $('#lightbox');
+    if (lb && typeof lb.showModal === 'function') {
+      const lbImg = $('img', lb);
+      const lbCap = $('#lightbox-caption', lb);
+      $$('.cert-frame').forEach((link) => link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const thumb = $('img', link);
+        if (!thumb) return;
+        lbImg.src = link.getAttribute('href');
+        lbImg.alt = thumb.alt;
+        lbCap.textContent = link.dataset.caption;
+        lb.showModal();
+        root.classList.add('is-locked');
+      }));
+      lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+      lb.addEventListener('close', () => root.classList.remove('is-locked'));
+    }
+
+    $('#year').textContent = new Date().getFullYear();
+  })();
+  </script>
+</body>
+</html>
