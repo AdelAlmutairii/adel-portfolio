@@ -13,13 +13,13 @@
 <meta property="og:url" content="https://adelalmutairii.github.io/adel-portfolio/">
 <meta property="og:title" content="Adel Almutairi | Bioinformatician &amp; Health Data Scientist">
 <meta property="og:description" content="Genomics, phylogenetics, metagenomics, and ML for health data.">
-<meta property="og:image" content="https://adelalmutairii.github.io/adel-portfolio/images/og-genome.jpg">
+<meta property="og:image" content="https://adelalmutairii.github.io/adel-portfolio/images/og-genome.jpg?v=2">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Adel Almutairi, Bioinformatician &amp; Health Data Scientist, inside a glowing DNA double helix">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://adelalmutairii.github.io/adel-portfolio/images/og-genome.jpg">
+<meta name="twitter:image" content="https://adelalmutairii.github.io/adel-portfolio/images/og-genome.jpg?v=2">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23010504'/%3E%3Cpath d='M8 22c12 0 12 20 24 20s12-20 24-20' fill='none' stroke='%233dff9a' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M8 42c12 0 12-20 24-20s12 20 24 20' fill='none' stroke='%23e9fff3' stroke-width='5' stroke-linecap='round' opacity='.8'/%3E%3C/svg%3E">
 
@@ -277,7 +277,8 @@ html.gl .bar {
 }
 .menu-btn i { width: 14px; height: 8px; border-top: 1px solid currentColor; border-bottom: 1px solid currentColor; transition: transform 0.3s var(--ease); }
 .menu-btn[aria-expanded="true"] i { transform: scaleY(0.25); }
-@media (max-width: 1080px) { .gtab .gs { display: none; } }
+@media (max-width: 1160px) { .gtab .gs { display: none; } }
+@media (max-width: 1040px) { .bar { gap: 12px; } .gtab { padding-inline: 9px; gap: 7px; } }
 @media (max-width: 880px) {
   .menu-btn { display: inline-flex; }
   .cv { display: none; }
@@ -694,7 +695,6 @@ html.gl [data-exon] { scroll-margin-top: 104px; }
   border-top: 1px solid var(--line);
 }
 .foot-k { margin: 0; font: 500 11px/1 var(--f-mono); letter-spacing: 0.24em; text-transform: uppercase; color: var(--mint); }
-.foot-t { margin: 0; font: 300 clamp(1.5rem, 1rem + 2vw, 2.6rem)/1.15 var(--f-display); letter-spacing: -0.02em; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 10px; }
 .foot-links a {
   display: inline-flex; align-items: center; gap: 8px; padding: 10px 15px; border-radius: 999px;
@@ -702,7 +702,6 @@ html.gl [data-exon] { scroll-margin-top: 104px; }
   transition: border-color 0.3s, background-color 0.3s;
 }
 .foot-links a:hover { border-color: var(--mint); background: rgba(61, 255, 154, 0.07); }
-.foot-c { margin: 0; font: 400 11px/1.6 var(--f-mono); letter-spacing: 0.1em; color: var(--ink-3); }
 
 /* "Back to the beginning" — the rewind control */
 .rewind {
@@ -1116,7 +1115,6 @@ html.gl .foot-links { justify-content: center; }
 
   <footer class="foot" id="end">
     <p class="foot-k">3′ · end of sequence</p>
-    <p class="foot-t">Thanks for reading the genome.</p>
     <button class="rewind" type="button">
       <span class="rw-dial" aria-hidden="true">
         <svg class="rw-ring" viewBox="0 0 120 120" focusable="false"><circle class="rw-track" cx="60" cy="60" r="56"/><circle class="rw-prog" cx="60" cy="60" r="56" pathLength="100"/></svg>
@@ -1128,7 +1126,6 @@ html.gl .foot-links { justify-content: center; }
       <a href="mailto:adil.bioinfo@gmail.com">Email</a>
       <a href="Adel%20Helal%20Almutairi.pdf" download>Download CV</a>
     </div>
-    <p class="foot-c">© <span class="year-now">2026</span> Adel Almutairi</p>
   </footer>
 
   <dialog class="lightbox" id="lightbox" aria-label="Certificate preview">
@@ -1184,8 +1181,6 @@ let glRewind = null;   // set by the immersive layout; the flat layout scrolls i
    Shared behaviour (both layouts)
    ========================================================================== */
 function common() {
-  $$('.year-now').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
-
   // Mobile gene menu
   const menuBtn = $('.menu-btn'), nav = $('#genes-nav');
   const setMenu = (open) => { menuBtn.setAttribute('aria-expanded', String(open)); nav.classList.toggle('is-open', open); };
@@ -1488,9 +1483,7 @@ async function initGL() {
       gl_Position = projectionMatrix * viewMatrix * wp;
     }`;
   const TUBE_FS = COMMON + /* glsl */`
-    uniform vec3 uCore;
-    uniform vec3 uRim;
-    uniform float uBp;
+    uniform vec3 uGlow;
     varying vec3 vN;
     varying vec3 vW;
     varying float vX;
@@ -1499,67 +1492,30 @@ async function initGL() {
       vec3 N = normalize(vN);
       vec3 V = normalize(cameraPosition - vW);
       float ndv = abs(dot(N, V));
-      float fres = pow(1.0 - ndv, 2.0);
       vec3 gc; float gv; float gb;
       geneInfo(vX, gc, gv, gb);
-      vec3 core = mix(uCore, gc * 0.36, gv);
-      vec3 rim = mix(uRim, gc * 1.35 + vec3(0.1), gv);
-      float tick = pow(0.5 + 0.5 * cos((vX - uTime * 0.45) / uBp * 2.0 * PI), 10.0);
-      vec3 c = core * (0.35 + 0.65 * ndv) + rim * fres * 1.05 + rim * tick * 0.16;
-      c *= 1.0 + gb * 0.6;
+      // The strand itself is the light: a filament in its section's colour with a slow current running
+      // 5' -> 3'. Only its hot core blooms, so the glow hugs the strand instead of fogging the scene.
+      vec3 glow = mix(uGlow, gc * 1.3 + vec3(0.05), gv);
+      float flow = pow(0.5 + 0.5 * cos((vX - uTime * 1.6) * 0.55), 6.0);
+      float hot = pow(ndv, 6.0);
+      vec3 c = glow * (0.28 + 0.2 * ndv) + (glow * 0.65 + vec3(0.25)) * hot * (0.8 + 0.4 * flow);
+      c *= mix(1.0, 0.7, uTun) * (1.0 + gb * 0.6);
       c += vec3(0.75, 1.0, 0.88) * vFront * 5.0;
       c += mix(vec3(0.7, 1.0, 0.85), gc, gv) * pulseAt(vX) * 3.0;
-      gl_FragColor = vec4(mix(uFogCol, c, fogVis(vW)), 1.0);
-    }`;
-
-  const NODE_VS = COMMON + /* glsl */`
-    attribute float aX;
-    attribute float aStrand;
-    attribute float aSeed;
-    uniform float uNodeR;
-    varying vec3 vN;
-    varying vec3 vW;
-    varying float vX;
-    varying float vSeed;
-    void main() {
-      vec3 c = hxPos(aX, aStrand);
-      float bv = buildVis(aX);
-      float s = uNodeR * (smoothstep(0.0, 1.0, bv) + 0.45 * sin(bv * PI)) * (1.0 + 0.9 * pulseAt(aX)) * smoothstep(0.7, 2.6, length(c - cameraPosition));
-      vec4 wp = modelMatrix * vec4(c + position * s, 1.0);
-      vW = wp.xyz;
-      vN = normalize(mat3(modelMatrix) * normal);
-      vX = aX;
-      vSeed = aSeed;
-      gl_Position = projectionMatrix * viewMatrix * wp;
-    }`;
-  const NODE_FS = COMMON + /* glsl */`
-    uniform vec3 uNodeCol;
-    varying vec3 vN;
-    varying vec3 vW;
-    varying float vX;
-    varying float vSeed;
-    void main() {
-      vec3 N = normalize(vN);
-      vec3 V = normalize(cameraPosition - vW);
-      float ndv = abs(dot(N, V));
-      vec3 gc; float gv; float gb;
-      geneInfo(vX, gc, gv, gb);
-      vec3 base = mix(uNodeCol, gc * 1.7 + vec3(0.08), gv);
-      float tw = 0.82 + 0.18 * sin(uTime * 2.3 + vSeed * 50.0);
-      vec3 c = base * (0.5 + 0.95 * pow(ndv, 3.0)) * tw * (1.0 + gb);
-      c += base * pulseAt(vX) * 2.5;
       gl_FragColor = vec4(mix(uFogCol, c, fogVis(vW)), 1.0);
     }`;
 
   const BASE_VS = COMMON + /* glsl */`
     attribute float aX;
     attribute float aStrand;
-    attribute vec3 aCol;
+    attribute float aShade;
     attribute float aSeed;
     uniform vec3 uBaseDim;
     varying vec3 vN;
     varying vec3 vW;
-    varying vec3 vCol;
+    varying float vShade;
+    varying vec3 vLocal;
     varying float vT;
     varying float vOpen;
     varying float vX;
@@ -1586,7 +1542,8 @@ async function initGL() {
       vec4 wp = modelMatrix * vec4(p, 1.0);
       vW = wp.xyz;
       vN = normalize(mat3(modelMatrix) * (Wd * normal.x + Y * normal.y + Z * normal.z));
-      vCol = aCol;
+      vShade = aShade;
+      vLocal = position;
       vT = t;
       vOpen = op;
       vX = aX;
@@ -1595,7 +1552,8 @@ async function initGL() {
   const BASE_FS = COMMON + /* glsl */`
     varying vec3 vN;
     varying vec3 vW;
-    varying vec3 vCol;
+    varying float vShade;
+    varying vec3 vLocal;
     varying float vT;
     varying float vOpen;
     varying float vX;
@@ -1605,13 +1563,19 @@ async function initGL() {
       float ndv = abs(dot(N, V));
       vec3 gc; float gv; float gb;
       geneInfo(vX, gc, gv, gb);
-      vec3 c0 = mix(vCol, gc, gv * 0.7) * mix(1.0, 0.6, uTun);
-      vec3 c = c0 * (0.35 + 0.65 * ndv) * (0.3 + 0.35 * vT) + c0 * pow(1.0 - ndv, 2.0) * 0.9;
+      // Purines (A, G) are white and pyrimidines (C, T) black, so every pair is half and half. A black
+      // plate keeps a fine white edge (about a pixel wide at any distance) so it still reads against the
+      // dark nucleoplasm.
+      vec3 q = abs(vLocal) * 2.0;                 // 1 on a face of the unit box
+      vec3 fw = max(fwidth(q), vec3(1e-4));
+      vec3 e = smoothstep(1.0 - fw * 1.8, 1.0 - fw * 0.5, q);
+      float edge = max(e.x, e.y);                 // borders of the broad faces, plus the thin sides
       float tip = smoothstep(0.7, 1.0, vT);
-      c += c0 * tip * (1.0 - vOpen) * 1.4;
-      c += c0 * tip * vOpen * 0.5 * (0.6 + 0.4 * sin(uTime * 3.0 + vX * 3.0));
-      c *= 1.0 + gb;
-      c += c0 * pulseAt(vX) * 2.2;
+      // white tops out just under the bloom threshold: crisp plates, and the strands do the glowing
+      float wb = 0.64 * (0.5 + 0.5 * ndv) * (0.75 + 0.25 * vT) + 0.06 * tip * (1.0 - vOpen);
+      float bb = 0.02 + 0.5 * edge * (0.55 + 0.45 * ndv);
+      vec3 c = vec3(mix(bb, wb, vShade)) * mix(1.0, 0.8, uTun) * (1.0 + gb * 0.6);
+      c += vec3(mix(0.3, 1.0, vShade)) * pulseAt(vX) * 1.6;
       gl_FragColor = vec4(mix(uFogCol, c, fogVis(vW)), 1.0);
     }`;
 
@@ -1646,7 +1610,7 @@ async function initGL() {
     void main() {
       vec3 gc; float gv; float gb;
       geneInfo(vX, gc, gv, gb);
-      vec3 c = mix(uHbCol, gc * 1.5, gv) * 1.5 * vA * (1.0 + gb);
+      vec3 c = uHbCol * 1.5 * vA * (1.0 + gb);
       gl_FragColor = vec4(mix(uFogCol, c, fogVis(vW)), 1.0);
     }`;
 
@@ -2037,12 +2001,9 @@ async function initGL() {
     'TAA'.split('').forEach((b, k) => { seq[e - 2 + k] = b; });
   });
   const COMP = { A: 'T', T: 'A', G: 'C', C: 'G' };
-  const BASES = { A: '#3dff9a', T: '#ff5f8f', G: '#ffc94a', C: '#3bd5ff' };
-  const MINT = new THREE.Color('#9dffd0');
-  const baseCol = (b) => new THREE.Color(BASES[b]).lerp(MINT, 0.35).multiplyScalar(0.85);
 
-  // Backbones: one parametric tube per strand, bent on the GPU.
-  const tubeU = { uTubeR: { value: 0.075 }, uCore: { value: C('#0d4a2e') }, uRim: { value: C('#c8ffe4') }, uBp: { value: HX.bp } };
+  // Backbones: one parametric, glowing tube per strand, bent on the GPU.
+  const tubeU = { uTubeR: { value: 0.09 }, uGlow: { value: C('#3dff9a', 1.1) } };
   {
     const segX = Math.round((X_MAX - X_MIN) / Q.segX), segR = 12;
     const pos = new Float32Array((segX + 1) * (segR + 1) * 3);
@@ -2064,24 +2025,17 @@ async function initGL() {
     g.setIndex(new THREE.BufferAttribute(idx, 1));
     for (const strand of [0, 1]) addMesh(g, mat(TUBE_VS, TUBE_FS, { ...tubeU, uStrand: { value: strand } }, { side: THREE.DoubleSide }));
   }
-  // Phosphate nodes
+  // Bases (black and white A/T/G/C plates) — paired across the axis, flipped open where the helix unzips
   {
-    const n = nBp * 2, aX = new Float32Array(n), aS = new Float32Array(n), aSeed = new Float32Array(n);
-    for (let i = 0; i < nBp; i++) for (let s = 0; s < 2; s++) { const k = i * 2 + s; aX[k] = bpX(i) + HX.bp * 0.5; aS[k] = s; aSeed[k] = rand(); }
-    addMesh(inst(new THREE.IcosahedronGeometry(1, 2), { aX: [aX, 1], aStrand: [aS, 1], aSeed: [aSeed, 1] }, n),
-      mat(NODE_VS, NODE_FS, { uNodeR: { value: 0.12 }, uNodeCol: { value: C('#d9fff0', 0.95) } }));
-  }
-  // Bases (A/T/G/C plates) — paired across the axis, flipped open where the helix unzips
-  {
-    const n = nBp * 2, aX = new Float32Array(n), aS = new Float32Array(n), aCol = new Float32Array(n * 3), aSeed = new Float32Array(n);
+    const n = nBp * 2, aX = new Float32Array(n), aS = new Float32Array(n), aShade = new Float32Array(n), aSeed = new Float32Array(n);
     for (let i = 0; i < nBp; i++) {
       for (let s = 0; s < 2; s++) {
-        const k = i * 2 + s;
+        const k = i * 2 + s, b = s ? COMP[seq[i]] : seq[i];
         aX[k] = bpX(i); aS[k] = s; aSeed[k] = rand();
-        baseCol(s ? COMP[seq[i]] : seq[i]).toArray(aCol, k * 3);
+        aShade[k] = b === 'A' || b === 'G' ? 1 : 0;   // purines white, pyrimidines black
       }
     }
-    addMesh(inst(new THREE.BoxGeometry(1, 1, 1), { aX: [aX, 1], aStrand: [aS, 1], aCol: [aCol, 3], aSeed: [aSeed, 1] }, n),
+    addMesh(inst(new THREE.BoxGeometry(1, 1, 1), { aX: [aX, 1], aStrand: [aS, 1], aShade: [aShade, 1], aSeed: [aSeed, 1] }, n),
       mat(BASE_VS, BASE_FS, { uBaseDim: { value: V3(0.3, 0.08, 0.09) } }));
   }
   // Hydrogen bonds: two for A·T, three for G·C
@@ -2548,7 +2502,7 @@ async function initGL() {
     SU.uBuild.value = I.build;
     SU.uCamOpen.value = mixR(sstep(0.3, 0.7, J), R.camOpen);
     const tunnelE = mixR(tunnel, R.tunnel);
-    tubeU.uTubeR.value = lerp(0.075, 0.055, tunnelE);
+    tubeU.uTubeR.value = lerp(0.09, 0.066, tunnelE);
 
     // Camera
     if (J < 1) { const e = clamp(J, 0, 1); divePos.getPoint(e, camPos); diveTgt.getPoint(e, camTgt); }
